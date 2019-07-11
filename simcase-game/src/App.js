@@ -1,9 +1,10 @@
 import React from "react";
+import GameUI from "./views/GameUI";
 
 function App() {
   return (
     <div>
-      <h1>Simcase</h1>
+      <GameUI />
     </div>
   );
 }
