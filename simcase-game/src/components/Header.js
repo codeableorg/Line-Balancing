@@ -224,8 +224,8 @@ function Header({ viewTitle = "welcome" }) {
     border: "none",
     color: "#FFFFFF",
     backgroundColor: "#004785",
-    fontSize: "2.8em",
-    paddingBottom: "7px"
+    fontSize: "2.3em",
+    paddingBottom: "5px"
   };
 
   const menuList = {
