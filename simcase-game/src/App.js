@@ -1,11 +1,10 @@
 import React from "react";
-import Statement from "./components/Statement";
-import ImageContainer from "./components/ImageContainer";
-import TitlesForm from "./components/TitlesForm";
+import GameUI from "./views/GameUI";
+
 function App() {
   return (
     <div>
-      <h1>Simcase</h1>
+      <GameUI />
     </div>
   );
 }
