@@ -1,5 +1,7 @@
 import React from "react";
-
+import Statement from "./components/Statement";
+import ImageContainer from "./components/ImageContainer";
+import TitlesForm from "./components/TitlesForm";
 function App() {
   return (
     <div>
