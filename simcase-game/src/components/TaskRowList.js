@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react";
 import { jsx } from "@emotion/core";
 import TaskRow from "./TaskRow";
 
@@ -15,11 +16,11 @@ let taskList = {
 
 function TaskRowList({ stage = 1 }) {
   return (
-    <>
+    <form>
       {taskList[stage].map(taskElement => (
         <TaskRow task={taskElement} />
       ))}
-    </>
+    </form>
   );
 }
 
