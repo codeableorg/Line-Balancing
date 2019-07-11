@@ -7,9 +7,13 @@ function Welcome() {
     padding: 10
   };
   return (
-    <main css={{ contentStyle }}>
+    <main css={contentStyle}>
       <h2>Welcome</h2>
-      <img src="welcomePic.png" alt="Welcome" />
+      <img
+        src="assets/img/wharton_logo.png"
+        alt="Welcome"
+        css={{ width: 300 }}
+      />
       <p id="welcome">Welcome message for students</p>
     </main>
   );
