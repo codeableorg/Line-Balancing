@@ -7,7 +7,8 @@ const imgStyles = {
   marginLeft: "auto",
   marginRight: "auto",
   maxWidth: "90%",
-  height: "auto"
+  height: "auto",
+  borderRadius: "4px"
 };
 
 function Statement({
