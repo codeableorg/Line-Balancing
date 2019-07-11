@@ -19,7 +19,6 @@ function Header(viewTitle) {
 
   const titleLogo = {
     display: "block",
-    width: 60,
     height: 60
   };
 
@@ -46,15 +45,22 @@ function Header(viewTitle) {
   };
 
   const dialogStyles = {
-    margin: "60px auto 0",
+    margin: "0 auto",
     padding: 0,
     width: "100vw",
-    height: "calc(100vw - 60px)"
+    height: "100vh"
   };
 
   return (
     <header css={headerStyle}>
-      <h2>{viewTitle.viewTitle.toString()}</h2>
+      <h2
+        css={{
+          width: "33%",
+          fontSize: "1.1em"
+        }}
+      >
+        {viewTitle.viewTitle.toString()}
+      </h2>
       <a href="/" css={titleLogo}>
         <img
           src="assets/img/wharton_logo.png"
