@@ -4,7 +4,7 @@ import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
 
-function Header(viewTitle) {
+function Header({ viewTitle = "welcome" }) {
   const headerStyle = {
     display: "flex",
     flexDirection: "row",
@@ -59,7 +59,7 @@ function Header(viewTitle) {
           fontSize: "1.1em"
         }}
       >
-        {viewTitle.viewTitle.toString()}
+        {viewTitle}
       </h2>
       <a href="/" css={titleLogo}>
         <img
