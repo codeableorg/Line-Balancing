@@ -1,25 +1,29 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
-const center = {
+const Container = {
   textAlign: "center",
   backgroundColor: "rgb(213,245,245)",
   marginLeft: "auto",
   marginRight: "auto",
-  width: "90%"
+  width: "90%",
+  borderRadius: "4px",
+  padding: "1px 1em",
+  boxSizing: "border-box",
+  marginBottom: "16px",
+  fontSize: "1.2em"
 };
 const textStyles = {
-  color: "rgb(110,140,120)",
-  fontFamily: "Arial",
-  fontSize: "1.5em"
+  color: "green",
+  fontFamily: "Arial"
 };
 
 function Statement({
   statementText = "Balance production to increase production. Use the radio buttons to shift tasks between adjacent workers. Good Luck!"
 }) {
   return (
-    <div css={center}>
-      <h1 css={textStyles}>{statementText}</h1>
+    <div css={Container}>
+      <p css={textStyles}>{statementText}</p>
     </div>
   );
 }
