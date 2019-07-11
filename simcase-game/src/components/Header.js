@@ -10,9 +10,11 @@ function Header(viewTitle) {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "100%",
+    width: "calc(100vw-40px)",
     height: 60,
-    backgroundColor: "#004785"
+    backgroundColor: "#004785",
+    color: "#FFFFFF",
+    padding: "0 20px"
   };
 
   const titleLogo = {
@@ -47,12 +49,12 @@ function Header(viewTitle) {
     margin: "60px auto 0",
     padding: 0,
     width: "100vw",
-    height: "calc(100vh - 60px)"
+    height: "calc(100vw - 60px)"
   };
 
   return (
     <header css={headerStyle}>
-      <h2>{viewTitle.viewTitle.capitalize}</h2>
+      <h2>{viewTitle.viewTitle.toString()}</h2>
       <a href="/" css={titleLogo}>
         <img
           src="assets/img/wharton_logo.png"
