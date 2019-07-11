@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react";
 import { jsx } from "@emotion/core";
 
 const container = {
@@ -24,7 +25,7 @@ const item = {
   fontSize: "0.9em"
 };
 
-function TitlesForm({ task = "Brainstorm (1.0h)" }) {
+function TitlesForm({ task }) {
   return (
     <div css={container}>
       {/* Task name */}
@@ -32,13 +33,13 @@ function TitlesForm({ task = "Brainstorm (1.0h)" }) {
 
       {/* Radio buttons 🍎*/}
       <div css={item}>
-        <input type="radio" id="radio1" name="radio" checked />
+        <input type="radio" id="radio1" name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="radio2" name="radio" checked />
+        <input type="radio" id="radio2" name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="radio3" name="radio" checked />
+        <input type="radio" id="radio3" name={task} />
       </div>
     </div>
   );
