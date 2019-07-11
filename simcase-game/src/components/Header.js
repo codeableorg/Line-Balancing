@@ -4,7 +4,7 @@ import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
 
-function headerController() {
+function Header(viewTitle) {
   const headerStyle = {
     display: "flex",
     flexDirection: "row",
@@ -52,6 +52,7 @@ function headerController() {
 
   return (
     <header css={headerStyle}>
+      <h2>{viewTitle.viewTitle.capitalize}</h2>
       <a href="/" css={titleLogo}>
         <img
           src="assets/img/wharton_logo.png"
@@ -103,4 +104,4 @@ function headerController() {
   );
 }
 
-export default headerController;
+export default Header;

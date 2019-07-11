@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import React from "react";
+
 import { jsx } from "@emotion/core";
 
-function contentController(requiredContent) {
+function ContentProvider(requiredContent) {
   let result = "";
   const welcome = (
     <main>
@@ -33,11 +33,9 @@ function contentController(requiredContent) {
       </ul>
     </main>
   );
-  console.log("Que se recibe", requiredContent);
   switch (requiredContent.requiredContent) {
     case "welcome":
       result = welcome;
-      console.log("Valor de result", result);
       break;
     case "role":
       result = role;
@@ -48,8 +46,8 @@ function contentController(requiredContent) {
     default:
       result = <h2>Error content</h2>;
   }
-  console.log("Result final: ", result);
+
   return result;
 }
 
-export default contentController;
+export default ContentProvider;
