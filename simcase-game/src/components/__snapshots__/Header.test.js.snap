@@ -55,9 +55,7 @@ exports[`Header component 1`] = `
   >
     <h2
       class="emotion-0"
-    >
-      WelcomeWalkthroughRolePlaygroundLeaderBoardAbout
-    </h2>
+    />
     <a
       class="emotion-3"
       href="/"

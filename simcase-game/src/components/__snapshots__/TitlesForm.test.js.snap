@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitlesForm based on game stage 1`] = `
+<DocumentFragment>
+  .emotion-4 {
+  background: rgb(213,245,245);
+  border-radius: 4px;
+  display: table;
+  table-layout: fixed;
+  width: 90%;
+  height: 4vh;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-0 {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-family: Arial;
+  color: blue;
+  font-size: 1.0em;
+}
+
+<div
+    class="emotion-4"
+  >
+    <div
+      class="emotion-0"
+    >
+      Tasks
+    </div>
+    <div
+      class="emotion-0"
+    >
+      Station 1
+    </div>
+    <div
+      class="emotion-0"
+    >
+      Station 2
+    </div>
+    <div
+      class="emotion-0"
+    >
+      Station 3
+    </div>
+  </div>
+</DocumentFragment>
+`;

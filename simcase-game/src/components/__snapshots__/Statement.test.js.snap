@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Statement based on game stage 1`] = `
+<DocumentFragment>
+  .emotion-1 {
+  text-align: center;
+  background-color: rgb(213,245,245);
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border-radius: 4px;
+  padding: 1px 1em;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  font-size: 1.2em;
+}
+
+.emotion-0 {
+  color: green;
+  font-family: Arial;
+}
+
+<div
+    class="emotion-1"
+  >
+    <p
+      class="emotion-0"
+    >
+      Balance production to increase production. Use the radio buttons to shift tasks between adjacent workers. Good Luck!
+    </p>
+  </div>
+</DocumentFragment>
+`;

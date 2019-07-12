@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test change image is correctly loaded 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 4px;
+}
+
+<img
+    alt="Simcase Case 1"
+    class="emotion-0"
+    src="line-cook.png"
+  />
+</DocumentFragment>
+`;
