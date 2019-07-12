@@ -2,30 +2,30 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
+import { Dialog } from "@reach/dialog";
+import Component from "@reach/component-component";
+import "@reach/dialog/styles.css";
 
-function Role() {
-  const contentStyle = {
-    padding: 10
-  };
+const contentStyle = {
+  padding: 10
+};
 
-  const buttonBack = {
-    marginTop: 100,
-    padding: 20,
-    borderRadius: 5,
-    color: "white",
-    background: "blue",
-    textDecoration: "none"
-  };
+function Role(props) {
+  const { onClose, openComponent, isComponentOpen } = props;
 
   return (
-    <main css={contentStyle}>
-      <h2>Role</h2>
-      <img src="assets/img/rolePic.gif" alt="Role" css={{ width: 300 }} />
-      <p id="role">Role message for students</p>
-      <Link to="/" css={buttonBack}>
-        Go Back
-      </Link>
-    </main>
+    <Component isOpen={isComponentOpen}>
+      <div>
+        <Dialog isOpen={openComponent} onDismiss={openComponent}>
+          <main css={contentStyle}>
+            <h2>Role</h2>
+            <img src="assets/img/rolePic.gif" alt="Role" css={{ width: 300 }} />
+            <p id="role">Role message for students</p>
+            <button onClick={onClose}>X</button>
+          </main>
+        </Dialog>
+      </div>
+    </Component>
   );
 }
 

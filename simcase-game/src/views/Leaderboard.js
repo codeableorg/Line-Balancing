@@ -1,25 +1,24 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
+import { Dialog } from "@reach/dialog";
+import Component from "@reach/component-component";
+import "@reach/dialog/styles.css";
 
-function Leaderboard() {
-  const buttonBack = {
-    marginTop: 100,
-    padding: 20,
-    borderRadius: 5,
-    color: "white",
-    background: "blue",
-    textDecoration: "none"
-  };
+function Leaderboard(props) {
+  const { onClose, openComponent, isComponentOpen } = props;
 
   return (
-    <div>
-      <h1>Hello from Leaderboard after your submission</h1>
-      <Link to="/" css={buttonBack}>
-        Go Back
-      </Link>
-    </div>
+    <Component isOpen={isComponentOpen}>
+      <div>
+        <Dialog isOpen={openComponent} onDismiss={openComponent}>
+          <main>
+            <h1>Hello from Leaderboard after your submission</h1>
+            <button onClick={onClose}>X</button>
+          </main>
+        </Dialog>
+      </div>
+    </Component>
   );
 }
 

@@ -1,36 +1,38 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
+import { Dialog } from "@reach/dialog";
+import Component from "@reach/component-component";
+import "@reach/dialog/styles.css";
 
-function Walkthrough() {
-  const buttonBack = {
-    marginTop: 100,
-    padding: 20,
-    borderRadius: 5,
-    color: "white",
-    background: "blue",
-    textDecoration: "none"
-  };
+function Walkthrough(props) {
+  const { onClose, openComponent, isComponentOpen } = props;
 
   const contentStyle = {
     padding: 10
   };
   return (
-    <main css={contentStyle}>
-      <h2>Walkthrough</h2>
-      <img src="assets/img/walkthrough.gif" alt="Walkthrough to use the app" />
-      <ul id="walkthrough">
-        <li>Read the problem statement</li>
-        <li>Check the table</li>
-        <li>Some text</li>
-        <li>Some more text</li>
-        <li>Finally the end og the list</li>
-      </ul>
-      <Link to="/" css={buttonBack}>
-        Go Back
-      </Link>
-    </main>
+    <Component isOpen={isComponentOpen}>
+      <div>
+        <Dialog isOpen={openComponent} onDismiss={openComponent}>
+          <main css={contentStyle}>
+            <h2>Walkthrough</h2>
+            <img
+              src="assets/img/walkthrough.gif"
+              alt="Walkthrough to use the app"
+            />
+            <ul id="walkthrough">
+              <li>Read the problem statement</li>
+              <li>Check the table</li>
+              <li>Some text</li>
+              <li>Some more text</li>
+              <li>Finally the end og the list</li>
+            </ul>
+            <button onClick={onClose}>X</button>
+          </main>
+        </Dialog>
+      </div>
+    </Component>
   );
 }
 
