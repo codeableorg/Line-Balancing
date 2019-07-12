@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskRow based on game stage 1`] = `
+<DocumentFragment>
+  <div
+    class="css-19ixip1-TitlesForm"
+  >
+    <div
+      class="css-1qrkjvu-TitlesForm"
+    />
+    <div
+      class="css-1qrkjvu-TitlesForm"
+    >
+      <input
+        id="radio1"
+        type="radio"
+      />
+    </div>
+    <div
+      class="css-1qrkjvu-TitlesForm"
+    >
+      <input
+        id="radio2"
+        type="radio"
+      />
+    </div>
+    <div
+      class="css-1qrkjvu-TitlesForm"
+    >
+      <input
+        id="radio3"
+        type="radio"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

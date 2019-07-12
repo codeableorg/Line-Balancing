@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test change image is correctly loaded 1`] = `
+<DocumentFragment>
+  <img
+    alt="Simcase Case 1"
+    class="css-1k2n4ns-Statement"
+    src="line-cook.png"
+  />
+</DocumentFragment>
+`;

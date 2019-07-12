@@ -4,7 +4,7 @@ import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
 
-function Header({ viewTitle = "welcome" }) {
+function Header({ viewTitle = "Welcome" }) {
   const headerStyle = {
     display: "flex",
     flexDirection: "row",
