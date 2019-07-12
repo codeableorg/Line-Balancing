@@ -21,8 +21,26 @@ function Leaderboard(props) {
   const tableStyle = {
     width: "80%",
     margin: "0 auto",
-    borderCollapse: "collapse"
+    borderCollapse: "collapse",
+    border: "1px solid #000000"
   };
+
+  const theadStyle = {
+    backgroundColor: "#004785"
+  };
+
+  const tdataRight = {
+    textAlign: "right"
+  };
+
+  const tdataLeft = {
+    textAlign: "left"
+  };
+
+  const tdataCenter = {
+    textAlign: "center"
+  };
+
   return (
     <Component isOpen={isComponentOpen}>
       <div>
