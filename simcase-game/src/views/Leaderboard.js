@@ -13,9 +13,47 @@ function Leaderboard() {
     textDecoration: "none"
   };
 
+  const leaderboardDummyData = [
+    { id: 1, username: "ccachay", points: 961 },
+    { id: 2, username: "dconde", points: 871 },
+    { id: 3, username: "jwayne", points: 841 },
+    { id: 4, username: "wsmith", points: 771 },
+    { id: 5, username: "sstallone", points: 762 },
+    { id: 6, username: "dcuevas", points: 714 },
+    { id: 7, username: "jperez", points: 601 }
+  ];
+
+  const tableStyle = {
+    width: "80%",
+    margin: "0 auto",
+    borderCollapse: "collapse"
+  };
   return (
     <div>
-      <h1>Hello from Leaderboard after your submission</h1>
+      <h2>Hello from Leaderboard after your submission</h2>
+      <table css={tableStyle}>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>username</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {leaderboardDummyData.map((user, index) => {
+            if (index < 5) {
+              return (
+                <tr key={user.username}>
+                  <td>{user.id}</td>
+                  <td>{user.username}</td>
+                  <td>{user.points}</td>
+                </tr>
+              );
+            }
+            return void 0;
+          })}
+        </tbody>
+      </table>
       <Link to="/" css={buttonBack}>
         Go Back
       </Link>
