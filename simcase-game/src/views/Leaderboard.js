@@ -8,6 +8,21 @@ import "@reach/dialog/styles.css";
 function Leaderboard(props) {
   const { onClose, openComponent, isComponentOpen } = props;
 
+  const leaderboardDummyData = [
+    { id: 1, username: "ccachay", points: 961 },
+    { id: 2, username: "dconde", points: 871 },
+    { id: 3, username: "jwayne", points: 841 },
+    { id: 4, username: "wsmith", points: 771 },
+    { id: 5, username: "sstallone", points: 762 },
+    { id: 6, username: "dcuevas", points: 714 },
+    { id: 7, username: "jperez", points: 601 }
+  ];
+
+  const tableStyle = {
+    width: "80%",
+    margin: "0 auto",
+    borderCollapse: "collapse"
+  };
   return (
     <Component isOpen={isComponentOpen}>
       <div>
