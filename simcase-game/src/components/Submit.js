@@ -7,34 +7,31 @@ import Confirm from "./Confirm";
 import { Button } from "./ui";
 import { Action } from "./helpers";
 
-function Submit({ id }) {
+function Submit() {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
     setConfirm(true);
   }
-
   function closeSubmit() {
     setConfirm(false);
   }
 
-  const $portal = document.getElementById("portal");
+  const $portal = React.useMemo(() => document.getElementById("portal"), []);
 
   return (
-    <Action>
-      <Button onClick={openSubmit}>Send</Button>
+    <div>
+      <button onClick={openSubmit}>Send</button>
       {confirm &&
         createPortal(
           <Confirm
             closeSubmit={closeSubmit}
             openSubmit={openSubmit}
             confirm={confirm}
-            scenario={id}
-            setConfirm={setConfirm}
           />,
           $portal
         )}
-    </Action>
+    </div>
   );
 }
 
