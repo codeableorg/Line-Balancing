@@ -1,10 +1,16 @@
 /** @jsx jsx */
+import React from "react";
 import { jsx } from "@emotion/core";
 import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
+import { Link } from "@reach/router";
 
-function Header({ viewTitle = "welcome" }) {
+// function Header({ viewTitle = "welcome" }) {
+function Header() {
+  const [showDialog, setShowDialog] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+
   const headerStyle = {
     display: "flex",
     flexDirection: "row",
@@ -32,12 +38,13 @@ function Header({ viewTitle = "welcome" }) {
   const menuList = {
     padding: "20px 0",
     margin: 0,
+    cursor: "pointer",
     listStyle: "none",
     "&>li": {
       textAlign: "center",
       fontSize: "2em"
     },
-    "& a": {
+    "& button": {
       textDecoration: "none",
       lineHeight: "2em",
       color: "#030303"
@@ -45,11 +52,21 @@ function Header({ viewTitle = "welcome" }) {
   };
 
   const dialogStyles = {
-    margin: "0 auto",
+    margin: "50 auto",
     padding: 0,
-    width: "100vw",
-    height: "100vh"
+    width: "50vw",
+    height: "60vh",
+    borderRadius: 10,
+    background: "84b1ff"
   };
+
+  function seeDialog() {
+    setShowDialog(true);
+  }
+
+  function closeDialog() {
+    setShowDialog(false);
+  }
 
   return (
     <header css={headerStyle}>
@@ -59,7 +76,7 @@ function Header({ viewTitle = "welcome" }) {
           fontSize: "1.1em"
         }}
       >
-        {viewTitle}
+        {/* {viewTitle} */}
       </h2>
       <a href="/" css={titleLogo}>
         <img
@@ -69,44 +86,26 @@ function Header({ viewTitle = "welcome" }) {
         />
         <h1 css={{ display: "none" }}>Line Balancing</h1>
       </a>
-      <Component initialState={{ showDialog: false }}>
-        {({ state, setState }) => (
-          <div>
-            <button
-              onClick={() => setState({ showDialog: true })}
-              css={menuButton}
-            >
-              &#9776;
-            </button>
+      <Component isOpen={showDialog}>
+        <div>
+          <button onClick={seeDialog} css={menuButton}>
+            &#9776;
+          </button>
 
-            <Dialog
-              isOpen={state.showDialog}
-              onDismiss={() => setState({ showDialog: true })}
-              css={dialogStyles}
-            >
-              <ul css={menuList}>
-                <li>
-                  <a onClick={() => setState({ showDialog: false })}>Close</a>
-                </li>
-                <li>
-                  <a href="/welcome">Welcome</a>
-                </li>
-                <li>
-                  <a href="/role">Role</a>
-                </li>
-                <li>
-                  <a href="/walkthrough">Walkthrough</a>
-                </li>
-                <li>
-                  <a href="/playground">Playground</a>
-                </li>
-                <li>
-                  <a href="/leaderboard">Leaderboard</a>
-                </li>
-              </ul>
-            </Dialog>
-          </div>
-        )}
+          <Dialog isOpen={showDialog} onDismiss={seeDialog} css={dialogStyles}>
+            <ul css={menuList}>
+              <li>
+                <button onClick={closeDialog}>Close</button>
+              </li>
+              <li>
+                <button>Role</button>
+              </li>
+              <li>
+                <button>Walkthrough</button>
+              </li>
+            </ul>
+          </Dialog>
+        </div>
       </Component>
     </header>
   );

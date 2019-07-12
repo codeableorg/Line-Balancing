@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { createPortal } from "react-dom";
+import Confirm from "./Confirm";
 
 const buttonStyle = {
   background: "rgb(74,0,255)",
@@ -22,9 +24,29 @@ const center = {
 };
 
 function Submit() {
+  const [confirm, setConfirm] = React.useState(false);
+
+  function openSubmit() {
+    setConfirm(true);
+  }
+  function closeSubmit() {
+    setConfirm(false);
+  }
+
+  const $portal = React.useMemo(() => document.getElementById("portal"), []);
+
   return (
     <div css={center}>
       <button css={buttonStyle}>Send</button>
+      {confirm &&
+        createPortal(
+          <Confirm
+            onClose={closeSubmit}
+            openModal={openSubmit}
+            confirm={confirm}
+          />,
+          $portal
+        )}
     </div>
   );
 }
