@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component 1`] = `
+<DocumentFragment>
+  .emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: calc(100vw-40px);
+  height: 60px;
+  background-color: #004785;
+  color: #FFFFFF;
+  padding: 0 20px;
+}
+
+.emotion-0 {
+  width: 33%;
+  font-size: 1.1em;
+}
+
+.emotion-3 {
+  display: block;
+  height: 60px;
+}
+
+.emotion-1 {
+  height: 60px;
+}
+
+.emotion-2 {
+  display: none;
+}
+
+.emotion-4 {
+  border: none;
+  color: #FFFFFF;
+  background-color: #004785;
+  font-size: 2em;
+}
+
+<header
+    class="emotion-5"
+  >
+    <h2
+      class="emotion-0"
+    >
+      WelcomeWalkthroughRolePlaygroundLeaderBoardAbout
+    </h2>
+    <a
+      class="emotion-3"
+      href="/"
+    >
+      <img
+        alt="Wharton Logo"
+        class="emotion-1"
+        src="assets/img/wharton_logo.png"
+      />
+      <h1
+        class="emotion-2"
+      >
+        Line Balancing
+      </h1>
+    </a>
+    <div>
+      <button
+        class="emotion-4"
+      >
+        ☰
+      </button>
+    </div>
+  </header>
+</DocumentFragment>
+`;
