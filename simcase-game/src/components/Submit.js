@@ -37,12 +37,14 @@ function Submit() {
 
   return (
     <div css={center}>
-      <button css={buttonStyle}>Send</button>
+      <button css={buttonStyle} onClick={openSubmit}>
+        Send
+      </button>
       {confirm &&
         createPortal(
           <Confirm
-            onClose={closeSubmit}
-            openModal={openSubmit}
+            closeSubmit={closeSubmit}
+            openSubmit={openSubmit}
             confirm={confirm}
           />,
           $portal

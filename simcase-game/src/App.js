@@ -7,7 +7,7 @@ import Role from "./views/Role";
 import Walkthrough from "./views/Walkthrough";
 import GameUI from "./views/GameUI";
 import About from "./views/About";
-import Leaderboard from "./components/Leaderboard";
+import Leaderboard from "./views/Leaderboard";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
