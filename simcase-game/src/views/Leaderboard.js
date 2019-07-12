@@ -26,13 +26,31 @@ function Leaderboard() {
   const tableStyle = {
     width: "80%",
     margin: "0 auto",
-    borderCollapse: "collapse"
+    borderCollapse: "collapse",
+    border: "1px solid #000000"
   };
+
+  const theadStyle = {
+    backgroundColor: "#004785"
+  };
+
+  const tdataRight = {
+    textAlign: "right"
+  };
+
+  const tdataLeft = {
+    textAlign: "left"
+  };
+
+  const tdataCenter = {
+    textAlign: "center"
+  };
+
   return (
     <div>
       <h2>Hello from Leaderboard after your submission</h2>
       <table css={tableStyle}>
-        <thead>
+        <thead css={theadStyle}>
           <tr>
             <th>#</th>
             <th>username</th>
@@ -44,9 +62,9 @@ function Leaderboard() {
             if (index < 5) {
               return (
                 <tr key={user.username}>
-                  <td>{user.id}</td>
-                  <td>{user.username}</td>
-                  <td>{user.points}</td>
+                  <td css={tdataCenter}>{user.id}</td>
+                  <td css={tdataLeft}>{user.username}</td>
+                  <td css={tdataRight}>{user.points}</td>
                 </tr>
               );
             }
