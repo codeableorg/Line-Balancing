@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
 import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";

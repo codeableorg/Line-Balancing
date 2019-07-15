@@ -134,6 +134,14 @@ function Header() {
                 <button
                   css={buttonOptions}
                   onClick={() => {
+                    setModal("home");
+                  }}
+                >
+                  Home
+                </button>
+                <button
+                  css={buttonOptions}
+                  onClick={() => {
                     setModal("role");
                   }}
                 >
@@ -176,6 +184,10 @@ function Header() {
                 />,
                 $portal
               )}
+            {modal === "ranking" && <Leaderboard />}
+            {modal === "home" && <Welcome />}
+            {modal === "role" && <Role />}
+            {modal === "walk" && <Walkthrough />}
           </Dialog>
         </div>
       </Component>
