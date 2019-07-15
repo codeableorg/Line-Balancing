@@ -7,7 +7,8 @@ import Role from "./views/Role";
 import Walkthrough from "./views/Walkthrough";
 import GameUI from "./views/GameUI";
 import About from "./views/About";
-import Leaderboard from "./views/Leaderboard";
+import Ranking from "./views/Ranking";
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -42,7 +43,7 @@ function App() {
       <Role path="/role" />
       <Walkthrough path="/walkthrough" />
       <About path="/about" />
-      <Leaderboard path="/leaderboard" />
+      <Ranking path="/ranking" />
     </Router>
   );
 }
