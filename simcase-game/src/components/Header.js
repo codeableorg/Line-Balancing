@@ -3,8 +3,8 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
-import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
+import { Link } from "@reach/router";
 import Role from "../views/Role";
 import Leaderboard from "../views/Leaderboard";
 import Walkthrough from "../views/Walkthrough";
@@ -34,41 +34,49 @@ const menuButton = {
 };
 
 const menuList = {
-  textAlign: "center",
+  cursor: "pointer",
   padding: "20px 0",
   margin: 0,
-  cursor: "pointer",
+  textAlign: "center",
   listStyle: "none"
 };
 
 const buttonList = {
-  fontSize: "2em",
   display: "flex",
   flexDirection: "column",
-  alignItems: "center"
+  alignItems: "center",
+  fontSize: "2em"
 };
 
 const buttonOptions = {
   textDecoration: "none",
   lineHeight: "2em",
   color: "#030303",
+  backgroundColor: "blue",
   margin: 15,
-  width: 100,
-  height: 40
+  width: 120,
+  height: 50
 };
 
 const dialogStyles = {
-  margin: "50 auto",
   padding: 0,
-  width: "50vw",
-  height: "70vh",
+  margin: 0,
+  width: "100vw",
+  height: "100vh",
   borderRadius: 10,
-  background: "84b1ff"
+  backgroundColor: "rgba(0, 0, 255, 0.7)"
 };
+
+function NavigationButton({ children, onClick }) {
+  return (
+    <button css={buttonOptions} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
 
 const $portal = document.getElementById("portal");
 
-// function Header({ viewTitle = "welcome" }) {
 function Header() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [modal, setModal] = React.useState(null);
@@ -91,8 +99,6 @@ function Header() {
     setModal(null);
   }
 
-  // const $portal = React.useMemo(() => document.getElementById("portal"), []);
-
   return (
     <header css={headerStyle}>
       <h2
@@ -100,9 +106,7 @@ function Header() {
           width: "33%",
           fontSize: "1.1em"
         }}
-      >
-        {/* {viewTitle} */}
-      </h2>
+      />
       <a href="/" css={titleLogo}>
         <img
           src="assets/img/wharton_logo.png"
@@ -111,86 +115,60 @@ function Header() {
         />
         <h1 css={{ display: "none" }}>Line Balancing</h1>
       </a>
-      <Component isOpen={showDialog}>
-        <div>
-          <button onClick={seeDialog} css={menuButton}>
-            &#9776;
-          </button>
+      <div>
+        <button onClick={seeDialog} css={menuButton}>
+          &#9776;
+        </button>
 
-          <Dialog isOpen={showDialog} onDismiss={seeDialog} css={dialogStyles}>
-            <ul css={menuList}>
-              <li css={buttonList}>
-                <button css={buttonOptions} onClick={closeDialog}>
-                  Close
-                </button>
-                <button
-                  css={buttonOptions}
-                  onClick={() => {
-                    setModal("ranking");
-                  }}
-                >
-                  Leaderboard
-                </button>
-                <button
-                  css={buttonOptions}
-                  onClick={() => {
-                    setModal("home");
-                  }}
-                >
-                  Home
-                </button>
-                <button
-                  css={buttonOptions}
-                  onClick={() => {
-                    setModal("role");
-                  }}
-                >
-                  Role
-                </button>
-                <button
-                  css={buttonOptions}
-                  onClick={() => {
-                    setModal("walk");
-                  }}
-                >
-                  Walkthrough
-                </button>
-              </li>
-            </ul>
-            {modal === "ranking" &&
-              createPortal(
-                <Leaderboard
-                  component={isComponentOpen}
-                  onClose={closeComponent}
-                  openModal={openComponent}
-                />,
-                $portal
-              )}
-            {modal === "role" &&
-              createPortal(
-                <Role
-                  component={isComponentOpen}
-                  onClose={closeComponent}
-                  openModal={openComponent}
-                />,
-                $portal
-              )}
-            {modal === "walk" &&
-              createPortal(
-                <Walkthrough
-                  component={isComponentOpen}
-                  onClose={closeComponent}
-                  openModal={openComponent}
-                />,
-                $portal
-              )}
-            {modal === "ranking" && <Leaderboard />}
-            {modal === "home" && <Welcome />}
-            {modal === "role" && <Role />}
-            {modal === "walk" && <Walkthrough />}
-          </Dialog>
-        </div>
-      </Component>
+        <Dialog isOpen={showDialog} onDismiss={seeDialog} css={dialogStyles}>
+          <ul css={menuList}>
+            <li css={buttonList}>
+              <button css={buttonOptions} onClick={closeDialog}>
+                Close
+              </button>
+              <NavigationButton onClick={() => setModal("ranking")}>
+                Leaderboard
+              </NavigationButton>
+              <NavigationButton onClick={() => setModal("role")}>
+                Role
+              </NavigationButton>
+              <NavigationButton onClick={() => setModal("walk")}>
+                Walkthrough
+              </NavigationButton>
+              <button css={buttonOptions}>
+                <Link to="/about">About</Link>
+              </button>
+            </li>
+          </ul>
+          {modal === "ranking" &&
+            createPortal(
+              <Leaderboard
+                component={isComponentOpen}
+                onClose={closeComponent}
+                openModal={openComponent}
+              />,
+              $portal
+            )}
+          {modal === "role" &&
+            createPortal(
+              <Role
+                component={isComponentOpen}
+                onClose={closeComponent}
+                openModal={openComponent}
+              />,
+              $portal
+            )}
+          {modal === "walk" &&
+            createPortal(
+              <Walkthrough
+                component={isComponentOpen}
+                onClose={closeComponent}
+                openModal={openComponent}
+              />,
+              $portal
+            )}
+        </Dialog>
+      </div>
     </header>
   );
 }

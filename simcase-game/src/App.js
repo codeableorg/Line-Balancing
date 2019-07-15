@@ -9,7 +9,6 @@ import GameUI from "./views/GameUI";
 import About from "./views/About";
 import Ranking from "./views/Ranking";
 
-
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
