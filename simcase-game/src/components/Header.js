@@ -1,14 +1,13 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import Component from "@reach/component-component";
 import "@reach/dialog/styles.css";
 import Role from "../views/Role";
 import Leaderboard from "../views/Leaderboard";
-import About from "../views/About";
 import Walkthrough from "../views/Walkthrough";
-import Welcome from "../views/Welcome";
 
 const headerStyle = {
   display: "flex",
@@ -67,11 +66,13 @@ const dialogStyles = {
   background: "84b1ff"
 };
 
+const $portal = document.getElementById("portal");
+
 // function Header({ viewTitle = "welcome" }) {
 function Header() {
   const [showDialog, setShowDialog] = React.useState(false);
-  const [openModal, setOpenModal] = React.useState(false);
   const [modal, setModal] = React.useState(null);
+  const [isComponentOpen, setIsComponentOpen] = React.useState(false);
 
   function seeDialog() {
     setShowDialog(true);
@@ -80,6 +81,17 @@ function Header() {
   function closeDialog() {
     setShowDialog(false);
   }
+
+  function openComponent() {
+    setIsComponentOpen(true);
+  }
+
+  function closeComponent() {
+    setIsComponentOpen(false);
+    setModal(null);
+  }
+
+  // const $portal = React.useMemo(() => document.getElementById("portal"), []);
 
   return (
     <header css={headerStyle}>
@@ -145,6 +157,33 @@ function Header() {
                 </button>
               </li>
             </ul>
+            {modal === "ranking" &&
+              createPortal(
+                <Leaderboard
+                  component={isComponentOpen}
+                  onClose={closeComponent}
+                  openModal={openComponent}
+                />,
+                $portal
+              )}
+            {modal === "role" &&
+              createPortal(
+                <Role
+                  component={isComponentOpen}
+                  onClose={closeComponent}
+                  openModal={openComponent}
+                />,
+                $portal
+              )}
+            {modal === "walk" &&
+              createPortal(
+                <Walkthrough
+                  component={isComponentOpen}
+                  onClose={closeComponent}
+                  openModal={openComponent}
+                />,
+                $portal
+              )}
             {modal === "ranking" && <Leaderboard />}
             {modal === "home" && <Welcome />}
             {modal === "role" && <Role />}
