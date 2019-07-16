@@ -53,8 +53,8 @@ const buttonList = {
 const buttonOptions = {
   textDecoration: "none",
   lineHeight: "2em",
-  color: "#030303",
   backgroundColor: "blue",
+  color: "#000000",
   margin: 15,
   width: 120,
   height: 50
@@ -132,7 +132,11 @@ function Header() {
               <button css={buttonOptions} onClick={closeDialog}>
                 Close
               </button>
-              <NavigationButton onClick={() => setModal("ranking")}>
+              <NavigationButton
+                onClick={() => {
+                  setModal("ranking");
+                }}
+              >
                 Leaderboard
               </NavigationButton>
               <NavigationButton
@@ -142,7 +146,12 @@ function Header() {
               >
                 Role
               </NavigationButton>
-              <NavigationButton onClick={() => setModal("walk")}>
+              <NavigationButton
+                onClick={() => {
+                  setShowDialog(false);
+                  setModal("walk");
+                }}
+              >
                 Walkthrough
               </NavigationButton>
               <button
