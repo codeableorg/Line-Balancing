@@ -28,18 +28,16 @@ const item = {
 function TitlesForm({ task }) {
   return (
     <div css={container}>
-      {/* Task name */}
       <div css={item}>{task}</div>
 
-      {/* Radio buttons 🍎*/}
       <div css={item}>
-        <input type="radio" id="radio1" name={task} />
+        <input type="radio" id="station-1" name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="radio2" name={task} />
+        <input type="radio" id="station-2" name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="radio3" name={task} />
+        <input type="radio" id="station-3" name={task} />
       </div>
     </div>
   );
