@@ -8,6 +8,7 @@ import "@reach/dialog/styles.css";
 import Role from "../views/Role";
 import Leaderboard from "../views/Leaderboard";
 import Walkthrough from "../views/Walkthrough";
+import Welcome from "../views/Welcome";
 
 const headerStyle = {
   display: "flex",
