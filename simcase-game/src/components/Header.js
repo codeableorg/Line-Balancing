@@ -4,11 +4,8 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
-import { Link } from "@reach/router";
-import Role from "../views/Role";
-import Leaderboard from "../views/Leaderboard";
-import Walkthrough from "../views/Walkthrough";
 import { navigate } from "@reach/router";
+import MyModal from "../views/Modal";
 
 const headerStyle = {
   display: "flex",
@@ -19,12 +16,16 @@ const headerStyle = {
   height: 60,
   backgroundColor: "#004785",
   color: "#FFFFFF",
-  padding: "0 20px"
+  padding: 0
 };
 
 const titleLogo = {
   display: "block",
   height: 60
+};
+
+const titleDivs = {
+  width: "33%"
 };
 
 const menuButton = {
@@ -64,8 +65,7 @@ const dialogStyles = {
   margin: 0,
   width: "100vw",
   height: "100vh",
-  borderRadius: 10,
-  backgroundColor: "rgba(0, 0, 255, 0.7)"
+  background: "rgba(0,0,255,0.7)"
 };
 
 function NavigationButton({ children, onClick }) {
@@ -98,25 +98,31 @@ function Header() {
   function closeComponent() {
     setIsComponentOpen(false);
     setModal(null);
+    closeDialog();
   }
 
   return (
     <header css={headerStyle}>
-      <h2
-        css={{
-          width: "33%",
-          fontSize: "1.1em"
-        }}
-      />
-      <a href="/" css={titleLogo}>
-        <img
-          src="/assets/img/wharton_logo.png"
-          alt="Wharton Logo"
-          css={{ height: 60 }}
-        />
-        <h1 css={{ display: "none" }}>Line Balancing</h1>
-      </a>
-      <div>
+      <div css={titleDivs}>
+        <h2
+          css={{
+            fontSize: "1.1em"
+          }}
+        >
+          &nbsp;
+        </h2>
+      </div>
+      <div css={{ ...titleDivs }}>
+        <a href="/" css={titleLogo}>
+          <img
+            src="assets/img/wharton_logo.png"
+            alt="Wharton Logo"
+            css={{ height: 60, display: "block", margin: "0 auto" }}
+          />
+          <h1 css={{ display: "none" }}>Line Balancing</h1>
+        </a>
+      </div>
+      <div css={{ ...titleDivs, textAlign: "right" }}>
         <button onClick={seeDialog} css={menuButton}>
           &#9776;
         </button>
@@ -129,7 +135,11 @@ function Header() {
               <NavigationButton onClick={() => setModal("ranking")}>
                 Leaderboard
               </NavigationButton>
-              <NavigationButton onClick={() => setModal("role")}>
+              <NavigationButton
+                onClick={() => {
+                  setModal("role");
+                }}
+              >
                 Role
               </NavigationButton>
               <NavigationButton onClick={() => setModal("walk")}>
@@ -147,31 +157,56 @@ function Header() {
           </ul>
           {modal === "ranking" &&
             createPortal(
-              <Leaderboard
+              <MyModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
+                componentId={3}
               />,
               $portal
             )}
           {modal === "role" &&
             createPortal(
-              <Role
+              <MyModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
+                componentId={1}
               />,
               $portal
             )}
           {modal === "walk" &&
             createPortal(
-              <Walkthrough
+              <MyModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
+                componentId={2}
               />,
               $portal
             )}
+          {/* 
+          {modal === "NewRole" &&
+            createPortal(
+              <MyModal
+                component={isComponentOpen}
+                onClose={closeComponent}
+                openModal={openComponent}
+                componentId={1}
+              />,
+              $portal
+            )}
+          {modal === "NewWalk" &&
+            createPortal(
+              <MyModal
+                component={isComponentOpen}
+                onClose={closeComponent}
+                openModal={openComponent}
+                componentId={2}
+              />,
+              $portal
+            )}
+            */}
         </Dialog>
       </div>
     </header>
