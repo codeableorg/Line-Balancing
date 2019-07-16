@@ -4,21 +4,15 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
 import Header from "../components/Header";
+import { Button } from "../components/ui";
 
 const container = {
   textAlign: "center"
 };
 
-const buttonStart = {
-  padding: 20,
-  textAlign: "center",
-  background: "rgb(74,0,255)",
-  color: "#fff",
-  textDecoration: "none"
-};
-
-const buttonContainer = {
-  marginTop: 50
+const button = {
+  width: "50%",
+  padding: "20px"
 };
 
 function Welcome() {
@@ -31,12 +25,10 @@ function Welcome() {
         alt="Welcome"
         css={{ width: "300px" }}
       />
-      <p id="welcome">Welcome message for students</p>
-      <div css={buttonContainer}>
-        <Link to="/game/1" css={buttonStart}>
-          Start Game
-        </Link>
-      </div>
+      <p>Welcome message for students</p>
+      <Button styles={button}>
+        <Link to="/game">Start Game</Link>
+      </Button>
     </main>
   );
 }

@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
 import { navigate } from "@reach/router";
@@ -8,6 +7,8 @@ import "@reach/dialog/styles.css";
 import NextScenario from "./NextScenario";
 import LastScenario from "./LastScenario";
 
+import { Button } from "../components/ui";
+
 function Confirm(props) {
   const { openSubmit, closeSubmit, confirm, setConfirm, scenario } = props;
 
@@ -16,18 +17,9 @@ function Confirm(props) {
     setConfirm(false);
   }
 
-  const buttoncss = {
-    background: "transparent",
-    backgroundRepeat: "no-repeat",
-    border: "none",
-    cursor: "pointer",
-    overflow: "hidden",
-    color: "white"
-  };
-
   return (
     <div>
-      <button css={buttoncss} onClick={openSubmit}>
+      <button onClick={openSubmit}>
         <Icon name="arrow alternate circle left outline" size="large">
           <Dialog isOpen={confirm} onDismiss={openSubmit}>
             {scenario === 4 ? (

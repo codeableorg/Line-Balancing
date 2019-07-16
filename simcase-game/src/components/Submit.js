@@ -2,22 +2,9 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
-import Confirm from "./Confirm";
 
-const buttonStyle = {
-  background: "rgb(74,0,255)",
-  margin: "0px 0 20px 0",
-  padding: "8px 16px",
-  color: "#fff",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-  boxShadow: "0 8px 6px -6px #555",
-  width: "90%",
-  height: "4vh",
-  fontSize: "1.0em",
-  fontFamily: "Arial"
-};
+import Confirm from "./Confirm";
+import { Button } from "./ui";
 
 const center = {
   textAlign: "center"
@@ -38,9 +25,7 @@ function Submit({ scenario }) {
 
   return (
     <div css={center}>
-      <button css={buttonStyle} onClick={openSubmit}>
-        Send
-      </button>
+      <Button onClick={openSubmit}>Send</Button>
       {confirm &&
         createPortal(
           <Confirm

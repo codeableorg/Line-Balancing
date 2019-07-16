@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { Link } from "@reach/router";
+
+import { Button } from "../components/ui";
 
 const leaderboardDummyData = {
   1: { id: 1, username: "ccachay", points: 961 },
@@ -60,9 +63,13 @@ const title = {
   width: "20%"
 };
 
+const button = {
+  width: "50%",
+  padding: "20px"
+};
+
 function Ranking() {
   const players = leaderboardDummyData;
-
   return (
     <>
       <main css={container}>
@@ -109,6 +116,12 @@ function Ranking() {
           </table>
         </section>
       </main>
+      <Button styles={button}>
+        <Link to="/game">Play Again</Link>
+      </Button>
+      <Button styles={button}>
+        <Link to="/">Go Home</Link>
+      </Button>
     </>
   );
 }
