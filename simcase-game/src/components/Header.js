@@ -148,7 +148,6 @@ function Header() {
               </NavigationButton>
               <NavigationButton
                 onClick={() => {
-                  setShowDialog(false);
                   setModal("walk");
                 }}
               >
