@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
+import { Link } from "@reach/router";
 import Role from "../views/Role";
 import Leaderboard from "../views/Leaderboard";
 import Walkthrough from "../views/Walkthrough";
@@ -119,7 +120,6 @@ function Header() {
         <button onClick={seeDialog} css={menuButton}>
           &#9776;
         </button>
-
         <Dialog isOpen={showDialog} onDismiss={seeDialog} css={dialogStyles}>
           <ul css={menuList}>
             <li css={buttonList}>

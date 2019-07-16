@@ -2,8 +2,6 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Dialog } from "@reach/dialog";
-import Component from "@reach/component-component";
-import "@reach/dialog/styles.css";
 import { createPortal } from "react-dom";
 import Role from "./Role";
 
@@ -37,7 +35,7 @@ function Walkthrough(props) {
   };
 
   return (
-    <Component isOpen={isComponentOpen}>
+    <div isOpen={isComponentOpen}>
       <div>
         <Dialog
           isOpen={openComponent}
@@ -79,7 +77,7 @@ function Walkthrough(props) {
           </main>
         </Dialog>
       </div>
-    </Component>
+    </div>
   );
 }
 
