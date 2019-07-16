@@ -15,11 +15,13 @@ let taskList = {
 };
 
 function TaskRowList({ stage = 1 }) {
+  let key = 0;
   return (
     <form>
-      {taskList[stage].map(taskElement => (
-        <TaskRow task={taskElement} />
-      ))}
+      {taskList[stage].map(taskElement => {
+        key += stage;
+        return <TaskRow task={taskElement} key={key} />;
+      })}
     </form>
   );
 }
