@@ -31,13 +31,13 @@ function TitlesForm({ task }) {
       <div css={item}>{task}</div>
 
       <div css={item}>
-        <input type="radio" id="station-1" name={task} />
+        <input type="radio" id={task + "-station-1"} name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="station-2" name={task} />
+        <input type="radio" id={task + "-station-2"} name={task} />
       </div>
       <div css={item}>
-        <input type="radio" id="station-3" name={task} />
+        <input type="radio" id={task + "-station-3"} name={task} />
       </div>
     </div>
   );
