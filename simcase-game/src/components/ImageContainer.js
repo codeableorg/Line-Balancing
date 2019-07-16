@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import imgSource from "../assets/line-cook.png";
 
 const imgStyles = {
   display: "block",
@@ -14,7 +13,9 @@ const imgStyles = {
 function ImageContainer({
   statementText = "Balance production to increase production. Use the radio buttons to shift tasks between adjacent workers. Good Luck!"
 }) {
-  return <img css={imgStyles} src={imgSource} alt="Simcase Case 1" />;
+  return (
+    <img css={imgStyles} src="/assets/img/line-cook.png" alt="line-cook" />
+  );
 }
 
 export default ImageContainer;
