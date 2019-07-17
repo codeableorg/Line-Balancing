@@ -25,22 +25,21 @@ const item = {
   fontSize: "0.9em"
 };
 
-function TitlesForm({ task }) {
+function TaskRow({ handleChange, task }) {
   return (
     <div css={container}>
-      <div css={item}>{task}</div>
-
+      <div css={item}>{task.name}</div>
       <div css={item}>
-        <input type="radio" id={task + "-station-1"} name={task} />
+        <input type="radio" onChange={handleChange} name={task.id} value="0" />
       </div>
       <div css={item}>
-        <input type="radio" id={task + "-station-2"} name={task} />
+        <input type="radio" onChange={handleChange} name={task.id} value="1" />
       </div>
       <div css={item}>
-        <input type="radio" id={task + "-station-3"} name={task} />
+        <input type="radio" onChange={handleChange} name={task.id} value="2" />
       </div>
     </div>
   );
 }
 
-export default TitlesForm;
+export default TaskRow;

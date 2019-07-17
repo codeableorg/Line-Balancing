@@ -3,24 +3,54 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import TaskRow from "./TaskRow";
 
-let taskList = {
-  1: [
-    "Brainstorm (1.0h)",
-    "Storyboard (0.5h)",
-    "Mockups (1.0h)",
-    "Model (1.0h)",
-    "Test (0.5h)",
-    "Adapt (0.5h)"
-  ]
+const taskList = {
+  scenarios: {
+    "0": {
+      tasks: {
+        task_0: {
+          id: "task_0",
+          name: "Greet customer",
+          time: 5.0,
+          default_station: 1,
+          solution_station: 1
+        },
+        task_1: {
+          id: "task_1",
+          name: "Steam Tortilla",
+          time: 7.0,
+          default_station: 1,
+          solution_station: 2
+        },
+        task_2: {
+          id: "task_2",
+          name: "Steam Tortilla",
+          time: 7.0,
+          default_station: 2,
+          solution_station: 3
+        }
+      }
+    }
+  }
 };
 
-function TaskRowList({ stage = 1 }) {
-  let key = 0;
+function TaskRowList({ stage = 0 }) {
+  const tasks = Object.values(taskList["scenarios"][stage]["tasks"]);
+  const [marks, setMarks] = React.useState({});
+
+  function handleChange(event) {
+    setMarks({ ...marks, [event.target.name]: event.target.value });
+  }
+
   return (
     <form>
-      {taskList[stage].map(taskElement => {
-        key += stage;
-        return <TaskRow task={taskElement} key={key} />;
+      {tasks.map(taskElement => {
+        return (
+          <TaskRow
+            handleChange={handleChange}
+            task={taskElement}
+            key={taskElement.id}
+          />
+        );
       })}
     </form>
   );
