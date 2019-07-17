@@ -25,18 +25,37 @@ const item = {
   fontSize: "0.9em"
 };
 
-function TaskRow({ handleChange, task }) {
+function TaskRow({ handleChange, task, feedback }) {
   return (
     <div css={container}>
       <div css={item}>{task.name}</div>
+
       <div css={item}>
-        <input type="radio" onChange={handleChange} name={task.id} value="0" />
+        <input
+          checked={feedback && task.solution_station === 1 ? "checked" : false}
+          type="radio"
+          onChange={handleChange}
+          name={task.id}
+          value="0"
+        />
       </div>
       <div css={item}>
-        <input type="radio" onChange={handleChange} name={task.id} value="1" />
+        <input
+          checked={feedback && task.solution_station === 2 ? "checked" : false}
+          type="radio"
+          onChange={handleChange}
+          name={task.id}
+          value="1"
+        />
       </div>
       <div css={item}>
-        <input type="radio" onChange={handleChange} name={task.id} value="2" />
+        <input
+          checked={feedback && task.solution_station === 3 ? "checked" : false}
+          type="radio"
+          onChange={handleChange}
+          name={task.id}
+          value="2"
+        />
       </div>
     </div>
   );

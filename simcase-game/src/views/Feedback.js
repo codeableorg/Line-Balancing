@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import React from "react";
-import { jsx } from "@emotion/core";
-import TaskRow from "./TaskRow";
+import TaskRow from "../components/TaskRow";
 
 const taskList = {
   scenarios: {
@@ -30,27 +28,18 @@ const taskList = {
   }
 };
 
-function TaskRowList({ id }) {
+function Feedback({ id }) {
   const tasks = Object.values(taskList["scenarios"][id]["tasks"]);
-  const [marks, setMarks] = React.useState({});
-
-  function handleChange(event) {
-    setMarks({ ...marks, [event.target.name]: event.target.value });
-  }
 
   return (
     <form>
       {tasks.map(taskElement => {
         return (
-          <TaskRow
-            handleChange={handleChange}
-            task={taskElement}
-            key={taskElement.id}
-          />
+          <TaskRow task={taskElement} key={taskElement.id} feedback={true} />
         );
       })}
     </form>
   );
 }
 
-export default TaskRowList;
+export default Feedback;

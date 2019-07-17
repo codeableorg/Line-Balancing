@@ -92,8 +92,6 @@ function Header() {
     setModal(null);
   }
 
-  // const $portal = React.useMemo(() => document.getElementById("portal"), []);
-
   return (
     <header css={headerStyle}>
       <h2
@@ -106,7 +104,7 @@ function Header() {
       </h2>
       <a href="/" css={titleLogo}>
         <img
-          src="assets/img/wharton_logo.png"
+          src="/assets/img/wharton_logo.png"
           alt="Wharton Logo"
           css={{ height: 60 }}
         />

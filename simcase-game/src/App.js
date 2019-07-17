@@ -8,7 +8,7 @@ import Walkthrough from "./views/Walkthrough";
 import GameUI from "./views/GameUI";
 import About from "./views/About";
 import Ranking from "./views/Ranking";
-
+import Feedback from "./views/Feedback";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -31,19 +31,16 @@ function App() {
         closeModal={closeModal}
       />
       <GameUI
-        path="game"
+        path="game/:id"
         isModalOpen={isModalOpen}
         openModal={openModal}
         closeModal={closeModal}
-      >
-        <Role path="/role" />
-        <Walkthrough path="/walkthrough" />
-        <About path="/about" />
-      </GameUI>
-      <Role path="/role" />
-      <Walkthrough path="/walkthrough" />
-      <About path="/about" />
-      <Ranking path="/ranking" />
+      />
+      <Role path="role" />
+      <Walkthrough path="walkthrough" />
+      <About path="about" />
+      <Ranking path="ranking" />
+      <Feedback path="feedback/:id" />
     </Router>
   );
 }

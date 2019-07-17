@@ -6,17 +6,17 @@ import TaskList from "../components/TaskRowList";
 import Submit from "../components/Submit";
 import Header from "../components/Header";
 
-function App() {
+function GameUI({ id }) {
   return (
     <div>
       <Header />
       <Statement />
       <ImageContainer />
       <TitlesForm />
-      <TaskList />
+      <TaskList id={id} />
       <Submit />
     </div>
   );
 }
 
-export default App;
+export default GameUI;

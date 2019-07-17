@@ -11,7 +11,7 @@ function Confirm(props) {
   const { openSubmit, closeSubmit, confirm } = props;
 
   function confirmSubmit() {
-    navigate("/ranking");
+    navigate("/feedback/1");
   }
 
   const buttoncss = {
