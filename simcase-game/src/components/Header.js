@@ -39,11 +39,6 @@ const menuList = {
   cursor: "pointer",
   padding: "20px 0",
   margin: 0,
-  textAlign: "center",
-  listStyle: "none"
-};
-
-const buttonList = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -109,13 +104,7 @@ function Header() {
   return (
     <header css={headerStyle}>
       <div css={titleDivs}>
-        <h2
-        // css={{
-        //   fontSize: "1.1em"
-        // }}
-        >
-          &nbsp;
-        </h2>
+        <h2>&nbsp;</h2>
       </div>
       <div css={{ ...titleDivs }}>
         <a href="/" css={titleLogo}>
@@ -161,12 +150,14 @@ function Header() {
               Walkthrough
             </NavigationButton>
 
-            <Link
-              to="/about"
+            <button
+              onClick={() => {
+                navigate("/about");
+              }}
               css={{ ...buttonOptions, textDecoration: "none" }}
             >
               About
-            </Link>
+            </button>
           </div>
           {modal === "ranking" &&
             createPortal(
