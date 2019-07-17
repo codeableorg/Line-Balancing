@@ -4,6 +4,7 @@ import ScenarioForm from "../components/ScenarioForm";
 import Ranking from "./Ranking";
 
 function GameUI({ id }) {
+  console.log(id);
   const [scenario, setScenario] = React.useState(id);
 
   function addScenario(station = null) {
@@ -15,7 +16,7 @@ function GameUI({ id }) {
       <Header />
       {scenario < 4 ? (
         <>
-          <h2>Scenario: {scenario + 1}</h2>
+          <h2>Scenario: {+scenario}</h2>
           <ScenarioForm addScenario={addScenario} scenario={scenario} />
         </>
       ) : (
