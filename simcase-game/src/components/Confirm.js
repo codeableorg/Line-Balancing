@@ -8,10 +8,18 @@ import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 
 function Confirm(props) {
-  const { openSubmit, closeSubmit, confirm, setConfirm, addScenario } = props;
+  const {
+    openSubmit,
+    closeSubmit,
+    confirm,
+    setConfirm,
+    addScenario,
+    scenario
+  } = props;
 
   function confirmSubmit() {
     addScenario();
+    navigate(`/game/${+scenario + 1}`);
     setConfirm(false);
   }
 

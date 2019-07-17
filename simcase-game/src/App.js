@@ -31,7 +31,7 @@ function App() {
         closeModal={closeModal}
       />
       <GameUI
-        path="/game"
+        path="/game/:id"
         isModalOpen={isModalOpen}
         openModal={openModal}
         closeModal={closeModal}

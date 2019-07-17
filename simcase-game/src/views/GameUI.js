@@ -3,14 +3,11 @@ import Header from "../components/Header";
 import ScenarioForm from "../components/ScenarioForm";
 import Ranking from "./Ranking";
 
-function GameUI() {
-  // const [steps, setSteps] = React.useState([]);
-  const [scenario, setScenario] = React.useState(0);
+function GameUI({ id }) {
+  const [scenario, setScenario] = React.useState(id);
 
   function addScenario(station = null) {
-    console.log(scenario);
-    setScenario(scenario + 1);
-    // setSteps([...steps, { id: steps.length, ...steps }]);
+    setScenario(+scenario + 1);
   }
 
   return (
