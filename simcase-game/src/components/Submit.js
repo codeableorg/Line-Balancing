@@ -23,7 +23,7 @@ const center = {
   textAlign: "center"
 };
 
-function Submit({ scenario, addScenario }) {
+function Submit({ scenario }) {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
@@ -48,7 +48,6 @@ function Submit({ scenario, addScenario }) {
             openSubmit={openSubmit}
             confirm={confirm}
             scenario={scenario}
-            addScenario={addScenario}
             setConfirm={setConfirm}
           />,
           $portal

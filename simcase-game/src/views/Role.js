@@ -18,7 +18,11 @@ function Role(props) {
         <Dialog isOpen={openComponent} onDismiss={openComponent}>
           <main css={contentStyle}>
             <h2>Role</h2>
-            <img src="assets/img/rolePic.gif" alt="Role" css={{ width: 300 }} />
+            <img
+              src="/assets/img/rolePic.gif"
+              alt="Role"
+              css={{ width: 300 }}
+            />
             <p id="role">Role message for students</p>
             <button onClick={onClose}>X</button>
           </main>
