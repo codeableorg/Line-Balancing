@@ -18,15 +18,37 @@ const contentStyle = {
   height: "75vh",
   overflow: "auto",
   color: "#4d4d4d",
-  // margin: 5,
   textAlign: "center"
-  // backgroundColor: "blue"
 };
 
 const tableStyle = {
-  width: "80%",
+  width: "85%",
   margin: "0 auto",
-  borderCollapse: "collapse"
+  borderCollapse: "collapse",
+  fontSize: 16
+};
+
+const captionStyle = {
+  fontWeight: "bold",
+  fontSize: 18,
+  padding: 5
+};
+
+const col_1Style = {
+  width: "20%"
+};
+
+const col_2Style = {
+  // width: "50%"
+};
+
+const col_3Style = {
+  width: "30%"
+};
+
+const imgTableStyle = {
+  width: 40
+  // marginRight: 10,
 };
 
 const buttonOptions = {
@@ -48,14 +70,13 @@ const buttonBarStyles = {
   height: "10vh",
   position: "absolute",
   bottom: 0,
-  width: "100vw",
-  backgroundColor: "red"
+  width: "100vw"
 };
 
 function Ranking(props) {
   const players = leaderboardDummyData;
   console.log("Datos pasados:", players);
-  // console.log("Props pasados:", props);
+
   console.log("Leaderboard Dummy Data:", Object.values(leaderboardDummyData));
   return (
     <>
@@ -64,12 +85,40 @@ function Ranking(props) {
         <h2>Leaderboard</h2>
         <section>
           <table css={tableStyle}>
-            <caption>Top 5 players</caption>
+            <caption css={captionStyle}>Top 5 players</caption>
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">username</th>
-                <th scope="col">Points</th>
+                <th
+                  scope="col"
+                  css={{
+                    ...col_1Style,
+                    backgroundColor: "#0C4785",
+                    color: "#FFFFFF",
+                    padding: 10
+                  }}
+                >
+                  #
+                </th>
+                <th
+                  scope="col"
+                  css={{
+                    ...col_2Style,
+                    backgroundColor: "#0C4785",
+                    color: "#FFFFFF"
+                  }}
+                >
+                  username
+                </th>
+                <th
+                  scope="col"
+                  css={{
+                    ...col_3Style,
+                    backgroundColor: "#0C4785",
+                    color: "#FFFFFF"
+                  }}
+                >
+                  Points
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -78,9 +127,47 @@ function Ranking(props) {
                   if (index < 5) {
                     return (
                       <tr key={user.username}>
-                        <td>{user.id}</td>
-                        <td>{user.username}</td>
-                        <td>{user.points}</td>
+                        <td css={col_1Style}>{user.id}</td>
+                        <td
+                          css={{
+                            ...col_2Style,
+                            textAlign: "left",
+                            padding: 5,
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "start"
+                          }}
+                        >
+                          <div>
+                            <img
+                              src="assets/img/user.png"
+                              alt="user silhoutte"
+                              css={imgTableStyle}
+                            />
+                          </div>
+                          <div css={{ marginLeft: 10 }}>
+                            <p css={{ padding: 0, margin: 0 }}>name:</p>
+                            <p
+                              css={{
+                                padding: 0,
+                                margin: 0,
+                                fontSize: 20,
+                                fontWeight: "bold"
+                              }}
+                            >
+                              {user.username}
+                            </p>
+                          </div>
+                        </td>
+                        <td
+                          css={{
+                            ...col_3Style,
+                            textAlign: "right",
+                            padding: 5
+                          }}
+                        >
+                          {user.points}
+                        </td>
                       </tr>
                     );
                   }
