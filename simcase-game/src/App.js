@@ -35,9 +35,7 @@ function App() {
         isModalOpen={isModalOpen}
         openModal={openModal}
         closeModal={closeModal}
-      >
-        <ScenarioForm />
-      </GameUI>
+      />
       <Role path="/role" />
       <Walkthrough path="/walkthrough" />
       <About path="/about" />
