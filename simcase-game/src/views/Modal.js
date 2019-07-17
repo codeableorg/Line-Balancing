@@ -14,43 +14,58 @@ const resetDialogStyle = {
   width: "90vw",
   height: "90vh",
   padding: 0,
-  margin: "5vh auto",
+  margin: "3vh auto",
   backgroundColor: "rgb(255,255,255)",
   borderRadius: 10
 };
 
 const closeButton = {
-  position: "fixed",
-  top: 10,
+  position: "absolute",
+  top: 5,
   right: 10,
   border: "none",
   padding: "8px 12px",
   margin: 0,
   borderRadius: "50%",
-  backgroundColor: "cyan",
+  backgroundColor: "#1275FA",
   color: "#FFFFFF",
   fontWeight: "bold"
 };
 
 const buttonBarStyles = {
-  backgroundColor: "red",
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center"
+  justifyContent: "center",
+  alignItems: "center",
+  height: "10vh"
+};
+
+const modalButtonNav = {
+  color: "#FFFFFF",
+  backgroundColor: "#3477F2",
+  padding: "10px 15px",
+  margin: 4,
+  border: "none",
+  borderRadius: 5,
+  fontSize: "1em"
 };
 
 const modalContentStyles = {
-  height: "80vh",
-  overflow: "auto"
+  height: "75vh",
+  overflow: "auto",
+  color: "#4d4d4d",
+  margin: 5
 };
 
 function NavigationButton({ children, onClick }) {
-  return <button onClick={onClick}>{children}</button>;
+  return (
+    <button onClick={onClick} css={modalButtonNav}>
+      {children}
+    </button>
+  );
 }
 
 function componentShowed(componentId) {
-  console.log("ComponentId value: ", componentId);
   switch (componentId) {
     case 1:
       return <Role />;
@@ -92,7 +107,7 @@ function Modal(props) {
                   else setStaticContent(staticContent - 1);
                 }}
               >
-                Previous
+                &lt; Previous
               </NavigationButton>
               <NavigationButton
                 onClick={() => {
@@ -100,7 +115,7 @@ function Modal(props) {
                   else setStaticContent(staticContent + 1);
                 }}
               >
-                Next
+                Next &gt;
               </NavigationButton>
             </div>
           </main>

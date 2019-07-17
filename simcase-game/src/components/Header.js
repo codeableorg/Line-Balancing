@@ -14,7 +14,7 @@ const headerStyle = {
   alignItems: "center",
   width: "calc(100vw-40px)",
   height: 60,
-  backgroundColor: "#004785",
+  backgroundColor: "#0C4785",
   color: "#FFFFFF",
   padding: 0
 };
@@ -31,7 +31,7 @@ const titleDivs = {
 const menuButton = {
   border: "none",
   color: "#FFFFFF",
-  backgroundColor: "#004785",
+  backgroundColor: "#0C4785",
   fontSize: "2em"
 };
 
@@ -52,12 +52,17 @@ const buttonList = {
 
 const buttonOptions = {
   textDecoration: "none",
-  lineHeight: "2em",
-  backgroundColor: "blue",
-  color: "#000000",
+  backgroundColor: "rgba(35,87,144,0.1)",
+  color: "#FFFFFF",
   margin: 15,
   width: 120,
-  height: 50
+  height: 50,
+  border: "none",
+  fontSize: 16
+};
+
+const closeButton = {
+  backgroundColor: "#992C33"
 };
 
 const dialogStyles = {
@@ -65,7 +70,7 @@ const dialogStyles = {
   margin: 0,
   width: "100vw",
   height: "100vh",
-  background: "rgba(0,0,255,0.7)"
+  background: "rgba(35,87,144,0.8)"
 };
 
 function NavigationButton({ children, onClick }) {
@@ -105,9 +110,9 @@ function Header() {
     <header css={headerStyle}>
       <div css={titleDivs}>
         <h2
-          css={{
-            fontSize: "1.1em"
-          }}
+        // css={{
+        //   fontSize: "1.1em"
+        // }}
         >
           &nbsp;
         </h2>
@@ -127,42 +132,42 @@ function Header() {
           &#9776;
         </button>
         <Dialog isOpen={showDialog} onDismiss={seeDialog} css={dialogStyles}>
-          <ul css={menuList}>
-            <li css={buttonList}>
-              <button css={buttonOptions} onClick={closeDialog}>
-                Close
-              </button>
-              <NavigationButton
-                onClick={() => {
-                  setModal("ranking");
-                }}
-              >
-                Leaderboard
-              </NavigationButton>
-              <NavigationButton
-                onClick={() => {
-                  setModal("role");
-                }}
-              >
-                Role
-              </NavigationButton>
-              <NavigationButton
-                onClick={() => {
-                  setModal("walk");
-                }}
-              >
-                Walkthrough
-              </NavigationButton>
-              <button
-                css={buttonOptions}
-                onClick={() => {
-                  navigate("/about");
-                }}
-              >
-                About
-              </button>
-            </li>
-          </ul>
+          <div css={menuList}>
+            <button
+              css={{ ...buttonOptions, ...closeButton }}
+              onClick={closeDialog}
+            >
+              Close
+            </button>
+            <NavigationButton
+              onClick={() => {
+                setModal("ranking");
+              }}
+            >
+              Leaderboard
+            </NavigationButton>
+            <NavigationButton
+              onClick={() => {
+                setModal("role");
+              }}
+            >
+              Role
+            </NavigationButton>
+            <NavigationButton
+              onClick={() => {
+                setModal("walk");
+              }}
+            >
+              Walkthrough
+            </NavigationButton>
+
+            <Link
+              to="/about"
+              css={{ ...buttonOptions, textDecoration: "none" }}
+            >
+              About
+            </Link>
+          </div>
           {modal === "ranking" &&
             createPortal(
               <MyModal
