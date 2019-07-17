@@ -48,16 +48,8 @@ function Submit({ scenario, addScenario }) {
             openSubmit={openSubmit}
             confirm={confirm}
             scenario={scenario}
-<<<<<<< HEAD
-<<<<<<< HEAD
             addScenario={addScenario}
             setConfirm={setConfirm}
-=======
->>>>>>> Change scenario after submit
-=======
-            addScenario={addScenario}
-            setConfirm={setConfirm}
->>>>>>> Fix render different scenarios
           />,
           $portal
         )}

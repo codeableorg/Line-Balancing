@@ -11,15 +11,7 @@ function ScenarioForm({ scenario, addScenario }) {
       <Statement />
       <ImageContainer />
       <TitlesForm />
-<<<<<<< HEAD
-<<<<<<< HEAD
       <TaskList scenario={scenario} />
-=======
-      <TaskList />
->>>>>>> Change scenario after submit
-=======
-      <TaskList scenario={scenario} />
->>>>>>> Fix render different scenarios
       <Submit scenario={scenario} addScenario={addScenario} />
     </div>
   );

@@ -1,10 +1,6 @@
 {
   "scenarios": {
-<<<<<<< HEAD
     "1": {
-=======
-    "0": {
->>>>>>> Change scenario after submit
       "tasks": {
         "task_0": {
           "name": "Greet customer",
@@ -26,11 +22,7 @@
         }
       }
     },
-<<<<<<< HEAD
     "2": {
-=======
-    "1": {
->>>>>>> Change scenario after submit
       "tasks": {
         "task_0": {
           "name": "Cook french fries",
@@ -52,11 +44,7 @@
         }
       }
     },
-<<<<<<< HEAD
     "3": {
-=======
-    "2": {
->>>>>>> Change scenario after submit
       "tasks": {
         "task_0": {
           "name": "Steam tortilla",
@@ -76,40 +64,29 @@
           "default_station": 2,
           "solution_station": 3
         }
-      }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    },
-    "4": {
-=======
-    },
-    "3": {
->>>>>>> Fix render different scenarios
-      "tasks": {
-        "task_0": {
-          "name": "Buy chicken",
-          "time": 10.0,
-          "default_station": 1,
-          "solution_station": 1
-        },
-        "task_1": {
-          "name": "Use the chicken",
-          "time": 15.0,
-          "default_station": 1,
-          "solution_station": 2
-        },
-        "task_2": {
-          "name": "Make the sandwich",
-          "time": 12.0,
-          "default_station": 2,
-          "solution_station": 3
+      },
+      "4": {
+        "tasks": {
+          "task_0": {
+            "name": "Buy chicken",
+            "time": 10.0,
+            "default_station": 1,
+            "solution_station": 1
+          },
+          "task_1": {
+            "name": "Use the chicken",
+            "time": 15.0,
+            "default_station": 1,
+            "solution_station": 2
+          },
+          "task_2": {
+            "name": "Make the sandwich",
+            "time": 12.0,
+            "default_station": 2,
+            "solution_station": 3
+          }
         }
       }
-<<<<<<< HEAD
-=======
->>>>>>> Change scenario after submit
-=======
->>>>>>> Fix render different scenarios
     }
   }
 }
