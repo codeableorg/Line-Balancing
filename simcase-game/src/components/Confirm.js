@@ -18,9 +18,13 @@ function Confirm(props) {
   } = props;
 
   function confirmSubmit() {
+<<<<<<< HEAD
     addScenario();
     navigate(`/game/${+scenario + 1}`);
     setConfirm(false);
+=======
+    // addScenario();
+>>>>>>> Change scenario after submit
   }
 
   const buttoncss = {

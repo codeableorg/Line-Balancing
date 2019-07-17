@@ -11,7 +11,11 @@ function ScenarioForm({ scenario, addScenario }) {
       <Statement />
       <ImageContainer />
       <TitlesForm />
+<<<<<<< HEAD
       <TaskList scenario={scenario} />
+=======
+      <TaskList />
+>>>>>>> Change scenario after submit
       <Submit scenario={scenario} addScenario={addScenario} />
     </div>
   );
