@@ -11,7 +11,7 @@ function ScenarioForm({ scenario, addScenario }) {
       <Statement />
       <ImageContainer />
       <TitlesForm />
-      <TaskList />
+      <TaskList scenario={scenario} />
       <Submit scenario={scenario} addScenario={addScenario} />
     </div>
   );

@@ -28,8 +28,8 @@ function Submit({ scenario, addScenario }) {
 
   function openSubmit() {
     setConfirm(true);
-    addScenario(123123);
   }
+
   function closeSubmit() {
     setConfirm(false);
   }
@@ -48,6 +48,8 @@ function Submit({ scenario, addScenario }) {
             openSubmit={openSubmit}
             confirm={confirm}
             scenario={scenario}
+            addScenario={addScenario}
+            setConfirm={setConfirm}
           />,
           $portal
         )}

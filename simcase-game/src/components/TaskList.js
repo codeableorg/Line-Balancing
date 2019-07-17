@@ -4,10 +4,11 @@ import { jsx } from "@emotion/core";
 import TaskRow from "./TaskRow";
 import tasks from "../data/tasks.json";
 
-function TaskList({ stage = 1 }) {
+function TaskList({ scenario }) {
+  console.log(scenario);
   return (
     <form>
-      {Object.values(tasks.scenarios["0"].tasks).map(task => {
+      {Object.values(tasks.scenarios[scenario].tasks).map(task => {
         return (
           <>
             <div>

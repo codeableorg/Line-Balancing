@@ -8,10 +8,11 @@ import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 
 function Confirm(props) {
-  const { openSubmit, closeSubmit, confirm } = props;
+  const { openSubmit, closeSubmit, confirm, setConfirm, addScenario } = props;
 
   function confirmSubmit() {
-    // addScenario();
+    addScenario();
+    setConfirm(false);
   }
 
   const buttoncss = {
