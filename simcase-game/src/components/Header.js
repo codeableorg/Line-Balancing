@@ -193,28 +193,6 @@ function Header() {
               />,
               $portal
             )}
-          {/* 
-          {modal === "NewRole" &&
-            createPortal(
-              <MyModal
-                component={isComponentOpen}
-                onClose={closeComponent}
-                openModal={openComponent}
-                componentId={1}
-              />,
-              $portal
-            )}
-          {modal === "NewWalk" &&
-            createPortal(
-              <MyModal
-                component={isComponentOpen}
-                onClose={closeComponent}
-                openModal={openComponent}
-                componentId={2}
-              />,
-              $portal
-            )}
-            */}
         </Dialog>
       </div>
     </header>
