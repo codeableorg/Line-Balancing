@@ -78,8 +78,13 @@
         }
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     },
     "4": {
+=======
+    },
+    "3": {
+>>>>>>> Fix render different scenarios
       "tasks": {
         "task_0": {
           "name": "Buy chicken",
@@ -100,8 +105,11 @@
           "solution_station": 3
         }
       }
+<<<<<<< HEAD
 =======
 >>>>>>> Change scenario after submit
+=======
+>>>>>>> Fix render different scenarios
     }
   }
 }

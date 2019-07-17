@@ -31,21 +31,11 @@ function App() {
         closeModal={closeModal}
       />
       <GameUI
-<<<<<<< HEAD
         path="/game/:id"
         isModalOpen={isModalOpen}
         openModal={openModal}
         closeModal={closeModal}
       />
-=======
-        path="/game"
-        isModalOpen={isModalOpen}
-        openModal={openModal}
-        closeModal={closeModal}
-      >
-        <ScenarioForm path="/game/:id" />
-      </GameUI>
->>>>>>> Change scenario after submit
       <Role path="/role" />
       <Walkthrough path="/walkthrough" />
       <About path="/about" />

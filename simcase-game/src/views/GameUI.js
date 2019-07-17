@@ -12,7 +12,7 @@ function GameUI({ id }) {
     setScenario(+scenario + 1);
 =======
 function GameUI() {
-  const [steps, setSteps] = React.useState([]);
+  // const [steps, setSteps] = React.useState([]);
   const [scenario, setScenario] = React.useState(0);
 
   function addScenario(station = null) {
@@ -26,11 +26,15 @@ function GameUI() {
     <div>
       <Header />
 <<<<<<< HEAD
+<<<<<<< HEAD
       {scenario < 4 ? (
         <>
           <h2>Scenario: {+scenario}</h2>
 =======
       {scenario < 3 ? (
+=======
+      {scenario < 4 ? (
+>>>>>>> Fix render different scenarios
         <>
           <h2>Scenario: {scenario + 1}</h2>
 >>>>>>> Change scenario after submit

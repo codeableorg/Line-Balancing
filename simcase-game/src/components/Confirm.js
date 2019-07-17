@@ -8,6 +8,7 @@ import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
 
 function Confirm(props) {
+<<<<<<< HEAD
   const {
     openSubmit,
     closeSubmit,
@@ -25,6 +26,13 @@ function Confirm(props) {
 =======
     // addScenario();
 >>>>>>> Change scenario after submit
+=======
+  const { openSubmit, closeSubmit, confirm, setConfirm, addScenario } = props;
+
+  function confirmSubmit() {
+    addScenario();
+    setConfirm(false);
+>>>>>>> Fix render different scenarios
   }
 
   const buttoncss = {
