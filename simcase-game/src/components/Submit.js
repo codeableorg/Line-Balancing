@@ -23,17 +23,18 @@ const center = {
   textAlign: "center"
 };
 
-function Submit() {
+function Submit({ scenario, addScenario }) {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
     setConfirm(true);
+    addScenario(123123);
   }
   function closeSubmit() {
     setConfirm(false);
   }
 
-  const $portal = React.useMemo(() => document.getElementById("portal"), []);
+  const $portal = document.getElementById("portal");
 
   return (
     <div css={center}>
@@ -46,6 +47,7 @@ function Submit() {
             closeSubmit={closeSubmit}
             openSubmit={openSubmit}
             confirm={confirm}
+            scenario={scenario}
           />,
           $portal
         )}

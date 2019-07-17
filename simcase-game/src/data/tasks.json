@@ -1,0 +1,70 @@
+{
+  "scenarios": {
+    "0": {
+      "tasks": {
+        "task_0": {
+          "name": "Greet customer",
+          "time": 5.0,
+          "default_station": 1,
+          "solution_station": 1
+        },
+        "task_1": {
+          "name": "Take the order",
+          "time": 10.0,
+          "default_station": 1,
+          "solution_station": 2
+        },
+        "task_2": {
+          "name": "Serve the clients",
+          "time": 8.0,
+          "default_station": 2,
+          "solution_station": 3
+        }
+      }
+    },
+    "1": {
+      "tasks": {
+        "task_0": {
+          "name": "Cook french fries",
+          "time": 15.0,
+          "default_station": 1,
+          "solution_station": 1
+        },
+        "task_1": {
+          "name": "Roast the chicken",
+          "time": 12.0,
+          "default_station": 1,
+          "solution_station": 2
+        },
+        "task_2": {
+          "name": "Fry the hamburger",
+          "time": 8.0,
+          "default_station": 2,
+          "solution_station": 3
+        }
+      }
+    },
+    "2": {
+      "tasks": {
+        "task_0": {
+          "name": "Steam tortilla",
+          "time": 10.0,
+          "default_station": 1,
+          "solution_station": 1
+        },
+        "task_1": {
+          "name": "Prep the chicken",
+          "time": 15.0,
+          "default_station": 1,
+          "solution_station": 2
+        },
+        "task_2": {
+          "name": "Make the salad",
+          "time": 12.0,
+          "default_station": 2,
+          "solution_station": 3
+        }
+      }
+    }
+  }
+}

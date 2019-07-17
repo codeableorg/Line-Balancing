@@ -25,7 +25,7 @@ const item = {
   fontSize: "0.9em"
 };
 
-function TitlesForm({ task }) {
+function TaskRow({ task }) {
   return (
     <div css={container}>
       {/* Task name */}
@@ -45,4 +45,4 @@ function TitlesForm({ task }) {
   );
 }
 
-export default TitlesForm;
+export default TaskRow;
