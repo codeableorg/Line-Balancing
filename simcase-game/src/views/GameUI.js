@@ -1,22 +1,29 @@
 import React from "react";
-import Statement from "../components/Statement";
-import ImageContainer from "../components/ImageContainer";
-import TitlesForm from "../components/TitlesForm";
-import TaskList from "../components/TaskRowList";
-import Submit from "../components/Submit";
 import Header from "../components/Header";
+import ScenarioForm from "../components/ScenarioForm";
+import Ranking from "./Ranking";
 
-function App() {
+function GameUI({ id }) {
+  console.log(id);
+  const [scenario, setScenario] = React.useState(id);
+
+  function addScenario(station = null) {
+    setScenario(+scenario + 1);
+  }
+
   return (
     <div>
       <Header />
-      <Statement />
-      <ImageContainer />
-      <TitlesForm />
-      <TaskList />
-      <Submit />
+      {scenario < 4 ? (
+        <>
+          <h2>Scenario: {+scenario}</h2>
+          <ScenarioForm addScenario={addScenario} scenario={scenario} />
+        </>
+      ) : (
+        <Ranking />
+      )}
     </div>
   );
 }
 
-export default App;
+export default GameUI;

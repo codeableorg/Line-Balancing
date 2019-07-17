@@ -11,10 +11,10 @@ const imgStyles = {
   borderRadius: "4px"
 };
 
-function Statement({
+function ImageContainer({
   statementText = "Balance production to increase production. Use the radio buttons to shift tasks between adjacent workers. Good Luck!"
 }) {
   return <img css={imgStyles} src={imgSource} alt="Simcase Case 1" />;
 }
 
-export default Statement;
+export default ImageContainer;

@@ -4,10 +4,10 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
-import { Link } from "@reach/router";
 import Role from "../views/Role";
 import Leaderboard from "../views/Leaderboard";
 import Walkthrough from "../views/Walkthrough";
+import { navigate } from "@reach/router";
 
 const headerStyle = {
   display: "flex",
@@ -135,8 +135,13 @@ function Header() {
               <NavigationButton onClick={() => setModal("walk")}>
                 Walkthrough
               </NavigationButton>
-              <button css={buttonOptions}>
-                <Link to="/about">About</Link>
+              <button
+                css={buttonOptions}
+                onClick={() => {
+                  navigate("/about");
+                }}
+              >
+                About
               </button>
             </li>
           </ul>
