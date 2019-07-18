@@ -2,13 +2,9 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-const contentStyle = {
-  padding: 10
-};
-
 function Walkthrough() {
   return (
-    <main css={contentStyle}>
+    <main>
       <h2>Walkthrough</h2>
       <img
         src="assets/img/walkthrough.gif"

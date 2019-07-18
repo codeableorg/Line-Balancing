@@ -2,13 +2,9 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-const contentStyle = {
-  padding: 10
-};
-
 function Role() {
   return (
-    <main css={contentStyle}>
+    <main>
       <h2>Role</h2>
       <img
         src="assets/img/rolePic.gif"

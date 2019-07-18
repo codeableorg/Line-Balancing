@@ -110,7 +110,7 @@ function Header() {
       <div css={{ ...titleDivs }}>
         <a href="/" css={titleLogo}>
           <img
-            src="assets/img/wharton_logo.png"
+            src="/assets/img/wharton_logo.png"
             alt="Wharton Logo"
             css={{ height: 60, display: "block", margin: "0 auto" }}
           />

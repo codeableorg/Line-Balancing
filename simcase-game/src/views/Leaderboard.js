@@ -2,13 +2,9 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-const contentStyle = {
-  padding: 10
-};
-
 function Leaderboard() {
   return (
-    <main css={contentStyle}>
+    <main>
       <h2>Hello from Leaderboard after your submission</h2>
       <p>
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
