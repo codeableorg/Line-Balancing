@@ -34,7 +34,7 @@ function Welcome() {
         />
         <p id="welcome">Welcome message for students</p>
         <div css={buttonContainer}>
-          <Link to="/game" css={buttonStart}>
+          <Link to="/game/1" css={buttonStart}>
             Start Game
           </Link>
         </div>
