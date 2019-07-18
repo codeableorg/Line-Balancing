@@ -22,4 +22,22 @@ function Button({ styles, ...props }) {
   );
 }
 
-export { Button };
+function Statement({ styles, ...props }) {
+  return (
+    <p
+      {...props}
+      css={{
+        width: "90%",
+        margin: "10px auto",
+        padding: "3px 5px",
+        textAlign: "center",
+        borderRadius: "5px",
+        backgroundColor: "#d5f5f5",
+        color: "green",
+        ...styles
+      }}
+    />
+  );
+}
+
+export { Button, Statement };
