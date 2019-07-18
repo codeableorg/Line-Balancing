@@ -7,7 +7,7 @@ import Confirm from "./Confirm";
 import { Button } from "./ui";
 import { Action } from "./helpers";
 
-function Submit({ scenario, addScenario }) {
+function Submit({ scenario }) {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
@@ -30,7 +30,6 @@ function Submit({ scenario, addScenario }) {
             openSubmit={openSubmit}
             confirm={confirm}
             scenario={scenario}
-            addScenario={addScenario}
             setConfirm={setConfirm}
           />,
           $portal

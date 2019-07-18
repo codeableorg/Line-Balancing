@@ -6,17 +6,9 @@ import NextScenario from "./NextScenario";
 import LastScenario from "./LastScenario";
 
 function Confirm(props) {
-  const {
-    openSubmit,
-    closeSubmit,
-    confirm,
-    setConfirm,
-    addScenario,
-    scenario
-  } = props;
+  const { openSubmit, closeSubmit, confirm, setConfirm, scenario } = props;
 
   function confirmSubmit() {
-    addScenario();
     navigate(`/game/${+scenario + 1}`);
     setConfirm(false);
   }
