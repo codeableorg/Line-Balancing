@@ -4,7 +4,7 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import { navigate } from "@reach/router";
-import MyModal from "../views/Modal";
+import ReusableModal from "../views/ReusableModal";
 
 import "@reach/dialog/styles.css";
 
@@ -162,7 +162,7 @@ function Header() {
           </div>
           {modal === "ranking" &&
             createPortal(
-              <MyModal
+              <ReusableModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -172,7 +172,7 @@ function Header() {
             )}
           {modal === "role" &&
             createPortal(
-              <MyModal
+              <ReusableModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -182,7 +182,7 @@ function Header() {
             )}
           {modal === "walk" &&
             createPortal(
-              <MyModal
+              <ReusableModal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}

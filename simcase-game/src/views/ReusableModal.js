@@ -2,9 +2,9 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Dialog } from "@reach/dialog";
-import Role from "../views/Role";
-import Walkthrough from "../views/Walkthrough";
-import Leaderboard from "../views/Leaderboard";
+import Role from "./Role";
+import Walkthrough from "./Walkthrough";
+import Leaderboard from "./Leaderboard";
 
 const contentStyle = {
   padding: 10
@@ -81,7 +81,7 @@ function componentShowed(componentId) {
   }
 }
 
-function Modal(props) {
+function ReusableModal(props) {
   const { onClose, openComponent, componentId } = props;
   const [staticContent, setStaticContent] = React.useState(componentId);
 
@@ -125,4 +125,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default ReusableModal;
