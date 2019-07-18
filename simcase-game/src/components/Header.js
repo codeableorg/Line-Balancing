@@ -3,9 +3,10 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
-import "@reach/dialog/styles.css";
 import { navigate } from "@reach/router";
 import MyModal from "../views/Modal";
+
+import "@reach/dialog/styles.css";
 
 const headerStyle = {
   display: "flex",
