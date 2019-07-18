@@ -20,6 +20,10 @@
           "default_station": 2,
           "solution_station": 3
         }
+      },
+      "image": {
+        "name": "image 1",
+        "src": "/assets/img/line-cook.png"
       }
     },
     "2": {
@@ -42,6 +46,10 @@
           "default_station": 2,
           "solution_station": 3
         }
+      },
+      "image": {
+        "name": "image 2",
+        "src": "https://i.ytimg.com/vi/vBqrK9tyvzU/maxresdefault.jpg"
       }
     },
     "3": {
@@ -64,6 +72,10 @@
           "default_station": 2,
           "solution_station": 3
         }
+      },
+      "image": {
+        "name": "image 3",
+        "src": "https://i2-prod.mylondon.news/incoming/article6379955.ece/ALTERNATES/s1227b/Jimmys-World-Grill.jpg"
       }
     },
     "4": {
@@ -86,6 +98,10 @@
           "default_station": 2,
           "solution_station": 3
         }
+      },
+      "image": {
+        "name": "image 4",
+        "src": "http://i0.kym-cdn.com/photos/images/original/001/047/862/3f3.jpg"
       }
     }
   }
