@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link, navigate } from "@reach/router";
-
+import { navigate } from "@reach/router";
 import { Icon } from "semantic-ui-react";
 import { Dialog } from "@reach/dialog";
 import "@reach/dialog/styles.css";
