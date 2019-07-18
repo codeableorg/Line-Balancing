@@ -117,7 +117,7 @@ function Ranking() {
         </section>
       </main>
       <Button styles={button}>
-        <Link to="/game">Play Again</Link>
+        <Link to="/game/1">Play Again</Link>
       </Button>
       <Button styles={button}>
         <Link to="/">Go Home</Link>

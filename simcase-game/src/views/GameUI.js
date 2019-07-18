@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../components/Header";
 import ScenarioForm from "../components/ScenarioForm";
 import Ranking from "./Ranking";
-import { navigate } from "@reach/router";
 
 function GameUI({ id }) {
   return (

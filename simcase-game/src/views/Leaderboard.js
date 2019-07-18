@@ -1,8 +1,12 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { Dialog } from "@reach/dialog";
+import Component from "@reach/component-component";
 
-function Leaderboard() {
+function Leaderboard(props) {
+  const { onClose, openComponent, isComponentOpen } = props;
+
   return (
     <main>
       <h2>Hello from Leaderboard after your submission</h2>
