@@ -27,7 +27,7 @@ function Welcome() {
       />
       <p>Welcome message for students</p>
       <Button styles={button}>
-        <Link to="/game">Start Game</Link>
+        <Link to="/game/1">Start Game</Link>
       </Button>
     </main>
   );
