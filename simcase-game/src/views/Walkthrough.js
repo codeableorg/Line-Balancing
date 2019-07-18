@@ -18,7 +18,7 @@ function Walkthrough(props) {
           <main css={contentStyle}>
             <h2>Walkthrough</h2>
             <img
-              src="assets/img/walkthrough.gif"
+              src="/assets/img/walkthrough.gif"
               alt="Walkthrough to use the app"
             />
             <ul id="walkthrough">

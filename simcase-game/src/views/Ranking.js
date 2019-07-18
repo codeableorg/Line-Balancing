@@ -16,7 +16,7 @@ function Ranking() {
   return (
     <div>
       <h1>Hello from Ranking</h1>
-      <Link css={buttonOptions} to="/game">
+      <Link css={buttonOptions} to="/game/1">
         Play Again
       </Link>
       <Link css={buttonOptions} to="/">

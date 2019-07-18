@@ -5,6 +5,7 @@ import TaskRow from "./TaskRow";
 import tasks from "../data/tasks.json";
 
 function TaskList({ scenario }) {
+  console.log(tasks);
   return (
     <form>
       {Object.values(tasks.scenarios[scenario].tasks).map(task => {
