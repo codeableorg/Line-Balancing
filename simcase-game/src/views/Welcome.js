@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 function Welcome() {
   const contentStyle = {
-    padding: 40,
+    padding: 10,
     textAlign: "center"
   };
 
@@ -23,21 +23,23 @@ function Welcome() {
   };
 
   return (
-    <main css={contentStyle}>
+    <>
       <Header />
-      <h2>Welcome</h2>
-      <img
-        src="assets/img/wharton_logo.png"
-        alt="Welcome"
-        css={{ width: 300 }}
-      />
-      <p id="welcome">Welcome message for students</p>
-      <div css={buttonContainer}>
-        <Link to="/game/1" css={buttonStart}>
-          Start Game
-        </Link>
-      </div>
-    </main>
+      <main css={contentStyle}>
+        <h2>Welcome</h2>
+        <img
+          src="assets/img/wharton_logo.png"
+          alt="Welcome"
+          css={{ width: 300 }}
+        />
+        <p id="welcome">Welcome message for students</p>
+        <div css={buttonContainer}>
+          <Link to="/game" css={buttonStart}>
+            Start Game
+          </Link>
+        </div>
+      </main>
+    </>
   );
 }
 
