@@ -1,16 +1,17 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx } from "@emotion/core";
+
+const img = {
+  display: "block",
+  width: "300px",
+  margin: "0 auto"
+};
 
 function Role() {
   return (
     <main>
       <h2>Role</h2>
-      <img
-        src="assets/img/rolePic.gif"
-        alt="Role"
-        css={{ width: 300, display: "block", margin: "0 auto" }}
-      />
+      <img css={img} src="/assets/img/rolePic.gif" alt="Role" />
       <p id="role">Role message for students</p>
     </main>
   );
