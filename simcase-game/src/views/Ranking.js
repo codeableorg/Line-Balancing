@@ -1,11 +1,6 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
-
-import Navbar from "../components/Navbar";
-import { Button } from "../components/ui";
-import { MainContent, Action } from "../components/helpers";
 
 const leaderboardDummyData = {
   1: { id: 1, username: "ccachay", points: 961 },
@@ -54,6 +49,15 @@ const userAddress = {
     width: "40px",
     marginRight: "10px"
   }
+};
+
+const name = {
+  fontSize: "20px",
+  fontWeight: "bold"
+};
+
+const title = {
+  width: "20%"
 };
 
 const name = {
