@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
-import Header from "../components/Header";
 
 const leaderboardDummyData = {
   1: { id: 1, username: "ccachay", points: 961 },
@@ -14,109 +12,71 @@ const leaderboardDummyData = {
   7: { id: 7, username: "jperez", points: 601 }
 };
 
-const contentStyle = {
+const container = {
   height: "75vh",
   overflow: "auto",
   color: "#4d4d4d",
-  textAlign: "center"
+  textAlign: "center",
+  table: {
+    width: "85%",
+    margin: "0 auto",
+    borderCollapse: "collapse",
+    fontSize: 16
+  },
+  caption: {
+    fontWeight: "bold",
+    fontSize: 18,
+    padding: 5
+  },
+  th: {
+    backgroundColor: "#0C4785",
+    color: "#FFFFFF",
+    padding: "10px"
+  }
 };
 
-const tableStyle = {
-  width: "85%",
-  margin: "0 auto",
-  borderCollapse: "collapse",
-  fontSize: 16
+const userAddress = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "start",
+  padding: 5,
+  textAlign: "left",
+  p: {
+    padding: "0px",
+    margin: "0px"
+  },
+  img: {
+    width: "40px",
+    marginRight: "10px"
+  }
 };
 
-const captionStyle = {
-  fontWeight: "bold",
-  fontSize: 18,
-  padding: 5
+const name = {
+  fontSize: "20px",
+  fontWeight: "bold"
 };
 
-const col_1Style = {
+const title = {
   width: "20%"
 };
 
-const col_2Style = {
-  // width: "50%"
-};
-
-const col_3Style = {
-  width: "30%"
-};
-
-const imgTableStyle = {
-  width: 40
-  // marginRight: 10,
-};
-
-const buttonOptions = {
-  textDecoration: "none",
-  color: "#FFFFFF",
-  backgroundColor: "#3477F2",
-  padding: "10px 15px",
-  margin: 4,
-  border: "none",
-  borderRadius: 5,
-  fontSize: "1em"
-};
-
-const buttonBarStyles = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "10vh",
-  position: "absolute",
-  bottom: 0,
-  width: "100vw"
-};
-
-function Ranking(props) {
+function Ranking() {
   const players = leaderboardDummyData;
-  console.log("Datos pasados:", players);
 
-  console.log("Leaderboard Dummy Data:", Object.values(leaderboardDummyData));
   return (
     <>
-      <Header />
-      <main css={contentStyle}>
+      <main css={container}>
         <h2>Leaderboard</h2>
         <section>
-          <table css={tableStyle}>
-            <caption css={captionStyle}>Top 5 players</caption>
+          <table>
+            <caption>Top 5 players</caption>
             <thead>
               <tr>
-                <th
-                  scope="col"
-                  css={{
-                    ...col_1Style,
-                    backgroundColor: "#0C4785",
-                    color: "#FFFFFF",
-                    padding: 10
-                  }}
-                >
+                <th scope="col" css={title}>
                   #
                 </th>
-                <th
-                  scope="col"
-                  css={{
-                    ...col_2Style,
-                    backgroundColor: "#0C4785",
-                    color: "#FFFFFF"
-                  }}
-                >
-                  username
-                </th>
-                <th
-                  scope="col"
-                  css={{
-                    ...col_3Style,
-                    backgroundColor: "#0C4785",
-                    color: "#FFFFFF"
-                  }}
-                >
+                <th scope="col">username</th>
+                <th scope="col" css={title}>
                   Points
                 </th>
               </tr>
@@ -127,51 +87,23 @@ function Ranking(props) {
                   if (index < 5) {
                     return (
                       <tr key={user.username}>
-                        <td css={col_1Style}>{user.id}</td>
-                        <td
-                          css={{
-                            ...col_2Style,
-                            textAlign: "left",
-                            padding: 5,
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "start"
-                          }}
-                        >
+                        <td>{user.id}</td>
+                        <td css={userAddress}>
                           <div>
                             <img
-                              src="assets/img/user.png"
+                              src="/assets/img/user.png"
                               alt="user silhoutte"
-                              css={imgTableStyle}
                             />
                           </div>
-                          <div css={{ marginLeft: 10 }}>
-                            <p css={{ padding: 0, margin: 0 }}>name:</p>
-                            <p
-                              css={{
-                                padding: 0,
-                                margin: 0,
-                                fontSize: 20,
-                                fontWeight: "bold"
-                              }}
-                            >
-                              {user.username}
-                            </p>
+                          <div>
+                            <p>name:</p>
+                            <p css={name}>{user.username}</p>
                           </div>
                         </td>
-                        <td
-                          css={{
-                            ...col_3Style,
-                            textAlign: "right",
-                            padding: 5
-                          }}
-                        >
-                          {user.points}
-                        </td>
+                        <td>{user.points}</td>
                       </tr>
                     );
                   }
-                  return void 0;
                 })}
             </tbody>
           </table>
