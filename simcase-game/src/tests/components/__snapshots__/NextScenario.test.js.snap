@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render NextScenario 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      You are going to submit your answer. Are you sure?
+    </p>
+    <button
+      class="css-1o925su-NextScenario"
+    >
+      Yes, I want to submit
+    </button>
+    <button
+      class="css-1o925su-NextScenario"
+    >
+      No, I want to continue
+    </button>
+  </div>
+</DocumentFragment>
+`;
