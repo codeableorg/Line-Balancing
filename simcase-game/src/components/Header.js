@@ -190,7 +190,6 @@ function Header() {
               />,
               $portal
             )}
-          */}
         </Dialog>
       </div>
     </header>
