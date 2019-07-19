@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 
 import Confirm from "./Confirm";
 import { Button } from "./ui";
+import { Action } from "./helpers";
 
 function Submit({ id }) {
   const [confirm, setConfirm] = React.useState(false);
@@ -20,7 +21,7 @@ function Submit({ id }) {
   const $portal = document.getElementById("portal");
 
   return (
-    <>
+    <Action>
       <Button onClick={openSubmit}>Send</Button>
       {confirm &&
         createPortal(
@@ -33,7 +34,7 @@ function Submit({ id }) {
           />,
           $portal
         )}
-    </>
+    </Action>
   );
 }
 

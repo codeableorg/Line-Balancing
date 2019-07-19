@@ -1,13 +1,13 @@
 import React from "react";
 
-import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import ScenarioForm from "../components/ScenarioForm";
 import Ranking from "./Ranking";
 
 function GameUI({ id }) {
   return (
-    <div>
-      <Header />
+    <>
+      <NavBar />
       {id < 5 ? (
         <>
           <ScenarioForm id={+id} />
@@ -15,7 +15,7 @@ function GameUI({ id }) {
       ) : (
         <Ranking />
       )}
-    </div>
+    </>
   );
 }
 

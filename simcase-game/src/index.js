@@ -18,6 +18,13 @@ const global = {
   }
 };
 
+const router = {
+  height: "100vh",
+  display: "grid",
+  gridTemplate: "60px 1fr 40px / 1fr",
+  gridTemplateAreas: "'header' 'main-content' 'action'"
+};
+
 function App() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -32,7 +39,7 @@ function App() {
   return (
     <>
       <Global styles={global} />
-      <Router>
+      <Router css={router}>
         <Welcome
           path="/"
           isModalOpen={isModalOpen}
