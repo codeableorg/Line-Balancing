@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import { navigate } from "@reach/router";
 
-import ReusableModal from "../views/ReusableModal";
+import Modal from "./Modal";
 import { Header } from "./helpers";
 
 import "@reach/dialog/styles.css";
@@ -164,7 +164,7 @@ function NavBar() {
           </div>
           {modal === "ranking" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -174,7 +174,7 @@ function NavBar() {
             )}
           {modal === "role" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -184,7 +184,7 @@ function NavBar() {
             )}
           {modal === "walk" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
