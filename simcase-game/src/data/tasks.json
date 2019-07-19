@@ -97,6 +97,24 @@
           "time": 12.0,
           "default_station": 2,
           "solution_station": 3
+        },
+        "task_3": {
+          "name": "Buy chicken",
+          "time": 10.0,
+          "default_station": 1,
+          "solution_station": 1
+        },
+        "task_4": {
+          "name": "Use the chicken",
+          "time": 15.0,
+          "default_station": 1,
+          "solution_station": 2
+        },
+        "task_5": {
+          "name": "Make the sandwich",
+          "time": 12.0,
+          "default_station": 2,
+          "solution_station": 3
         }
       },
       "image": {
