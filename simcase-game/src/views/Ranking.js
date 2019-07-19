@@ -180,7 +180,7 @@ function Ranking(props) {
           <Link css={buttonOptions} to="/">
             &lt; Go Home
           </Link>
-          <Link css={buttonOptions} to="/game">
+          <Link css={buttonOptions} to="/game/1">
             Play Again &gt;
           </Link>
         </div>
