@@ -1,10 +1,7 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx } from "@emotion/core";
-import { Dialog } from "@reach/dialog";
-import Component from "@reach/component-component";
 
-function Role(props) {
+function Role() {
   return (
     <main>
       <h2>Role</h2>

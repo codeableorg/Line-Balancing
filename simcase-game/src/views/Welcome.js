@@ -10,10 +10,10 @@ const container = {
   textAlign: "center"
 };
 
-const button = {
-  width: "50%",
-  padding: "20px"
-};
+// const button = {
+//   width: "50%",
+//   padding: "20px"
+// };
 
 function Welcome() {
   return (
@@ -26,7 +26,7 @@ function Welcome() {
         css={{ width: "300px" }}
       />
       <p>Welcome message for students</p>
-      <Button styles={button}>
+      <Button>
         <Link to="/game/1">Start Game</Link>
       </Button>
     </main>

@@ -45,11 +45,7 @@ function App() {
           isModalOpen={isModalOpen}
           openModal={openModal}
           closeModal={closeModal}
-        >
-          <Role path="/role" />
-          <Walkthrough path="/walkthrough" />
-          <About path="/about" />
-        </GameUI>
+        />
         <Role path="/role" />
         <Walkthrough path="/walkthrough" />
         <About path="/about" />

@@ -1,4 +1,5 @@
 import React from "react";
+
 import Header from "../components/Header";
 import ScenarioForm from "../components/ScenarioForm";
 import Ranking from "./Ranking";
@@ -9,8 +10,7 @@ function GameUI({ id }) {
       <Header />
       {id < 5 ? (
         <>
-          <h2>Scenario: {+id}</h2>
-          <ScenarioForm scenario={+id} />
+          <ScenarioForm id={+id} />
         </>
       ) : (
         <Ranking />

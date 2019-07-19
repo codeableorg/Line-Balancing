@@ -40,4 +40,27 @@ function Statement({ styles, ...props }) {
   );
 }
 
-export { Button, Statement };
+function Table({ styles, ...props }) {
+  return (
+    <section
+      {...props}
+      css={{
+        display: "table",
+        verticalAlign: "middle",
+        width: "90%",
+        margin: "16px auto",
+        div: {
+          "&:first-child": {
+            width: "40%"
+          },
+          display: "table-cell",
+          textAlign: "center",
+          color: "#3a608f"
+        },
+        ...styles
+      }}
+    />
+  );
+}
+
+export { Button, Statement, Table };
