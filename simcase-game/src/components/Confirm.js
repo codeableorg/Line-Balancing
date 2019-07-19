@@ -16,7 +16,7 @@ function Confirm(props) {
   return (
     <>
       <Dialog isOpen={confirm} onDismiss={openSubmit}>
-        {scenario !== 4 ? (
+        {scenario === 4 ? (
           <LastScenario
             confirmSubmit={confirmSubmit}
             closeSubmit={closeSubmit}

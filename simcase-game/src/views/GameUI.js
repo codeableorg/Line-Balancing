@@ -1,20 +1,19 @@
 import React from "react";
+import { Redirect } from "@reach/router";
 
 import NavBar from "../components/NavBar";
 import ScenarioForm from "../components/ScenarioForm";
-import Ranking from "./Ranking";
+import Submit from "../components/Submit";
 
 function GameUI({ id }) {
+  if (id >= 5) {
+    return <Redirect to="/ranking" noThrow />;
+  }
   return (
     <>
       <NavBar />
-      {id < 5 ? (
-        <>
-          <ScenarioForm id={+id} />
-        </>
-      ) : (
-        <Ranking />
-      )}
+      <ScenarioForm id={+id} />
+      <Submit id={+id} />
     </>
   );
 }
