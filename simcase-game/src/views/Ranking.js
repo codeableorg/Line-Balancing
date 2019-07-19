@@ -176,14 +176,6 @@ function Ranking(props) {
             </tbody>
           </table>
         </section>
-        <div css={buttonBarStyles}>
-          <Link css={buttonOptions} to="/">
-            &lt; Go Home
-          </Link>
-          <Link css={buttonOptions} to="/game/1">
-            Play Again &gt;
-          </Link>
-        </div>
       </main>
     </>
   );
