@@ -43,7 +43,7 @@ function About() {
           <section>
             <p>
               <span role="img" aria-label="developer">
-                🐷
+                🐼
               </span>{" "}
               Cesar Cachay
             </p>
