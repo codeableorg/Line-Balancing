@@ -73,7 +73,7 @@ function Ranking() {
   const players = leaderboardDummyData;
   return (
     <>
-      <NavBar />
+      <Navbar />
       <MainContent styles={container}>
         <h2>Leaderboard</h2>
         <section>

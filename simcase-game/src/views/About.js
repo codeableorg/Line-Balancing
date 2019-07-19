@@ -1,103 +1,81 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { navigate } from "@reach/router";
-import Header from "../components/Header";
+import { Link } from "@reach/router";
 
-const contentStyle = {
-  padding: 0,
-  margin: 0,
+import Navbar from "../components/Navbar";
+import { Button } from "../components/ui";
+import { MainContent, Action } from "../components/helpers";
 
-  color: "#4d4d4d",
-
-  boxSizing: "border-box"
+const container = {
+  h2: {
+    textAlign: "center"
+  },
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  img: {
+    width: "300px"
+  },
+  p: {
+    margin: "5px"
+  }
 };
 
-const buttonStart = {
-  display: "block",
-  width: "95%",
-  height: 50,
-  background: "#4F81BD",
-  color: "#FFFFFF",
-  fontWeight: "bold",
-  margin: "0 auto",
-  border: "none"
-};
-
-const buttonContainer = {
-  position: "fixed",
-  bottom: 0,
-  width: "100%"
-};
-
-const devStyle = {
-  margin: 5
+const button = {
+  width: "50%"
 };
 
 function About() {
   return (
     <>
-      <Header />
-      <main css={contentStyle}>
-        <div>
-          <header>
-            <h2 css={{ textAlign: "center" }}>About</h2>
-          </header>
-          <section
-            css={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "center"
-            }}
-          >
-            <figure>
-              <img
-                src="/assets/img/simcase_color_big.png"
-                alt="Simcase logo"
-                css={{ width: 300 }}
-              />
-            </figure>
-            <p css={{ textAlign: "center" }}>Developers in charge</p>
-            <section>
-              <p css={devStyle}>
-                <span role="img" aria-label="developer">
-                  👨‍💻
-                </span>{" "}
-                Cesar Cachay
-              </p>
-              <p css={devStyle}>
-                <span role="img" aria-label="developer">
-                  👨‍💻
-                </span>{" "}
-                Deyvi Conde
-              </p>
-              <p css={devStyle}>
-                <span role="img" aria-label="developer">
-                  👨‍💻
-                </span>{" "}
-                Paulo Tijero
-              </p>
-              <p css={devStyle}>
-                <span role="img" aria-label="developer">
-                  👨‍💻
-                </span>{" "}
-                Carlos Ayala
-              </p>
-            </section>
+      <Navbar />
+      <MainContent styles={container}>
+        <h2>About</h2>
+        <section>
+          <figure>
+            <img src="/assets/img/simcase_color_big.png" alt="Simcase logo" />
+          </figure>
+          <p css={{ textAlign: "center" }}>Developers in charge</p>
+          <section>
+            <p>
+              <span role="img" aria-label="developer">
+                🐷
+              </span>{" "}
+              Cesar Cachay
+            </p>
+            <p>
+              <span role="img" aria-label="developer">
+                🦍
+              </span>{" "}
+              Deyvi Conde
+            </p>
+            <p>
+              <span role="img" aria-label="developer">
+                🦝
+              </span>{" "}
+              Paulo Tijero
+            </p>
+            <p>
+              <span role="img" aria-label="developer">
+                👽
+              </span>{" "}
+              Carlos Ayala
+            </p>
           </section>
-        </div>
-        <footer css={buttonContainer}>
-          <button
-            onClick={() => {
-              navigate("/game/1");
-            }}
-            css={buttonStart}
-          >
-            Start Game
-          </button>
-        </footer>
-      </main>
+        </section>
+      </MainContent>
+      <Action>
+        <Button styles={button}>
+          <Link to="/game/1">Play Again</Link>
+        </Button>
+        <Button styles={button}>
+          <Link to="/">Go Home</Link>
+        </Button>
+      </Action>
     </>
   );
 }
