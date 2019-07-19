@@ -1,7 +1,7 @@
 {
   "scenarios": {
     "1": {
-      "name": "Burritp Bar",
+      "name": "Burrito Bar",
       "tasks": {
         "task_0": {
           "name": "Greet customer",
