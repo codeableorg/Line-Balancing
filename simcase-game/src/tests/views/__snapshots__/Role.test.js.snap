@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Role 1`] = `
+<DocumentFragment>
+  <main>
+    <h2>
+      Role
+    </h2>
+    <img
+      alt="Role"
+      class="css-sw1rh4-Role"
+      src="/assets/img/rolePic.gif"
+    />
+    <p
+      id="role"
+    >
+      Role message for students
+    </p>
+  </main>
+</DocumentFragment>
+`;

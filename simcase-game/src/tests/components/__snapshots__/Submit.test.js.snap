@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Submit 1`] = `
+<DocumentFragment>
+  <section
+    class="css-3vj8vd-Action"
+  >
+    <button
+      class="css-1rlcy0k-Button"
+    >
+      Send
+    </button>
+  </section>
+</DocumentFragment>
+`;

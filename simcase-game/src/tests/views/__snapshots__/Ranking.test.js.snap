@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Ranking 1`] = `
+<DocumentFragment>
+  <header
+    class="css-1ienwms-Header"
+  >
+    <div
+      class="css-1755hce-NavBar"
+    >
+      <h2>
+         
+      </h2>
+    </div>
+    <div
+      class="css-1755hce-NavBar"
+    >
+      <a
+        class="css-109fdo4-NavBar"
+        href="/"
+      >
+        <img
+          alt="Wharton Logo"
+          class="css-uj5uly-NavBar"
+          src="/assets/img/wharton_logo.png"
+        />
+        <h1
+          class="css-1lp1hih-NavBar"
+        >
+          Line Balancing
+        </h1>
+      </a>
+    </div>
+    <div
+      class="css-191exao-NavBar"
+    >
+      <button
+        class="css-1ww68zw-NavBar"
+      >
+        ☰
+      </button>
+    </div>
+  </header>
+  <main
+    class="css-1l29mkb-MainContent"
+  >
+    <h1>
+      Ranking
+    </h1>
+  </main>
+  <section
+    class="css-3vj8vd-Action"
+  >
+    <button
+      class="css-19chxfy-Button"
+    >
+      <a
+        href="/game/1"
+      >
+        Play Again
+      </a>
+    </button>
+    <button
+      class="css-19chxfy-Button"
+    >
+      <a
+        aria-current="page"
+        href="/"
+      >
+        Go Home
+      </a>
+    </button>
+  </section>
+</DocumentFragment>
+`;
