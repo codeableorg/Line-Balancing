@@ -1,19 +1,30 @@
+/** @jsx jsx */
 import React from "react";
-import Statement from "../components/Statement";
-import ImageContainer from "../components/ImageContainer";
-import TitlesForm from "../components/TitlesForm";
-import TaskList from "../components/TaskList";
-import Submit from "../components/Submit";
+import { jsx } from "@emotion/core";
 
-function ScenarioForm({ scenario }) {
+import ImageContainer from "../components/ImageContainer";
+import TaskList from "../components/TaskList";
+import { Statement, Table } from "../components/ui";
+import { MainContent } from "../components/helpers";
+
+function ScenarioForm({ id }) {
   return (
-    <div>
-      <Statement />
-      <ImageContainer />
-      <TitlesForm />
-      <TaskList scenario={scenario} />
-      <Submit scenario={scenario} />
-    </div>
+    <>
+      <MainContent>
+        <Statement>
+          Balance production to increase production. Use the radio buttons to
+          shift tasks between adjacent workers. Good Luck!
+        </Statement>
+        <ImageContainer id={id} />
+        <Table>
+          <div>Tasks</div>
+          <div>Station 1</div>
+          <div>Station 2</div>
+          <div>Station 3</div>
+        </Table>
+        <TaskList id={id} />
+      </MainContent>
+    </>
   );
 }
 

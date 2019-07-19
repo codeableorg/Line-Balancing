@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LastScenario based on game stage 1`] = `
+<DocumentFragment>
+  <p>
+    You are going to submit your answer. Are you sure?
+  </p>
+  <button
+    class="css-rlxcdi-LastScenario"
+  >
+    Finish and submit
+  </button>
+  <button
+    class="css-rlxcdi-LastScenario"
+  >
+    No, I want to continue
+  </button>
+</DocumentFragment>
+`;

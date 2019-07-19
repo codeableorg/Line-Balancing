@@ -1,13 +1,12 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx } from "@emotion/core";
 
-function Walkthrough() {
+function Walkthrough(props) {
   return (
     <main>
       <h2>Walkthrough</h2>
       <img
-        src="assets/img/walkthrough.gif"
+        src="/assets/img/walkthrough.gif"
         alt="Walkthrough to use the app"
         css={{ display: "block", margin: "0 auto" }}
       />

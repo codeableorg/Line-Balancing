@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering Welcome 1`] = `
+<DocumentFragment>
+  <header
+    class="css-1ienwms-Header"
+  >
+    <div
+      class="css-1shcior-Navbar"
+    >
+      <h2>
+         
+      </h2>
+    </div>
+    <div
+      class="css-1shcior-Navbar"
+    >
+      <a
+        class="css-1ff75nb-Navbar"
+        href="/"
+      >
+        <img
+          alt="Wharton Logo"
+          class="css-z2rbv8-Navbar"
+          src="/assets/img/wharton_logo.png"
+        />
+        <h1
+          class="css-1pdsexm-Navbar"
+        >
+          Line Balancing
+        </h1>
+      </a>
+    </div>
+    <div
+      class="css-17qug02-Navbar"
+    >
+      <button
+        class="css-x1z13o-Navbar"
+      >
+        ☰
+      </button>
+    </div>
+  </header>
+  <main
+    class="css-1vaqpk9-MainContent"
+  >
+    <h2>
+      Welcome
+    </h2>
+    <img
+      alt="Welcome"
+      src="/assets/img/wharton_logo.png"
+    />
+    <p>
+      Welcome message for students
+    </p>
+  </main>
+  <section
+    class="css-3vj8vd-Action"
+  >
+    <button
+      class="css-1rlcy0k-Button"
+    >
+      <a
+        href="/game/1"
+      >
+        Start Game
+      </a>
+    </button>
+  </section>
+</DocumentFragment>
+`;

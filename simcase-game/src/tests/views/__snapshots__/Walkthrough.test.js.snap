@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Walkthrough 1`] = `
+<DocumentFragment>
+  <main>
+    <h2>
+      Walkthrough
+    </h2>
+    <img
+      alt="Walkthrough to use the app"
+      class="css-1m0rgmn-Walkthrough"
+      src="/assets/img/walkthrough.gif"
+    />
+    <ul
+      id="walkthrough"
+    >
+      <li>
+        Read the problem statement
+      </li>
+      <li>
+        Check the table
+      </li>
+      <li>
+        Some text
+      </li>
+      <li>
+        Some more text
+      </li>
+      <li>
+        Finally the end og the list
+      </li>
+    </ul>
+  </main>
+</DocumentFragment>
+`;

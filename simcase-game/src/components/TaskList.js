@@ -1,24 +1,42 @@
 /** @jsx jsx */
-import React from "react";
 import { jsx } from "@emotion/core";
-import TaskRow from "./TaskRow";
-import tasks from "../data/tasks.json";
 
-function TaskList({ scenario }) {
-  console.log(tasks);
+import tasksJson from "../data/tasks.json";
+import { Table } from "../components/ui";
+
+function TaskList({ id }) {
+  const tasks = Object.values(tasksJson.scenarios[id].tasks);
+
   return (
     <form>
-      {Object.values(tasks.scenarios[scenario].tasks).map(task => {
+      {tasks.map((task, index) => {
         return (
-          <>
+          <Table key={`key_${index}`}>
             <div>
-              <h3>{task.name}</h3>
-              <p>{task.time}</p>
+              {task.name} ({task.time})
             </div>
             <div>
-              <TaskRow />
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_1`}
+              />
             </div>
-          </>
+            <div>
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_2`}
+              />
+            </div>
+            <div>
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_3`}
+              />
+            </div>
+          </Table>
         );
       })}
     </form>

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render about 1`] = `
+<DocumentFragment>
+  Hello from About Us View
+  <a
+    aria-current="page"
+    href="/"
+  >
+    Go Back
+  </a>
+</DocumentFragment>
+`;

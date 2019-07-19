@@ -1,11 +1,66 @@
+/** @jsx jsx */
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import { render } from "react-dom";
+import { Global, jsx } from "@emotion/core";
+import { Router } from "@reach/router";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import Welcome from "./views/Welcome";
+import Role from "./views/Role";
+import Walkthrough from "./views/Walkthrough";
+import GameUI from "./views/GameUI";
+import About from "./views/About";
+import Ranking from "./views/Ranking";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const global = {
+  body: {
+    margin: "0",
+    fontFamily: "'Montserrat', sans-serif"
+  }
+};
+
+const router = {
+  height: "100vh",
+  display: "grid",
+  gridTemplate: "60px 1fr 40px / 1fr",
+  gridTemplateAreas: "'header' 'main-content' 'action'"
+};
+
+function App() {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
+  return (
+    <>
+      <Global styles={global} />
+      <Router css={router}>
+        <Welcome
+          path="/"
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+        <GameUI
+          path="game/:id"
+          isModalOpen={isModalOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+        <Role path="/role" />
+        <Walkthrough path="/walkthrough" />
+        <About path="/about" />
+        <Ranking path="/ranking" />
+      </Router>
+    </>
+  );
+}
+
+const root = document.getElementById("root");
+render(<App />, root);

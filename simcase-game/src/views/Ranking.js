@@ -1,6 +1,11 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { Link } from "@reach/router";
+
+import Navbar from "../components/Navbar";
+import { Button } from "../components/ui";
+import { MainContent, Action } from "../components/helpers";
 
 const leaderboardDummyData = {
   1: { id: 1, username: "ccachay", points: 961 },
@@ -60,12 +65,16 @@ const title = {
   width: "20%"
 };
 
+const button = {
+  width: "50%"
+};
+
 function Ranking() {
   const players = leaderboardDummyData;
-
   return (
     <>
-      <main css={container}>
+      <Navbar />
+      <MainContent styles={container}>
         <h2>Leaderboard</h2>
         <section>
           <table>
@@ -108,7 +117,15 @@ function Ranking() {
             </tbody>
           </table>
         </section>
-      </main>
+      </MainContent>
+      <Action>
+        <Button styles={button}>
+          <Link to="/game/1">Play Again</Link>
+        </Button>
+        <Button styles={button}>
+          <Link to="/">Go Home</Link>
+        </Button>
+      </Action>
     </>
   );
 }

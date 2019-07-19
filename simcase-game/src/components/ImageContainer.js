@@ -1,20 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import imgSource from "../assets/line-cook.png";
 
-const imgStyles = {
+import tasksJson from "../data/tasks.json";
+
+const img = {
   display: "block",
-  marginLeft: "auto",
-  marginRight: "auto",
+  margin: "auto",
   maxWidth: "90%",
-  height: "auto",
-  borderRadius: "4px"
+  borderRadius: "5px"
 };
 
-function ImageContainer({
-  statementText = "Balance production to increase production. Use the radio buttons to shift tasks between adjacent workers. Good Luck!"
-}) {
-  return <img css={imgStyles} src={imgSource} alt="Simcase Case 1" />;
+function ImageContainer({ id }) {
+  const image = tasksJson["scenarios"][id]["image"];
+  return <img css={img} src={image.src} alt={image.name} />;
 }
 
 export default ImageContainer;

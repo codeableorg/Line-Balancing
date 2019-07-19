@@ -2,43 +2,32 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
-import Header from "../components/Header";
+
+import Navbar from "../components/Navbar";
+import { Button } from "../components/ui";
+import { MainContent, Action } from "../components/helpers";
+
+const container = {
+  textAlign: "center",
+  img: {
+    width: "300px"
+  }
+};
 
 function Welcome() {
-  const contentStyle = {
-    padding: 10,
-    textAlign: "center"
-  };
-
-  const buttonStart = {
-    padding: 20,
-    textAlign: "center",
-    background: "rgb(74,0,255)",
-    color: "#fff",
-    textDecoration: "none"
-  };
-
-  const buttonContainer = {
-    marginTop: 50
-  };
-
   return (
     <>
-      <Header />
-      <main css={contentStyle}>
+      <Navbar />
+      <MainContent styles={container}>
         <h2>Welcome</h2>
-        <img
-          src="assets/img/wharton_logo.png"
-          alt="Welcome"
-          css={{ width: 300 }}
-        />
-        <p id="welcome">Welcome message for students</p>
-        <div css={buttonContainer}>
-          <Link to="/game" css={buttonStart}>
-            Start Game
-          </Link>
-        </div>
-      </main>
+        <img src="/assets/img/wharton_logo.png" alt="Welcome" />
+        <p>Welcome message for students</p>
+      </MainContent>
+      <Action>
+        <Button>
+          <Link to="/game/1">Start Game</Link>
+        </Button>
+      </Action>
     </>
   );
 }

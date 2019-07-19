@@ -4,7 +4,9 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { Dialog } from "@reach/dialog";
 import { navigate } from "@reach/router";
-import ReusableModal from "../views/ReusableModal";
+
+import Modal from "./Modal";
+import { Header } from "./helpers";
 
 import "@reach/dialog/styles.css";
 
@@ -79,7 +81,7 @@ function NavigationButton({ children, onClick }) {
 
 const $portal = document.getElementById("portal");
 
-function Header() {
+function Navbar() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [modal, setModal] = React.useState(null);
   const [isComponentOpen, setIsComponentOpen] = React.useState(false);
@@ -103,7 +105,7 @@ function Header() {
   }
 
   return (
-    <header css={headerStyle}>
+    <Header styles={headerStyle}>
       <div css={titleDivs}>
         <h2>&nbsp;</h2>
       </div>
@@ -162,7 +164,7 @@ function Header() {
           </div>
           {modal === "ranking" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -172,7 +174,7 @@ function Header() {
             )}
           {modal === "role" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -182,7 +184,7 @@ function Header() {
             )}
           {modal === "walk" &&
             createPortal(
-              <ReusableModal
+              <Modal
                 component={isComponentOpen}
                 onClose={closeComponent}
                 openModal={openComponent}
@@ -192,8 +194,8 @@ function Header() {
             )}
         </Dialog>
       </div>
-    </header>
+    </Header>
   );
 }
 
-export default Header;
+export default Navbar;

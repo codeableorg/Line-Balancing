@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import TaskRow from "./TaskRow";
-test("TaskRow based on game stage", () => {
-  const { asFragment } = render(<TaskRow />);
+import About from "../../views/About";
+
+test("render about", () => {
+  const { asFragment } = render(<About />);
   expect(asFragment()).toMatchSnapshot();
 });
