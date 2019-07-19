@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "@reach/router";
 
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import ScenarioForm from "../components/ScenarioForm";
 import Submit from "../components/Submit";
 
@@ -11,7 +11,7 @@ function GameUI({ id }) {
   }
   return (
     <>
-      <NavBar />
+      <Navbar />
       <ScenarioForm id={+id} />
       <Submit id={+id} />
     </>

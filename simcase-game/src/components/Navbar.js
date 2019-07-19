@@ -81,7 +81,7 @@ function NavigationButton({ children, onClick }) {
 
 const $portal = document.getElementById("portal");
 
-function NavBar() {
+function Navbar() {
   const [showDialog, setShowDialog] = React.useState(false);
   const [modal, setModal] = React.useState(null);
   const [isComponentOpen, setIsComponentOpen] = React.useState(false);
@@ -198,4 +198,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;

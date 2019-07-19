@@ -6,36 +6,36 @@ exports[`rendering Welcome 1`] = `
     class="css-1ienwms-Header"
   >
     <div
-      class="css-1755hce-NavBar"
+      class="css-1shcior-Navbar"
     >
       <h2>
          
       </h2>
     </div>
     <div
-      class="css-1755hce-NavBar"
+      class="css-1shcior-Navbar"
     >
       <a
-        class="css-109fdo4-NavBar"
+        class="css-1ff75nb-Navbar"
         href="/"
       >
         <img
           alt="Wharton Logo"
-          class="css-uj5uly-NavBar"
+          class="css-z2rbv8-Navbar"
           src="/assets/img/wharton_logo.png"
         />
         <h1
-          class="css-1lp1hih-NavBar"
+          class="css-1pdsexm-Navbar"
         >
           Line Balancing
         </h1>
       </a>
     </div>
     <div
-      class="css-191exao-NavBar"
+      class="css-17qug02-Navbar"
     >
       <button
-        class="css-1ww68zw-NavBar"
+        class="css-x1z13o-Navbar"
       >
         ☰
       </button>
@@ -49,7 +49,7 @@ exports[`rendering Welcome 1`] = `
     </h2>
     <img
       alt="Welcome"
-      src="assets/img/wharton_logo.png"
+      src="/assets/img/wharton_logo.png"
     />
     <p>
       Welcome message for students

@@ -16,13 +16,25 @@ function TaskList({ id }) {
               {task.name} ({task.time})
             </div>
             <div>
-              <input type="radio" name={`task_${index + 1}`} id="station_1" />
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_1`}
+              />
             </div>
             <div>
-              <input type="radio" name={`task_${index + 1}`} id="station_2" />
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_2`}
+              />
             </div>
             <div>
-              <input type="radio" name={`task_${index + 1}`} id="station_3" />
+              <input
+                type="radio"
+                name={`${id}_task_${index + 1}`}
+                id={`${id}_station_3`}
+              />
             </div>
           </Table>
         );

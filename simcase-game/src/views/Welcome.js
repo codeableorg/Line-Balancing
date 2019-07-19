@@ -3,7 +3,7 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent, Action } from "../components/helpers";
 
@@ -20,7 +20,7 @@ function Welcome() {
       <Navbar />
       <MainContent styles={container}>
         <h2>Welcome</h2>
-        <img src="assets/img/wharton_logo.png" alt="Welcome" />
+        <img src="/assets/img/wharton_logo.png" alt="Welcome" />
         <p>Welcome message for students</p>
       </MainContent>
       <Action>
