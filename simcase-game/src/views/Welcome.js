@@ -6,7 +6,7 @@ import { Link } from "@reach/router";
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent, Action } from "../components/helpers";
-
+import fire from "../firebase";
 const container = {
   textAlign: "center",
   img: {
@@ -15,6 +15,15 @@ const container = {
 };
 
 function Welcome() {
+  React.useState(() => {
+    //Line to add data to our firebase data
+    fire
+      .firestore()
+      .collection("data")
+      .add({
+        prueba: "test"
+      });
+  });
   return (
     <>
       <Navbar />
