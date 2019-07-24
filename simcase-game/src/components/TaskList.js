@@ -77,6 +77,17 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     }
   }
 
+  function getScore() {
+    const maximum = Math.max(...Object.values(timesPerStation));
+    return Math.round((1 / maximum) * secondsPerWeek);
+  }
+
+  function handleSubmit() {
+    setTotalScore(getScore());
+  }
+
+  console.log(totalScore);
+
   return (
     <>
       <form>
@@ -119,13 +130,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
             </Table>
           );
         })}
-        {/* Station 1: */}
-        {timesPerStation[1]}
-        {/* Statin 2: */}
-        {timesPerStation[2]}
-        {/* Station 3: */}
-        {timesPerStation[3]}
-        Max: {getScore()}
       </form>
       <Submit
         id={+id}
