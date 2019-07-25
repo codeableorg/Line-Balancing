@@ -68,23 +68,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     setTotalScore(getScore());
   }
 
-  function mark(pos, task, station) {
-    if (task.solution_station === station) {
-      return markedGreen;
-    } else if (userMarked[pos] === station) {
-      return markedRed;
-    }
-  }
-
-  function getScore() {
-    const maximum = Math.max(...Object.values(timesPerStation));
-    return Math.round((1 / maximum) * secondsPerWeek);
-  }
-
-  function handleSubmit() {
-    setTotalScore(getScore());
-  }
-
   function mark(task, id) {
     if (task.solution_station === id) {
       return markedGreen;
