@@ -1,24 +1,22 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
 import React from "react";
+import { jsx } from "@emotion/core";
 
 import tasksJson from "../data/tasks.json";
 import { Table } from "../components/ui";
-
 import Submit from "../components/Submit";
 
-/**
- * {
- *   task0: 1,
- *   task1: 2,
- *   task2: 3
- * }
- * [["task0", 1], ["task1", 2], ["task2", 3]]
- */
+const marked = {
+  width: "50px",
+  borderRadius: "50px"
+};
+
+const markedRed = { ...marked, backgroundColor: "red" };
+const markedGreen = { ...marked, backgroundColor: "green" };
 
 const secondsPerWeek = 40 * 60 * 60;
 
-function TaskList({ id, setTotalScore, totalScore }) {
+function TaskList({ id, setTotalScore, totalScore, feedback }) {
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const [tasksPerStation, setTasksPerStation] = React.useState({});
 
@@ -60,12 +58,21 @@ function TaskList({ id, setTotalScore, totalScore }) {
     <>
       <form>
         {tasks.map(([taskId, task]) => {
+          const mark = () => {
+            if (task.default_station === task.solution_station) {
+              return markedGreen;
+            } else {
+              return markedRed;
+            }
+          };
           return (
             <Table key={`key_${taskId}`}>
               <div>
                 {task.name} ({task.time})
               </div>
-              <div>
+              <div
+                css={feedback ? (task.default_station === 1 ? mark() : "") : ""}
+              >
                 <input
                   defaultChecked={
                     task.default_station === 1 ? "checked" : false
@@ -77,7 +84,9 @@ function TaskList({ id, setTotalScore, totalScore }) {
                   value={taskId}
                 />
               </div>
-              <div>
+              <div
+                css={feedback ? (task.default_station === 2 ? mark() : "") : ""}
+              >
                 <input
                   defaultChecked={
                     task.default_station === 2 ? "checked" : false
@@ -89,7 +98,9 @@ function TaskList({ id, setTotalScore, totalScore }) {
                   value={taskId}
                 />
               </div>
-              <div>
+              <div
+                css={feedback ? (task.default_station === 3 ? mark() : "") : ""}
+              >
                 <input
                   defaultChecked={
                     task.default_station === 3 ? "checked" : false
