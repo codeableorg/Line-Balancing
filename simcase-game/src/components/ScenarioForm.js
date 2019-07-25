@@ -40,7 +40,7 @@ function ScenarioForm({ id }) {
           totalScore={totalScore}
           setTotalScore={saveScore}
           key={now}
-          feedback={false}
+          feedback={true}
         />
       </MainContent>
     </>

@@ -52,27 +52,26 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
     setTotalScore(getScore());
   }
 
+  function mark(task, id) {
+    if (task.solution_station === id) {
+      return markedGreen;
+    } else if (task.default_station === id) {
+      return markedRed;
+    }
+  }
+
   console.log(totalScore);
 
   return (
     <>
       <form>
         {tasks.map(([taskId, task]) => {
-          const mark = () => {
-            if (task.default_station === task.solution_station) {
-              return markedGreen;
-            } else {
-              return markedRed;
-            }
-          };
           return (
             <Table key={`key_${taskId}`}>
               <div>
                 {task.name} ({task.time})
               </div>
-              <div
-                css={feedback ? (task.default_station === 1 ? mark() : "") : ""}
-              >
+              <div css={feedback ? mark(task, 1) : ""}>
                 <input
                   defaultChecked={
                     task.default_station === 1 ? "checked" : false
@@ -84,9 +83,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
                   value={taskId}
                 />
               </div>
-              <div
-                css={feedback ? (task.default_station === 2 ? mark() : "") : ""}
-              >
+              <div css={feedback ? mark(task, 2) : ""}>
                 <input
                   defaultChecked={
                     task.default_station === 2 ? "checked" : false
@@ -98,9 +95,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
                   value={taskId}
                 />
               </div>
-              <div
-                css={feedback ? (task.default_station === 3 ? mark() : "") : ""}
-              >
+              <div css={feedback ? mark(task, 3) : ""}>
                 <input
                   defaultChecked={
                     task.default_station === 3 ? "checked" : false
@@ -118,10 +113,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
         Station 1:
         {timesPerStation[1]}
         Statin 2:
-        {/* {Math.round((1 / timesPerStation[2]) * 60)} */}
         {timesPerStation[2]}
         Station 3:
-        {/* {Math.round((1 / timesPerStation[3]) * 60)} */}
         {timesPerStation[3]}
         Max: {getScore()}
       </form>
