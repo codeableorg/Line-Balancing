@@ -93,8 +93,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     }
   }
 
-  console.log(totalScore);
-
   return (
     <>
       <form>
