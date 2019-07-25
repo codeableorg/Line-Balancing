@@ -18,7 +18,14 @@ const secondsPerWeek = 40 * 60 * 60;
 
 function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
-  const [tasksPerStation, setTasksPerStation] = React.useState({});
+  const [tasksPerStation, setTasksPerStation] = React.useState(
+    tasks.reduce((tasks, [taskId, task]) => {
+      return {
+        ...tasks,
+        [taskId]: task.default_station
+      };
+    }, {})
+  );
 
   function addToStation(number) {
     return event => {
@@ -41,7 +48,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
           ? total[stationNumber] + time
           : time
       };
-    }, {}); // { 1: 10, 2: 8 }
+    }, {}); // { 1: 10, 2: 8 } inicializo
 
   function getScore() {
     const maximum = Math.max(...Object.values(timesPerStation));
@@ -108,11 +115,11 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
             </Table>
           );
         })}
-        Station 1:
+        {/* Station 1: */}
         {timesPerStation[1]}
-        Statin 2:
+        {/* Statin 2: */}
         {timesPerStation[2]}
-        Station 3:
+        {/* Station 3: */}
         {timesPerStation[3]}
         Max: {getScore()}
       </form>
