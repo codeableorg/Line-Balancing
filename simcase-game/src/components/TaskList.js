@@ -85,6 +85,14 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     setTotalScore(getScore());
   }
 
+  function mark(task, id) {
+    if (task.solution_station === id) {
+      return markedGreen;
+    } else if (task.default_station === id) {
+      return markedRed;
+    }
+  }
+
   console.log(totalScore);
 
   return (
