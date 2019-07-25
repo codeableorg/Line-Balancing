@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import React from "react";
 
 import tasksJson from "../data/tasks.json";
 import { Table } from "../components/ui";
