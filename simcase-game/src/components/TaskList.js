@@ -26,6 +26,11 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       };
     }, {})
   );
+  const [userMarked, setUserMarked] = React.useState(
+    tasks.map(e => {
+      return e[1].default_station;
+    })
+  );
 
   function addToStation(number) {
     return event => {
@@ -33,6 +38,10 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       setTasksPerStation(current => ({
         ...current,
         [id]: number
+      }));
+      setUserMarked(current => ({
+        ...current,
+        [id.substr(-1)]: number
       }));
     };
   }
@@ -59,10 +68,10 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     setTotalScore(getScore());
   }
 
-  function mark(task, id) {
-    if (task.solution_station === id) {
+  function mark(pos, task, station) {
+    if (task.solution_station === station) {
       return markedGreen;
-    } else if (task.default_station === id) {
+    } else if (userMarked[pos] === station) {
       return markedRed;
     }
   }
@@ -70,17 +79,15 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   return (
     <>
       <form>
-        {tasks.map(([taskId, task]) => {
+        {tasks.map(([taskId, task], i) => {
           return (
             <Table key={`key_${taskId}`}>
               <div>
                 {task.name} ({task.time})
               </div>
-              <div css={feedback ? mark(task, 1) : ""}>
+              <div css={feedback ? mark(i, task, 1) : ""}>
                 <input
-                  defaultChecked={
-                    task.default_station === 1 ? "checked" : false
-                  }
+                  defaultChecked={userMarked[i] === 1 ? "checked" : false}
                   type="radio"
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_1`}
@@ -88,11 +95,9 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
                   value={taskId}
                 />
               </div>
-              <div css={feedback ? mark(task, 2) : ""}>
+              <div css={feedback ? mark(i, task, 2) : ""}>
                 <input
-                  defaultChecked={
-                    task.default_station === 2 ? "checked" : false
-                  }
+                  defaultChecked={userMarked[i] === 2 ? "checked" : false}
                   type="radio"
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_2`}
@@ -100,11 +105,9 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
                   value={taskId}
                 />
               </div>
-              <div css={feedback ? mark(task, 3) : ""}>
+              <div css={feedback ? mark(i, task, 3) : ""}>
                 <input
-                  defaultChecked={
-                    task.default_station === 3 ? "checked" : false
-                  }
+                  defaultChecked={userMarked[i] === 3 ? "checked" : false}
                   type="radio"
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_3`}
