@@ -16,7 +16,7 @@ const markedGreen = { ...marked, backgroundColor: "green" };
 
 const secondsPerWeek = 40 * 60 * 60;
 
-function TaskList({ id, setTotalScore, totalScore, feedback }) {
+function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const [tasksPerStation, setTasksPerStation] = React.useState({});
 
@@ -59,8 +59,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
       return markedRed;
     }
   }
-
-  console.log(totalScore);
 
   return (
     <>
@@ -118,7 +116,12 @@ function TaskList({ id, setTotalScore, totalScore, feedback }) {
         {timesPerStation[3]}
         Max: {getScore()}
       </form>
-      <Submit id={+id} onSubmit={handleSubmit} />
+      <Submit
+        id={+id}
+        onSubmit={handleSubmit}
+        feedback={feedback}
+        handleFeedback={handleFeedback}
+      />
     </>
   );
 }

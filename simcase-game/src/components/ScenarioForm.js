@@ -10,16 +10,16 @@ import { MainContent } from "../components/helpers";
 function ScenarioForm({ id }) {
   const [totalScore, setTotalScore] = React.useState(0);
   const [now, setNow] = React.useState(Date.now());
-  // const [feedback, setFeedback] = React.useState(false);
+  const [feedback, setFeedback] = React.useState(false);
 
   function saveScore(score) {
     setTotalScore(totalScore + score);
     setNow(Date.now());
   }
 
-  // function seeFeedback(val){
-  //   setFeedback(val);
-  // }
+  function handleFeedback() {
+    setFeedback(!feedback);
+  }
 
   return (
     <>
@@ -40,7 +40,8 @@ function ScenarioForm({ id }) {
           totalScore={totalScore}
           setTotalScore={saveScore}
           key={now}
-          feedback={true}
+          feedback={feedback}
+          handleFeedback={handleFeedback}
         />
       </MainContent>
     </>
