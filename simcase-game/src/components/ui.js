@@ -14,6 +14,13 @@ function Button({ styles, ...props }) {
         boxShadow:
           "0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12)",
         borderRadius: "2px",
+        color: "#44056E",
+        textDecoration: "none",
+        fontSize: "14px",
+        lineHeight: "16px",
+        fontWeight: "bold",
+        textAlign: "center",
+        letterSpacing: "0.0357143em",
         ...styles,
         a: {
           color: "#44056E",

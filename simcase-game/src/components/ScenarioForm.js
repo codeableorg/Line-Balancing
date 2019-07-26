@@ -8,6 +8,12 @@ import { Statement, Table } from "../components/ui";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
 
+const container = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+};
+
 function ScenarioForm({ id }) {
   const [totalScore, setTotalScore] = React.useState(0);
   const addScore = useAddScore();
@@ -26,18 +32,14 @@ function ScenarioForm({ id }) {
 
   return (
     <>
-      <MainContent>
-        <Statement>
-          Balance production to increase production. Use the radio buttons to
-          shift tasks between adjacent workers. Good Luck!
-        </Statement>
+      <MainContent css={container}>
         <ImageContainer id={id} />
-        <Table>
+        {/* <Table>
           <div>Tasks</div>
           <div>Station 1</div>
           <div>Station 2</div>
           <div>Station 3</div>
-        </Table>
+        </Table> */}
         <TaskList
           id={id}
           totalScore={totalScore}
