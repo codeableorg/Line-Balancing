@@ -7,6 +7,7 @@ import firebase from "firebase";
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
+import useTotalScore from "../selector";
 
 const container = {
   display: "flex",

@@ -1,6 +1,6 @@
 {
   "scenarios": {
-    "1": {
+    "3": {
       "name": "Burrito Bar",
       "tasks": {
         "task_0": {
@@ -114,7 +114,7 @@
         "src": "https://i.ytimg.com/vi/vBqrK9tyvzU/maxresdefault.jpg"
       }
     },
-    "3": {
+    "1": {
       "name": "Coffee Shop",
       "tasks": {
         "task_0": {
