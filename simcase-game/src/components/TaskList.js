@@ -132,7 +132,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
             <div key={`key_${taskId}`}>
               <div css={titleTask}>
                 <p>
-                  {task.name} ({task.time})
+                  {task.name} ({task.time} seconds)
                 </p>
               </div>
               <section css={groupButtons}>
