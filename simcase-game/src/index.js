@@ -16,7 +16,7 @@ import Ranking from "./views/Ranking";
 const global = {
   body: {
     margin: "0",
-    fontFamily: "'Montserrat', sans-serif"
+    fontFamily: "'Roboto', sans-serif"
   }
 };
 

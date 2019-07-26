@@ -6,16 +6,23 @@ function Button({ styles, ...props }) {
     <button
       {...props}
       css={{
-        width: "100%",
+        width: "127px",
+        height: "36px",
         padding: "10px",
-        fontSize: "1rem",
         border: "none",
-        color: "#fff",
-        background: "#014785",
+        background: "#DAC4FF",
+        boxShadow:
+          "0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12)",
+        borderRadius: "2px",
         ...styles,
         a: {
-          color: "#fff",
-          textDecoration: "none"
+          color: "#44056E",
+          textDecoration: "none",
+          fontSize: "14px",
+          lineHeight: "16px",
+          fontWeight: "bold",
+          textAlign: "center",
+          letterSpacing: "0.0357143em"
         }
       }}
     />
