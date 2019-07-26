@@ -7,8 +7,7 @@ import { Table } from "../components/ui";
 import Submit from "../components/Submit";
 
 const marked = {
-  width: "50px",
-  borderRadius: "50px"
+  borderRadius: "10px"
 };
 
 const markedRed = { ...marked, backgroundColor: "red" };
@@ -57,7 +56,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
           ? total[stationNumber] + time
           : time
       };
-    }, {}); // { 1: 10, 2: 8 } inicializo
+    }, {});
+  // { 1: 10, 2: 8 } inicializo
 
   function getScore() {
     const maximum = Math.max(...Object.values(timesPerStation));
@@ -85,6 +85,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
               <div>
                 {task.name} ({task.time})
               </div>
+
               <div css={feedback ? mark(i, task, 1) : ""}>
                 <input
                   defaultChecked={userMarked[i] === 1 ? "checked" : false}
@@ -118,13 +119,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
             </Table>
           );
         })}
-        {/* Station 1: */}
-        {timesPerStation[1]}
-        {/* Statin 2: */}
-        {timesPerStation[2]}
-        {/* Station 3: */}
-        {timesPerStation[3]}
-        Max: {getScore()}
       </form>
       <Submit
         id={+id}

@@ -3,7 +3,9 @@ import React from "react";
 import { render } from "react-dom";
 import { Global, jsx } from "@emotion/core";
 import { Router } from "@reach/router";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import Welcome from "./views/Welcome";
 import Role from "./views/Role";
 import Walkthrough from "./views/Walkthrough";
@@ -63,4 +65,9 @@ function App() {
 }
 
 const root = document.getElementById("root");
-render(<App />, root);
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  root
+);

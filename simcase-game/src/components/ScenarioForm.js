@@ -6,14 +6,17 @@ import ImageContainer from "../components/ImageContainer";
 import TaskList from "../components/TaskList";
 import { Statement, Table } from "../components/ui";
 import { MainContent } from "../components/helpers";
+import { useAddScore } from "../action-hook";
 
 function ScenarioForm({ id }) {
   const [totalScore, setTotalScore] = React.useState(0);
+  const addScore = useAddScore();
   const [now, setNow] = React.useState(Date.now());
   const [feedback, setFeedback] = React.useState(false);
 
   function saveScore(score) {
     setTotalScore(totalScore + score);
+    addScore(totalScore + score);
     setNow(Date.now());
   }
 
