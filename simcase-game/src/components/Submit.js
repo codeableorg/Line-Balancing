@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 
 import Confirm from "./Confirm";
 import { Button } from "./ui";
-import { Action } from "./helpers";
 
 function Submit({ id, onSubmit, handleFeedback, feedback }) {
   const [confirm, setConfirm] = React.useState(false);
@@ -20,7 +19,7 @@ function Submit({ id, onSubmit, handleFeedback, feedback }) {
 
   const $portal = document.getElementById("portal");
   return (
-    <Action>
+    <>
       <Button onClick={openSubmit}>{feedback ? "Next" : "Send"}</Button>
       {confirm &&
         createPortal(
@@ -36,7 +35,7 @@ function Submit({ id, onSubmit, handleFeedback, feedback }) {
           />,
           $portal
         )}
-    </Action>
+    </>
   );
 }
 

@@ -23,8 +23,8 @@ const global = {
 const router = {
   height: "100vh",
   display: "grid",
-  gridTemplate: "60px 1fr 40px / 1fr",
-  gridTemplateAreas: "'header' 'main-content' 'action'"
+  gridTemplate: "60px 1fr / 1fr",
+  gridTemplateAreas: "'header' 'main-content'"
 };
 
 function App() {

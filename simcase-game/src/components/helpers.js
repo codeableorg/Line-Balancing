@@ -27,16 +27,4 @@ function MainContent({ styles, ...props }) {
   );
 }
 
-function Action({ styles, ...props }) {
-  return (
-    <section
-      {...props}
-      css={{
-        gridArea: "action",
-        ...styles
-      }}
-    />
-  );
-}
-
-export { Header, MainContent, Action };
+export { Header, MainContent };

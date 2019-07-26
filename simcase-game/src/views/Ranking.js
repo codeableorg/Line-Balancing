@@ -5,8 +5,7 @@ import { Link } from "@reach/router";
 import firebase from "firebase";
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
-import { MainContent, Action } from "../components/helpers";
-import useTotalScore from "../selector";
+import { MainContent } from "../components/helpers";
 
 const container = {
   height: "75vh",
@@ -279,14 +278,12 @@ function Ranking() {
           </table>
         </section>
       </MainContent>
-      <Action>
-        <Button styles={button}>
-          <Link to="/game/1">Play Again</Link>
-        </Button>
-        <Button styles={button}>
-          <Link to="/">Go Home</Link>
-        </Button>
-      </Action>
+      <Button styles={button}>
+        <Link to="/game/1">Play Again</Link>
+      </Button>
+      <Button styles={button}>
+        <Link to="/">Go Home</Link>
+      </Button>
     </>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
-import { MainContent, Action } from "../components/helpers";
+import { MainContent } from "../components/helpers";
 import fire from "../firebase";
 const container = {
   textAlign: "center",
@@ -22,12 +22,10 @@ function Welcome() {
         <h2>Welcome</h2>
         <img src="/assets/img/wharton_logo.png" alt="Welcome" />
         <p>Welcome message for students</p>
-      </MainContent>
-      <Action>
         <Button>
           <Link to="/game/1">Start Game</Link>
         </Button>
-      </Action>
+      </MainContent>
     </>
   );
 }
