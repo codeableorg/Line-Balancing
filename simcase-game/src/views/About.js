@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
-import { MainContent, Action } from "../components/helpers";
+import { MainContent } from "../components/helpers";
 
 const container = {
   h2: {
@@ -68,14 +68,12 @@ function About() {
           </section>
         </section>
       </MainContent>
-      <Action>
-        <Button styles={button}>
-          <Link to="/game/1">Play Again</Link>
-        </Button>
-        <Button styles={button}>
-          <Link to="/">Go Home</Link>
-        </Button>
-      </Action>
+      <Button styles={button}>
+        <Link to="/game/1">Play Again</Link>
+      </Button>
+      <Button styles={button}>
+        <Link to="/">Go Home</Link>
+      </Button>
     </>
   );
 }

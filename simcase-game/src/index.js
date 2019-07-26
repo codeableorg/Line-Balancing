@@ -3,7 +3,9 @@ import React from "react";
 import { render } from "react-dom";
 import { Global, jsx } from "@emotion/core";
 import { Router } from "@reach/router";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import Welcome from "./views/Welcome";
 import Role from "./views/Role";
 import Walkthrough from "./views/Walkthrough";
@@ -14,15 +16,15 @@ import Ranking from "./views/Ranking";
 const global = {
   body: {
     margin: "0",
-    fontFamily: "'Montserrat', sans-serif"
+    fontFamily: "'Roboto', sans-serif"
   }
 };
 
 const router = {
   height: "100vh",
   display: "grid",
-  gridTemplate: "60px 1fr 40px / 1fr",
-  gridTemplateAreas: "'header' 'main-content' 'action'"
+  gridTemplate: "60px 1fr / 1fr",
+  gridTemplateAreas: "'header' 'main-content'"
 };
 
 function App() {
@@ -63,4 +65,9 @@ function App() {
 }
 
 const root = document.getElementById("root");
-render(<App />, root);
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  root
+);

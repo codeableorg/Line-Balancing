@@ -1,6 +1,7 @@
 {
   "scenarios": {
-    "1": {
+    "3": {
+      "name": "Burrito Bar",
       "tasks": {
         "task_0": {
           "name": "Greet customer",
@@ -9,14 +10,50 @@
           "solution_station": 1
         },
         "task_1": {
-          "name": "Take the order",
-          "time": 10.0,
+          "name": "Steam Tortilla",
+          "time": 7.0,
           "default_station": 1,
-          "solution_station": 2
+          "solution_station": 1
         },
         "task_2": {
-          "name": "Serve the clients",
-          "time": 8.0,
+          "name": "Add Rice",
+          "time": 3.0,
+          "default_station": 2,
+          "solution_station": 1
+        },
+        "task_3": {
+          "name": "Add Beans",
+          "time": 3.0,
+          "default_station": 2,
+          "solution_station": 1
+        },
+        "task_4": {
+          "name": "Add Protein",
+          "time": 5.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_5": {
+          "name": "Add Salsa",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_6": {
+          "name": "Roll Up",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_7": {
+          "name": "Add Chips or Drink",
+          "time": 9.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_8": {
+          "name": "Bag and Take Payment",
+          "time": 12.0,
           "default_station": 2,
           "solution_station": 3
         }
@@ -27,22 +64,47 @@
       }
     },
     "2": {
+      "name": "Burgers",
       "tasks": {
         "task_0": {
-          "name": "Cook french fries",
-          "time": 15.0,
+          "name": "Greet customer",
+          "time": 7.0,
           "default_station": 1,
           "solution_station": 1
         },
         "task_1": {
-          "name": "Roast the chicken",
-          "time": 12.0,
+          "name": "Take order and payment",
+          "time": 20.0,
           "default_station": 1,
-          "solution_station": 2
+          "solution_station": 1
         },
         "task_2": {
-          "name": "Fry the hamburger",
-          "time": 8.0,
+          "name": "Heat Burger",
+          "time": 150.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_3": {
+          "name": "Combine with bun & toppings",
+          "time": 3.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_4": {
+          "name": "Wrap",
+          "time": 5.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_5": {
+          "name": "Add Fries or Drink",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_6": {
+          "name": "Bag & Deliver",
+          "time": 7.0,
           "default_station": 2,
           "solution_station": 3
         }
@@ -52,23 +114,42 @@
         "src": "https://i.ytimg.com/vi/vBqrK9tyvzU/maxresdefault.jpg"
       }
     },
-    "3": {
+    "1": {
+      "name": "Coffee Shop",
       "tasks": {
         "task_0": {
-          "name": "Steam tortilla",
-          "time": 10.0,
+          "name": "Greet customer",
+          "time": 7.0,
           "default_station": 1,
           "solution_station": 1
         },
         "task_1": {
-          "name": "Prep the chicken",
-          "time": 15.0,
+          "name": "Take order and payment",
+          "time": 20.0,
           "default_station": 1,
-          "solution_station": 2
+          "solution_station": 1
         },
         "task_2": {
-          "name": "Make the salad",
-          "time": 12.0,
+          "name": "Prepare coffee",
+          "time": 45.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_3": {
+          "name": "Garnish coffee",
+          "time": 10.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_4": {
+          "name": "Add pastry",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_5": {
+          "name": "Bag & Deliver",
+          "time": 7.0,
           "default_station": 2,
           "solution_station": 3
         }
@@ -79,39 +160,58 @@
       }
     },
     "4": {
+      "name": "Med. Food",
       "tasks": {
         "task_0": {
-          "name": "Buy chicken",
-          "time": 10.0,
+          "name": "Greet customer",
+          "time": 7.0,
           "default_station": 1,
           "solution_station": 1
         },
         "task_1": {
-          "name": "Use the chicken",
-          "time": 15.0,
-          "default_station": 1,
-          "solution_station": 2
-        },
-        "task_2": {
-          "name": "Make the sandwich",
-          "time": 12.0,
-          "default_station": 2,
-          "solution_station": 3
-        },
-        "task_3": {
-          "name": "Buy chicken",
-          "time": 10.0,
+          "name": "Steam Tortilla",
+          "time": 7.0,
           "default_station": 1,
           "solution_station": 1
         },
+        "task_2": {
+          "name": "Add Rice",
+          "time": 3.0,
+          "default_station": 2,
+          "solution_station": 1
+        },
+        "task_3": {
+          "name": "Add Beans",
+          "time": 3.0,
+          "default_station": 2,
+          "solution_station": 1
+        },
         "task_4": {
-          "name": "Use the chicken",
-          "time": 15.0,
-          "default_station": 1,
+          "name": "Add Protein",
+          "time": 5.0,
+          "default_station": 2,
           "solution_station": 2
         },
         "task_5": {
-          "name": "Make the sandwich",
+          "name": "Add Salsa",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_6": {
+          "name": "Roll Up",
+          "time": 7.0,
+          "default_station": 2,
+          "solution_station": 2
+        },
+        "task_7": {
+          "name": "Add Chips or Drink",
+          "time": 9.0,
+          "default_station": 2,
+          "solution_station": 3
+        },
+        "task_8": {
+          "name": "Bag and Pay",
           "time": 12.0,
           "default_station": 2,
           "solution_station": 3
