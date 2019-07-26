@@ -4,7 +4,6 @@ import { jsx } from "@emotion/core";
 
 import ImageContainer from "../components/ImageContainer";
 import TaskList from "../components/TaskList";
-import { Statement, Table } from "../components/ui";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
 
@@ -34,12 +33,6 @@ function ScenarioForm({ id }) {
     <>
       <MainContent css={container}>
         <ImageContainer id={id} />
-        {/* <Table>
-          <div>Tasks</div>
-          <div>Station 1</div>
-          <div>Station 2</div>
-          <div>Station 3</div>
-        </Table> */}
         <TaskList
           id={id}
           totalScore={totalScore}
