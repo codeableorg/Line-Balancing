@@ -3,15 +3,49 @@ import React from "react";
 import { jsx } from "@emotion/core";
 
 import tasksJson from "../data/tasks.json";
-import { Table } from "../components/ui";
 import Submit from "../components/Submit";
 
-const marked = {
-  borderRadius: "10px"
+const titleTask = {
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  height: "36px",
+  margin: "10px 0",
+  backgroundColor: "#F0F4F8",
+  p: {
+    padding: "0",
+    paddingLeft: "25px",
+    fontSize: "14px",
+    lineHeight: "20px",
+    color: "#102A43"
+  }
 };
 
-const markedRed = { ...marked, backgroundColor: "red" };
-const markedGreen = { ...marked, backgroundColor: "green" };
+const button = {
+  border: "none",
+  width: "96px",
+  height: "36px",
+  margin: "0 10px",
+  borderRadius: "2px",
+  background: "#fff",
+
+  fontWeight: "600",
+  fontSize: "14px",
+  lineHeight: "16px",
+  textAlign: "center",
+  letterSpacing: "0.0357143em",
+  color: "#014D40",
+  transition: "all 0.25s ease-in-out"
+};
+
+const buttonMarked = { ...button, background: "#8d62e1", color: "#fff" };
+const buttonRed = { ...button, background: "#EF767A", color: "#fff" };
+const buttonGreen = { ...button, background: "#C6F7E2" };
+
+const groupButtons = {
+  display: "flex",
+  justifyContent: "center"
+};
 
 const secondsPerWeek = 40 * 60 * 60;
 
@@ -48,7 +82,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   const timesPerStation = Object.entries(tasksPerStation)
     .map(([taskId, stationNumber]) => {
       return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
-    }) // [[10, 1], [5, 2], [3, 2]]
+    })
     .reduce((total, [time, stationNumber]) => {
       return {
         ...total,
@@ -68,55 +102,72 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     setTotalScore(getScore());
   }
 
+  function handleButton(e) {
+    e.preventDefault();
+  }
+
   function mark(pos, task, station) {
-    if (task.solution_station === station) {
-      return markedGreen;
-    } else if (userMarked[pos] === station) {
-      return markedRed;
+    if (feedback) {
+      if (task.solution_station === station) {
+        return buttonGreen;
+      } else if (userMarked[pos] === station) {
+        return buttonRed;
+      } else {
+        return button;
+      }
+    } else {
+      if (userMarked[pos] === station) {
+        return buttonMarked;
+      } else {
+        return button;
+      }
     }
   }
 
   return (
     <>
-      <form>
+      <form onSubmit={handleButton} css={{ width: "100%" }}>
         {tasks.map(([taskId, task], i) => {
           return (
-            <Table key={`key_${taskId}`}>
-              <div>
-                {task.name} ({task.time})
+            <div key={`key_${taskId}`}>
+              <div css={titleTask}>
+                <p>
+                  {task.name} ({task.time})
+                </p>
               </div>
-
-              <div css={feedback ? mark(i, task, 1) : ""}>
-                <input
-                  defaultChecked={userMarked[i] === 1 ? "checked" : false}
-                  type="radio"
-                  name={`${id}_task_${taskId}`}
+              <section css={groupButtons}>
+                <button
+                  onClick={addToStation(1)}
                   id={`${id}_station_1`}
-                  onChange={addToStation(1)}
-                  value={taskId}
-                />
-              </div>
-              <div css={feedback ? mark(i, task, 2) : ""}>
-                <input
-                  defaultChecked={userMarked[i] === 2 ? "checked" : false}
-                  type="radio"
                   name={`${id}_task_${taskId}`}
-                  id={`${id}_station_2`}
-                  onChange={addToStation(2)}
+                  css={mark(i, task, 1)}
                   value={taskId}
-                />
-              </div>
-              <div css={feedback ? mark(i, task, 3) : ""}>
-                <input
-                  defaultChecked={userMarked[i] === 3 ? "checked" : false}
-                  type="radio"
+                  disabled={feedback}
+                >
+                  Station 1
+                </button>
+                <button
+                  onClick={addToStation(2)}
+                  id={`${id}_station_2`}
+                  name={`${id}_task_${taskId}`}
+                  css={mark(i, task, 2)}
+                  value={taskId}
+                  disabled={feedback}
+                >
+                  Station 2
+                </button>
+                <button
+                  onClick={addToStation(3)}
+                  css={mark(i, task, 3)}
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_3`}
-                  onChange={addToStation(3)}
                   value={taskId}
-                />
-              </div>
-            </Table>
+                  disabled={feedback}
+                >
+                  Station 3
+                </button>
+              </section>
+            </div>
           );
         })}
       </form>

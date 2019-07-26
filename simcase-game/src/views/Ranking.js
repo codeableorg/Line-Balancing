@@ -3,16 +3,17 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import firebase from "firebase";
+
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
-import { MainContent, Action } from "../components/helpers";
+import { MainContent } from "../components/helpers";
 import useTotalScore from "../selector";
 
 const container = {
-  height: "75vh",
-  overflow: "auto",
-  color: "#4d4d4d",
-  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  alignItems: "center",
   table: {
     width: "85%",
     margin: "0 auto",
@@ -62,51 +63,9 @@ const title = {
   width: "20%"
 };
 
-const button = {
-  width: "50%"
-};
-
 const rankNum = {
   fontSize: "1.2em",
   fontWeight: "bold"
-};
-
-const userScore = {
-  display: "flex",
-  background: "linear-gradient(white, white) no-repeat center/2px 100%",
-  justifyContent: "space-between",
-  width: "150px",
-  margin: "0 auto",
-  padding: "20px",
-  backgroundColor: "#0C4785",
-  color: "white",
-  borderRadius: "10px"
-};
-
-const verticalAlign = {
-  display: "flex",
-  flexDirection: "column"
-};
-
-const fontUserTitle = {
-  fontSize: ".7em"
-};
-
-const strongStyle = {
-  padding: "0 15px",
-  marginTop: "10px"
-};
-
-const userSubmit = {
-  padding: "6px",
-  margin: "10px auto 5px ",
-  width: "60%",
-  backgroundColor: "#FFF",
-  borderRadius: "5px",
-  color: "#0C4785",
-  fontWeight: "bold",
-  border: "0",
-  cursor: "pointer"
 };
 
 const alertLabel = {
@@ -123,20 +82,91 @@ const userInput = {
   borderRadius: "5px"
 };
 
-const formStyle = {
+const userScore = {
   display: "flex",
-  flexDirection: "column",
-  width: "250px",
-  margin: "10px auto",
-  backgroundColor: "#0C4785",
-  padding: "10px",
-  color: "white",
-  borderRadius: "10px"
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  width: "244px",
+  height: "62px",
+  padding: "0 15px",
+  borderRadius: "10px",
+  boxShadow: "0px 4px 4px rgba(0,0,0,0.12)",
+  color: "#fff",
+  background: "#8719E0"
 };
 
-const nameForm = {
-  fontSize: ".85em",
-  marginBottom: "20px"
+const scoreContent = {
+  display: "flex",
+  flexDirection: "column",
+  fontWeight: "900",
+  fontSize: "35px",
+  lineHeight: "41px",
+  textAlign: "center",
+  letterSpacing: "0.0357143em",
+  span: {
+    "&:first-child": {
+      fontWeight: "600",
+      fontSize: "12px",
+      lineHeight: "14px"
+    }
+  }
+};
+
+const line = {
+  // TODO: Refactorize using pseudo class :before or :after
+  background: "linear-gradient(#fff,#fff) no-repeat center/2px 100%",
+  padding: "20px",
+  height: "22px"
+};
+
+const userSave = {
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  p: {
+    fontSize: "14px",
+    lineHeight: "16px",
+    textAlign: "center",
+    letterSpacing: "0.0357143em"
+  },
+  button: {
+    width: "224px",
+    margin: "16px 0"
+  }
+};
+
+const formContent = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  width: "333px",
+  height: "91px",
+  backgroundColor: "#8719E0",
+  padding: "0 10px",
+  color: "white",
+  borderRadius: "10px",
+  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.12)",
+  label: {
+    fontWeight: "bold",
+    fontSize: "12px",
+    lineHeight: "14px",
+    textAlign: "center",
+    letterSpacing: "0.2457em"
+  },
+  input: {
+    background: "transparent",
+    border: "none",
+    borderRadius: "0",
+    borderBottom: "1px solid #fff"
+  }
+};
+
+const actions = {
+  display: "flex",
+  justifyContent: "space-evenly",
+  width: "100%"
 };
 
 function Ranking() {
@@ -203,90 +233,93 @@ function Ranking() {
     <>
       <Navbar />
       <MainContent styles={container}>
-        <h2>Leaderboard</h2>
-        {scoreboard && (
+        {scoreboard ? (
           <>
             <div css={userScore}>
-              <div css={verticalAlign}>
-                <span css={fontUserTitle}>RANK</span>
-                <strong css={strongStyle}>{position}</strong>
+              <div css={scoreContent}>
+                <span>RANKING</span>
+                <span>{position}</span>
               </div>
-              <div css={verticalAlign}>
-                <span css={fontUserTitle}>SCORE</span>
-                <strong css={strongStyle}>{score}</strong>
+              <div css={line} />
+              <div css={scoreContent}>
+                <span>POINTS</span>
+                <span>{score}</span>
               </div>
             </div>
-            <form onSubmit={addUser} css={{ margin: "20px 0" }}>
-              <div css={formStyle}>
-                <label css={nameForm}>NAME</label>
-                <input
-                  type="text"
-                  name="user"
-                  onChange={handleChange}
-                  css={userInput}
-                  placeholder="ENTER YOUR NAME"
-                  autoComplete="off"
-                />
+            <div css={userSave}>
+              <p>Save your score and see your position in the leaderboard</p>
+              <form onSubmit={addUser}>
+                <div css={formContent}>
+                  <label>EMAIL</label>
+                  <input
+                    type="text"
+                    name="user"
+                    onChange={handleChange}
+                    css={userInput}
+                    autoComplete="off"
+                  />
+                </div>
                 {alert && <span css={alertLabel}>{alert}</span>}
-                <input type="submit" value="SAVE MY SCORE" css={userSubmit} />
-              </div>
-            </form>
+                <Button type="submit">SAVE MY SCORE</Button>
+              </form>
+            </div>
+            <div css={actions}>
+              <Button>
+                <Link to="/game/1">PLAY AGAIN</Link>
+              </Button>
+              <Button>
+                <Link to="/">LEADERBOARD</Link>
+              </Button>
+            </div>
           </>
+        ) : (
+          <section>
+            <table>
+              <caption>Top 5 players</caption>
+              <thead>
+                <tr>
+                  <th scope="col" css={title}>
+                    #
+                  </th>
+                  <th scope="col">username</th>
+                  <th scope="col" css={title}>
+                    Points
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data &&
+                  data.map((user, index) => {
+                    if (index < 5) {
+                      return (
+                        <tr key={user.username}>
+                          <td css={rankNum}>{index + 1}</td>
+                          <td css={userAddress}>
+                            <div>
+                              <img
+                                src="/assets/img/user.png"
+                                alt="user silhoutte"
+                              />
+                            </div>
+                            <div>
+                              <p>name:</p>
+                              {user.username === "You" ? (
+                                <p css={you}>{user.username}</p>
+                              ) : (
+                                <p css={name}>{user.username}</p>
+                              )}
+                            </div>
+                          </td>
+                          <td>{user.points}</td>
+                        </tr>
+                      );
+                    }
+                  })}
+              </tbody>
+            </table>
+          </section>
         )}
-        <section>
-          <table>
-            <caption>Top 5 players</caption>
-            <thead>
-              <tr>
-                <th scope="col" css={title}>
-                  #
-                </th>
-                <th scope="col">username</th>
-                <th scope="col" css={title}>
-                  Points
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {data &&
-                data.map((user, index) => {
-                  if (index < 5) {
-                    return (
-                      <tr key={user.username}>
-                        <td css={rankNum}>{index + 1}</td>
-                        <td css={userAddress}>
-                          <div>
-                            <img
-                              src="/assets/img/user.png"
-                              alt="user silhoutte"
-                            />
-                          </div>
-                          <div>
-                            <p>name:</p>
-                            {user.username === "You" ? (
-                              <p css={you}>{user.username}</p>
-                            ) : (
-                              <p css={name}>{user.username}</p>
-                            )}
-                          </div>
-                        </td>
-                        <td>{user.points}</td>
-                      </tr>
-                    );
-                  }
-                })}
-            </tbody>
-          </table>
-        </section>
       </MainContent>
-      <Action>
-        <Button styles={button}>
-          <Link to="/game/1">Play Again</Link>
-        </Button>
-        <Button styles={button}>
-          <Link to="/">Go Home</Link>
-        </Button>
-      </Action>
     </>
   );
 }

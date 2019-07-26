@@ -1,46 +1,44 @@
+/** @jsx jsx */
 import React from "react";
-import { navigate } from "@reach/router";
+import { jsx } from "@emotion/core";
 import { Dialog } from "@reach/dialog";
 
 import NextScenario from "./NextScenario";
 import LastScenario from "./LastScenario";
+
+const dialog = {
+  margin: "auto",
+  width: "90vw",
+  height: "95vh",
+  padding: "0"
+};
 
 function Confirm(props) {
   const {
     openSubmit,
     closeSubmit,
     confirm,
-    setConfirm,
     scenario,
-    onConfirm,
     feedback,
     handleFeedback
   } = props;
 
-  function confirmSubmit() {
-    feedback && navigate(`/game/${+scenario + 1}`);
-    setConfirm(false);
-    onConfirm();
-  }
-
-  // console.log(feedback);
-
   return (
     <>
-      <Dialog isOpen={confirm} onDismiss={openSubmit}>
+      <Dialog isOpen={confirm} onDismiss={openSubmit} css={dialog}>
         {scenario === 4 ? (
           <LastScenario
-            confirmSubmit={confirmSubmit}
             closeSubmit={closeSubmit}
             feedback={feedback}
             handleFeedback={handleFeedback}
+            scenario={scenario}
           />
         ) : (
           <NextScenario
-            confirmSubmit={confirmSubmit}
             closeSubmit={closeSubmit}
             feedback={feedback}
             handleFeedback={handleFeedback}
+            scenario={scenario}
           />
         )}
       </Dialog>
