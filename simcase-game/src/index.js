@@ -16,15 +16,15 @@ import Ranking from "./views/Ranking";
 const global = {
   body: {
     margin: "0",
-    fontFamily: "'Montserrat', sans-serif"
+    fontFamily: "'Roboto', sans-serif"
   }
 };
 
 const router = {
   height: "100vh",
   display: "grid",
-  gridTemplate: "60px 1fr 40px / 1fr",
-  gridTemplateAreas: "'header' 'main-content' 'action'"
+  gridTemplate: "60px 1fr / 1fr",
+  gridTemplateAreas: "'header' 'main-content'"
 };
 
 function App() {
