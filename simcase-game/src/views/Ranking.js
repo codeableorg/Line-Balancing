@@ -6,6 +6,7 @@ import firebase from "firebase";
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent, Action } from "../components/helpers";
+import useTotalScore from "../selector";
 
 const container = {
   height: "75vh",
@@ -140,7 +141,7 @@ const nameForm = {
 
 function Ranking() {
   const [data, setData] = React.useState([]);
-  const [score, setScore] = React.useState(0);
+  const score = useTotalScore();
   const [user, setUser] = React.useState("");
   const [position, setPosition] = React.useState(0);
   const [scoreboard, setScoreboard] = React.useState(true);
@@ -158,8 +159,6 @@ function Ranking() {
       .get()
       .then(querySnapshot => {
         let data = [];
-        let score = ~~(Math.random() * (2000 - 0) + 0);
-        setScore(score);
         querySnapshot.forEach(doc => {
           data.push({
             username: doc.data().username,

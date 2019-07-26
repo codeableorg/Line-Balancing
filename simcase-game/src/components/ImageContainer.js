@@ -7,7 +7,8 @@ const img = {
   display: "block",
   margin: "auto",
   maxWidth: "90%",
-  borderRadius: "5px"
+  borderRadius: "5px",
+  height: "300px"
 };
 
 function ImageContainer({ id }) {
