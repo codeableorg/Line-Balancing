@@ -9,7 +9,6 @@ import { MainContent } from "../components/helpers";
 
 const container = {
   height: "75vh",
-  overflow: "auto",
   color: "#4d4d4d",
   textAlign: "center",
   table: {
@@ -277,13 +276,13 @@ function Ranking() {
             </tbody>
           </table>
         </section>
+        <Button styles={button}>
+          <Link to="/game/1">Play Again</Link>
+        </Button>
+        <Button styles={button}>
+          <Link to="/">Go Home</Link>
+        </Button>
       </MainContent>
-      <Button styles={button}>
-        <Link to="/game/1">Play Again</Link>
-      </Button>
-      <Button styles={button}>
-        <Link to="/">Go Home</Link>
-      </Button>
     </>
   );
 }

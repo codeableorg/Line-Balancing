@@ -19,8 +19,6 @@ function MainContent({ styles, ...props }) {
       {...props}
       css={{
         gridArea: "main-content",
-        height: "calc( 100vh - 100px)",
-        overflow: "auto",
         ...styles
       }}
     />
