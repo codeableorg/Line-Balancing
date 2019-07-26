@@ -6,7 +6,7 @@ function Button({ styles, ...props }) {
     <button
       {...props}
       css={{
-        width: "127px",
+        width: "140px",
         height: "36px",
         padding: "10px",
         border: "none",
