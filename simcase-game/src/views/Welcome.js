@@ -15,15 +15,6 @@ const container = {
 };
 
 function Welcome() {
-  React.useState(() => {
-    //Line to add data to our firebase data
-    fire
-      .firestore()
-      .collection("data")
-      .add({
-        prueba: "test"
-      });
-  });
   return (
     <>
       <Navbar />
