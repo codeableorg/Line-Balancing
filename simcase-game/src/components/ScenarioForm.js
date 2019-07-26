@@ -8,6 +8,19 @@ import { Statement, Table } from "../components/ui";
 import { MainContent } from "../components/helpers";
 
 function ScenarioForm({ id }) {
+  const [totalScore, setTotalScore] = React.useState(0);
+  const [now, setNow] = React.useState(Date.now());
+  const [feedback, setFeedback] = React.useState(false);
+
+  function saveScore(score) {
+    setTotalScore(totalScore + score);
+    setNow(Date.now());
+  }
+
+  function handleFeedback() {
+    setFeedback(!feedback);
+  }
+
   return (
     <>
       <MainContent>
@@ -22,7 +35,14 @@ function ScenarioForm({ id }) {
           <div>Station 2</div>
           <div>Station 3</div>
         </Table>
-        <TaskList id={id} />
+        <TaskList
+          id={id}
+          totalScore={totalScore}
+          setTotalScore={saveScore}
+          key={now}
+          feedback={feedback}
+          handleFeedback={handleFeedback}
+        />
       </MainContent>
     </>
   );

@@ -7,7 +7,7 @@ import Confirm from "./Confirm";
 import { Button } from "./ui";
 import { Action } from "./helpers";
 
-function Submit({ id }) {
+function Submit({ id, onSubmit, handleFeedback, feedback }) {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
@@ -19,10 +19,9 @@ function Submit({ id }) {
   }
 
   const $portal = document.getElementById("portal");
-
   return (
     <Action>
-      <Button onClick={openSubmit}>Send</Button>
+      <Button onClick={openSubmit}>{feedback ? "Next" : "Send"}</Button>
       {confirm &&
         createPortal(
           <Confirm
@@ -31,6 +30,9 @@ function Submit({ id }) {
             confirm={confirm}
             scenario={id}
             setConfirm={setConfirm}
+            onConfirm={onSubmit}
+            feedback={feedback}
+            handleFeedback={handleFeedback}
           />,
           $portal
         )}
