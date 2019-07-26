@@ -3,7 +3,6 @@ import { Redirect } from "@reach/router";
 
 import Navbar from "../components/Navbar";
 import ScenarioForm from "../components/ScenarioForm";
-import Submit from "../components/Submit";
 
 function GameUI({ id }) {
   if (id >= 5) {
@@ -13,7 +12,6 @@ function GameUI({ id }) {
     <>
       <Navbar />
       <ScenarioForm id={+id} />
-      <Submit id={+id} />
     </>
   );
 }
