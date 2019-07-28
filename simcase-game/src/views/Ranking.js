@@ -76,12 +76,6 @@ const alertLabel = {
   letterSpacing: "0.05em"
 };
 
-const userInput = {
-  padding: "7px",
-  textAlign: "center",
-  borderRadius: "5px"
-};
-
 const userScore = {
   display: "flex",
   alignItems: "center",
@@ -156,10 +150,16 @@ const formContent = {
     letterSpacing: "0.2457em"
   },
   input: {
-    background: "transparent",
+    padding: "7px",
+    fontSize: "25px",
+    lineHeight: "14px",
+    textAlign: "center",
+    outline: "none",
     border: "none",
     borderRadius: "0",
-    borderBottom: "1px solid #fff"
+    borderBottom: "1px solid #fff",
+    color: "#fff",
+    background: "transparent"
   }
 };
 
@@ -251,13 +251,7 @@ function Ranking() {
               <form onSubmit={addUser}>
                 <div css={formContent}>
                   <label>EMAIL</label>
-                  <input
-                    type="text"
-                    name="user"
-                    onChange={handleChange}
-                    css={userInput}
-                    autoComplete="off"
-                  />
+                  <input type="email" name="user" onChange={handleChange} />
                 </div>
                 {alert && <span css={alertLabel}>{alert}</span>}
                 <Button type="submit">SAVE MY SCORE</Button>
