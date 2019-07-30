@@ -52,6 +52,16 @@ const secondsPerWeek = 40 * 60 * 60;
 
 function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
+  const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
+    return {
+      ...tasks,
+      [i]: task.solution_station
+    };
+  }, {});
+  const [preFeedback, setPreFeedback] = React.useState({
+    total: Object.keys(tasksSolution).length,
+    mistakes: 0
+  });
   const [tasksPerStation, setTasksPerStation] = React.useState(
     tasks.reduce((tasks, [taskId, task]) => {
       return {
@@ -94,7 +104,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
           : time
       };
     }, {});
-  // { 1: 10, 2: 8 } inicializo
 
   function getScore() {
     const maximum = Math.max(...Object.values(timesPerStation));
@@ -111,12 +120,19 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
 
   function mark(pos, task, station) {
     if (feedback) {
-      if (task.solution_station === station) {
-        return buttonGreen;
-      } else if (userMarked[pos] === station) {
+      if (
+        Object.keys(userMarked).length === 0 &&
+        task.solution_station === station
+      ) {
         return buttonRed;
       } else {
-        return button;
+        if (task.solution_station === station) {
+          return buttonGreen;
+        } else if (userMarked[pos] === station) {
+          return buttonRed;
+        } else {
+          return button;
+        }
       }
     } else {
       if (userMarked[pos] === station) {
@@ -127,6 +143,19 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
         return button;
       }
     }
+  }
+
+  function calculeFeedback() {
+    let count = 0;
+    for (let i = 0; i < preFeedback.total; i++) {
+      if (userMarked[i] !== tasksSolution[i]) {
+        count++;
+      }
+    }
+    setPreFeedback({
+      ...preFeedback,
+      mistakes: count
+    });
   }
 
   function blockStation(pos, station) {
@@ -191,6 +220,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
         onSubmit={handleSubmit}
         feedback={feedback}
         handleFeedback={handleFeedback}
+        calculeFeedback={calculeFeedback}
+        preFeedback={preFeedback}
       />
     </>
   );
