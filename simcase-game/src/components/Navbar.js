@@ -70,9 +70,9 @@ function NavigationButton({ children, onClick }) {
 
 const $portal = document.getElementById("portal");
 
-function Navbar() {
-  const [showDialog, setShowDialog] = React.useState(false);
-  const [modal, setModal] = React.useState(null);
+function Navbar({ showDialogValue = false, modalValue = null }) {
+  const [showDialog, setShowDialog] = React.useState(showDialogValue);
+  const [modal, setModal] = React.useState(modalValue);
   const [isComponentOpen, setIsComponentOpen] = React.useState(false);
 
   function seeDialog() {

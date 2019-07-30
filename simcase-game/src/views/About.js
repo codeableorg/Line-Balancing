@@ -69,11 +69,11 @@ function About() {
         </section>
       </MainContent>
       <Button styles={button}>
-        <Link to="/game/1">Play Again</Link>
+        <Link to="/game/1">Start Playing</Link>
       </Button>
-      <Button styles={button}>
+      {/* <Button styles={button}>
         <Link to="/">Go Home</Link>
-      </Button>
+      </Button> */}
     </>
   );
 }
