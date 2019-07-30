@@ -20,7 +20,8 @@ function Confirm(props) {
     confirm,
     scenario,
     feedback,
-    handleFeedback
+    handleFeedback,
+    preFeedback
   } = props;
 
   return (
@@ -32,6 +33,7 @@ function Confirm(props) {
             feedback={feedback}
             handleFeedback={handleFeedback}
             scenario={scenario}
+            preFeedback={preFeedback}
           />
         ) : (
           <NextScenario
@@ -39,6 +41,7 @@ function Confirm(props) {
             feedback={feedback}
             handleFeedback={handleFeedback}
             scenario={scenario}
+            preFeedback={preFeedback}
           />
         )}
       </Dialog>

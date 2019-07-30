@@ -39,6 +39,7 @@ const button = {
 };
 
 const buttonMarked = { ...button, background: "#8d62e1", color: "#fff" };
+const buttonDefault = { ...button, background: "#F0F4F8", color: "#014D40" };
 const buttonRed = { ...button, background: "#EF767A", color: "#fff" };
 const buttonGreen = { ...button, background: "#C6F7E2" };
 
@@ -51,6 +52,16 @@ const secondsPerWeek = 40 * 60 * 60;
 
 function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
+  const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
+    return {
+      ...tasks,
+      [i]: task.solution_station
+    };
+  }, {});
+  const [preFeedback, setPreFeedback] = React.useState({
+    total: Object.keys(tasksSolution).length,
+    mistakes: 0
+  });
   const [tasksPerStation, setTasksPerStation] = React.useState(
     tasks.reduce((tasks, [taskId, task]) => {
       return {
@@ -59,13 +70,9 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       };
     }, {})
   );
-  const [userMarked, setUserMarked] = React.useState(
-    tasks.map(e => {
-      return e[1].default_station;
-    })
-  );
+  const [userMarked, setUserMarked] = React.useState([]);
 
-  function addToStation(number) {
+  function addToStation(cant, number) {
     return event => {
       const id = event.target.value;
       setTasksPerStation(current => ({
@@ -76,6 +83,12 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
         ...current,
         [id.substr(-1)]: number
       }));
+      for (let i = parseInt(id.substr(-1)) + 1; i < cant; i++) {
+        setUserMarked(current => ({
+          ...current,
+          [i]: number
+        }));
+      }
     };
   }
 
@@ -91,7 +104,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
           : time
       };
     }, {});
-  // { 1: 10, 2: 8 } inicializo
 
   function getScore() {
     const maximum = Math.max(...Object.values(timesPerStation));
@@ -108,26 +120,58 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
 
   function mark(pos, task, station) {
     if (feedback) {
-      if (task.solution_station === station) {
-        return buttonGreen;
-      } else if (userMarked[pos] === station) {
+      if (
+        Object.keys(userMarked).length === 0 &&
+        task.solution_station === station
+      ) {
         return buttonRed;
       } else {
-        return button;
+        if (task.solution_station === station) {
+          return buttonGreen;
+        } else if (userMarked[pos] === station) {
+          return buttonRed;
+        } else {
+          return button;
+        }
       }
     } else {
       if (userMarked[pos] === station) {
         return buttonMarked;
+      } else if (task.default_station === station) {
+        return buttonDefault;
       } else {
         return button;
       }
     }
   }
 
+  function calculeFeedback() {
+    let count = 0;
+    for (let i = 0; i < preFeedback.total; i++) {
+      if (userMarked[i] !== tasksSolution[i]) {
+        count++;
+      }
+    }
+    setPreFeedback({
+      ...preFeedback,
+      mistakes: count
+    });
+  }
+
+  function blockStation(pos, station) {
+    if (feedback) {
+      return true;
+    } else if (userMarked[pos] > station) {
+      return true;
+    } else if (userMarked[pos] === 1 && station === 3) {
+      return true;
+    }
+  }
+
   return (
     <>
       <form onSubmit={handleButton} css={{ width: "100%" }}>
-        {tasks.map(([taskId, task], i) => {
+        {tasks.map(([taskId, task], i, a) => {
           return (
             <div key={`key_${taskId}`}>
               <div css={titleTask}>
@@ -137,32 +181,32 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
               </div>
               <section css={groupButtons}>
                 <button
-                  onClick={addToStation(1)}
+                  onClick={addToStation(a.length, 1)}
                   id={`${id}_station_1`}
                   name={`${id}_task_${taskId}`}
                   css={mark(i, task, 1)}
                   value={taskId}
-                  disabled={feedback}
+                  disabled={blockStation(i, 1)}
                 >
                   Station 1
                 </button>
                 <button
-                  onClick={addToStation(2)}
+                  onClick={addToStation(a.length, 2)}
                   id={`${id}_station_2`}
                   name={`${id}_task_${taskId}`}
                   css={mark(i, task, 2)}
                   value={taskId}
-                  disabled={feedback}
+                  disabled={blockStation(i, 2)}
                 >
                   Station 2
                 </button>
                 <button
-                  onClick={addToStation(3)}
+                  onClick={addToStation(a.length, 3)}
                   css={mark(i, task, 3)}
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_3`}
                   value={taskId}
-                  disabled={feedback}
+                  disabled={blockStation(i, 3)}
                 >
                   Station 3
                 </button>
@@ -176,6 +220,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
         onSubmit={handleSubmit}
         feedback={feedback}
         handleFeedback={handleFeedback}
+        calculeFeedback={calculeFeedback}
+        preFeedback={preFeedback}
       />
     </>
   );

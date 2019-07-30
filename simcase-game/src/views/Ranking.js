@@ -61,7 +61,7 @@ const scoreContent = {
   textAlign: "center",
   letterSpacing: "0.0357143em",
   span: {
-    "&:first-child": {
+    "&:first-of-type": {
       fontWeight: "600",
       fontSize: "12px",
       lineHeight: "14px"

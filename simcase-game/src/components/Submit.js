@@ -11,10 +11,18 @@ const button = {
   margin: "30px 0"
 };
 
-function Submit({ id, onSubmit, handleFeedback, feedback }) {
+function Submit({
+  id,
+  onSubmit,
+  handleFeedback,
+  feedback,
+  calculeFeedback,
+  preFeedback
+}) {
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
+    calculeFeedback();
     setConfirm(true);
   }
 
@@ -24,7 +32,7 @@ function Submit({ id, onSubmit, handleFeedback, feedback }) {
 
   function actionNextStep() {
     handleFeedback();
-    feedback && navigate(`/game/${+id + 1}`);
+    feedback && navigate(`/game/${id + 1}`);
     setConfirm(false);
     onSubmit();
   }
@@ -47,11 +55,11 @@ function Submit({ id, onSubmit, handleFeedback, feedback }) {
             closeSubmit={closeSubmit}
             openSubmit={openSubmit}
             confirm={confirm}
-            scenario={id}
             setConfirm={setConfirm}
             onConfirm={onSubmit}
             feedback={feedback}
             handleFeedback={handleFeedback}
+            preFeedback={preFeedback}
           />,
           $portal
         )}
