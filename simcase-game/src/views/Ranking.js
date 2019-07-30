@@ -181,6 +181,7 @@ function Ranking() {
     fire();
   }, [data]);
 
+  // TODO: Refactor function fire and addFire
   function fire() {
     firebase
       .firestore()
@@ -195,7 +196,33 @@ function Ranking() {
             points: doc.data().points
           });
         });
-        data.push({ username: "You", points: score });
+        data.push({ username: "you", points: score });
+        data.sort((a, b) => {
+          return b.points - a.points;
+        });
+        setData(data);
+        data.filter((value, index) => {
+          if (value.points === score) {
+            setPosition(index + 1);
+          }
+        });
+      });
+  }
+
+  function addFire() {
+    firebase
+      .firestore()
+      .collection("data")
+      .orderBy("points", "desc")
+      .get()
+      .then(querySnapshot => {
+        let data = [];
+        querySnapshot.forEach(doc => {
+          data.push({
+            username: doc.data().username,
+            points: doc.data().points
+          });
+        });
         data.sort((a, b) => {
           return b.points - a.points;
         });
@@ -217,7 +244,7 @@ function Ranking() {
         username: user,
         points: score
       });
-    fire();
+    addFire();
     setScoreboard(false);
   }
 
