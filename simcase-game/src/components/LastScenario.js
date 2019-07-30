@@ -23,7 +23,7 @@ const info = {
   lineHeight: "24px",
   p: {
     width: "232px",
-    "&:first-child": {
+    "&:first-of-type": {
       fontWeight: "bold",
       fontSize: "24px"
     }

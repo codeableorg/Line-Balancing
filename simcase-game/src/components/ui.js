@@ -64,7 +64,7 @@ function Table({ styles, ...props }) {
         width: "90%",
         margin: "16px auto",
         div: {
-          "&:first-child": {
+          "&:first-of-type": {
             width: "40%"
           },
           display: "table-cell",
