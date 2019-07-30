@@ -17,6 +17,11 @@ const global = {
   body: {
     margin: "0",
     fontFamily: "'Roboto', sans-serif"
+  },
+  button: {
+    "&:focus": {
+      outline: "none"
+    }
   }
 };
 

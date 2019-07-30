@@ -13,7 +13,6 @@ const container = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-evenly",
-  alignItems: "center",
   table: {
     width: "85%",
     margin: "0 auto",
@@ -32,54 +31,12 @@ const container = {
   }
 };
 
-const userAddress = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "start",
-  padding: 5,
-  textAlign: "left",
-  p: {
-    padding: "0px",
-    margin: "0px"
-  },
-  img: {
-    width: "40px",
-    marginRight: "10px"
-  }
-};
-
-const name = {
-  fontSize: "20px",
-  fontWeight: "bold"
-};
-
-const you = {
-  fontSize: "20px",
-  fontWeight: "bold",
-  color: "red"
-};
-
-const title = {
-  width: "20%"
-};
-
-const rankNum = {
-  fontSize: "1.2em",
-  fontWeight: "bold"
-};
-
 const alertLabel = {
   marginTop: "10px",
   fontSize: ".9em",
   color: "red",
   fontWeight: "bold",
   letterSpacing: "0.05em"
-};
-
-const userInput = {
-  padding: "7px",
-  textAlign: "center",
-  borderRadius: "5px"
 };
 
 const userScore = {
@@ -156,10 +113,16 @@ const formContent = {
     letterSpacing: "0.2457em"
   },
   input: {
-    background: "transparent",
+    padding: "7px",
+    fontSize: "25px",
+    lineHeight: "14px",
+    textAlign: "center",
+    outline: "none",
     border: "none",
     borderRadius: "0",
-    borderBottom: "1px solid #fff"
+    borderBottom: "1px solid #fff",
+    color: "#fff",
+    background: "transparent"
   }
 };
 
@@ -169,18 +132,56 @@ const actions = {
   width: "100%"
 };
 
+const title = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  h2: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    color: "#747474"
+  }
+};
+
+const row = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "100%",
+  height: "45px",
+  fontSize: "16px",
+  lineHeight: "24px",
+  color: "#102A43",
+  span: {
+    margin: "0 36px 0 30px",
+    fontWeight: "bold"
+  },
+  p: {
+    padding: "0",
+    "&:last-child": {
+      marginRight: "30px",
+      fontWeight: "bold",
+      fontSize: "16px",
+      lineHeight: "24px",
+      color: "#8719E0"
+    }
+  }
+};
+
+const rowOdd = { ...row, backgroundColor: "#F0F4F8" };
+
 function Ranking() {
   const [data, setData] = React.useState([]);
   const score = useTotalScore();
   const [user, setUser] = React.useState("");
   const [position, setPosition] = React.useState(0);
   const [scoreboard, setScoreboard] = React.useState(true);
-  const [alert, setAlert] = React.useState("");
 
   React.useState(() => {
     fire();
   }, [data]);
 
+  // TODO: Refactor function fire and addFire
   function fire() {
     firebase
       .firestore()
@@ -195,7 +196,33 @@ function Ranking() {
             points: doc.data().points
           });
         });
-        data.push({ username: "You", points: score });
+        data.push({ username: "you", points: score });
+        data.sort((a, b) => {
+          return b.points - a.points;
+        });
+        setData(data);
+        data.filter((value, index) => {
+          if (value.points === score) {
+            setPosition(index + 1);
+          }
+        });
+      });
+  }
+
+  function addFire() {
+    firebase
+      .firestore()
+      .collection("data")
+      .orderBy("points", "desc")
+      .get()
+      .then(querySnapshot => {
+        let data = [];
+        querySnapshot.forEach(doc => {
+          data.push({
+            username: doc.data().username,
+            points: doc.data().points
+          });
+        });
         data.sort((a, b) => {
           return b.points - a.points;
         });
@@ -210,19 +237,21 @@ function Ranking() {
 
   function addUser(e) {
     e.preventDefault();
-    if (/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/.test(user)) {
-      firebase
-        .firestore()
-        .collection("data")
-        .add({
-          username: user,
-          points: score
-        });
-      fire();
-      setScoreboard(false);
-    } else {
-      setAlert("Enter a name without symbols");
-    }
+    firebase
+      .firestore()
+      .collection("data")
+      .add({
+        username: user,
+        points: score
+      });
+    addFire();
+    setScoreboard(false);
+  }
+
+  function redirectScoreboard() {
+    return event => {
+      event.type === "click" && setScoreboard(false);
+    };
   }
 
   function handleChange(e) {
@@ -235,29 +264,25 @@ function Ranking() {
       <MainContent styles={container}>
         {scoreboard ? (
           <>
-            <div css={userScore}>
-              <div css={scoreContent}>
-                <span>RANKING</span>
-                <span>{position}</span>
+            <section css={title}>
+              <div css={userScore}>
+                <div css={scoreContent}>
+                  <span>RANKING</span>
+                  <span>{position}</span>
+                </div>
+                <div css={line} />
+                <div css={scoreContent}>
+                  <span>POINTS</span>
+                  <span>{score}</span>
+                </div>
               </div>
-              <div css={line} />
-              <div css={scoreContent}>
-                <span>POINTS</span>
-                <span>{score}</span>
-              </div>
-            </div>
+            </section>
             <div css={userSave}>
               <p>Save your score and see your position in the leaderboard</p>
               <form onSubmit={addUser}>
                 <div css={formContent}>
                   <label>EMAIL</label>
-                  <input
-                    type="text"
-                    name="user"
-                    onChange={handleChange}
-                    css={userInput}
-                    autoComplete="off"
-                  />
+                  <input type="email" name="user" onChange={handleChange} />
                 </div>
                 {alert && <span css={alertLabel}>{alert}</span>}
                 <Button type="submit">SAVE MY SCORE</Button>
@@ -267,57 +292,50 @@ function Ranking() {
               <Button>
                 <Link to="/game/1">PLAY AGAIN</Link>
               </Button>
-              <Button>
-                <Link to="/">LEADERBOARD</Link>
-              </Button>
+              <Button onClick={redirectScoreboard()}>LEADERBOARD</Button>
             </div>
           </>
         ) : (
-          <section>
-            <table>
-              <caption>Top 5 players</caption>
-              <thead>
-                <tr>
-                  <th scope="col" css={title}>
-                    #
-                  </th>
-                  <th scope="col">username</th>
-                  <th scope="col" css={title}>
-                    Points
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {data &&
-                  data.map((user, index) => {
-                    if (index < 5) {
-                      return (
-                        <tr key={user.username}>
-                          <td css={rankNum}>{index + 1}</td>
-                          <td css={userAddress}>
-                            <div>
-                              <img
-                                src="/assets/img/user.png"
-                                alt="user silhoutte"
-                              />
-                            </div>
-                            <div>
-                              <p>name:</p>
-                              {user.username === "You" ? (
-                                <p css={you}>{user.username}</p>
-                              ) : (
-                                <p css={name}>{user.username}</p>
-                              )}
-                            </div>
-                          </td>
-                          <td>{user.points}</td>
-                        </tr>
-                      );
-                    }
-                  })}
-              </tbody>
-            </table>
-          </section>
+          <>
+            <section css={title}>
+              <h2>TOP 5 PLAYERS</h2>
+              <div css={userScore}>
+                <div css={scoreContent}>
+                  <span>RANKING</span>
+                  <span>{position}</span>
+                </div>
+                <div css={line} />
+                <div css={scoreContent}>
+                  <span>POINTS</span>
+                  <span>{score}</span>
+                </div>
+              </div>
+            </section>
+            <section>
+              {data &&
+                data.map((user, index) => {
+                  if (index < 5) {
+                    return (
+                      <div css={index % 2 === 0 ? rowOdd : row} key={index}>
+                        <p>
+                          <span>{index + 1}</span>
+                          {user.username}
+                        </p>
+                        <p>{user.points}</p>
+                      </div>
+                    );
+                  }
+                })}
+            </section>
+            <section css={actions}>
+              <Button>
+                <Link to="/game/1">PLAY AGAIN</Link>
+              </Button>
+              <Button>
+                <Link to="#">SHARE</Link>
+              </Button>
+            </section>
+          </>
         )}
       </MainContent>
     </>

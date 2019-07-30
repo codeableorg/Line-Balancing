@@ -21,7 +21,6 @@ function Button({ styles, ...props }) {
         fontWeight: "bold",
         textAlign: "center",
         letterSpacing: "0.0357143em",
-        ...styles,
         a: {
           color: "#44056E",
           textDecoration: "none",
@@ -30,7 +29,8 @@ function Button({ styles, ...props }) {
           fontWeight: "bold",
           textAlign: "center",
           letterSpacing: "0.0357143em"
-        }
+        },
+        ...styles
       }}
     />
   );
