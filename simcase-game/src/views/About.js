@@ -1,10 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
 
-import Navbar from "../components/Navbar";
-import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
 
 const container = {
@@ -25,16 +22,26 @@ const container = {
   }
 };
 
-const button = {
-  width: "50%"
+const logo = {
+  fontSize: "3.2em",
+  boxSizing: "content-box",
+  fontWeight: "bold",
+  textAlign: "center"
+};
+
+const logoCodeableAble = {
+  color: "#999b9e",
+  textAlign: "center"
 };
 
 function About() {
   return (
     <>
-      <Navbar />
       <MainContent styles={container}>
-        <h2>About</h2>
+        <h2>Developed by:</h2>
+        <h1 css={logo}>
+          {"{"}code<span css={logoCodeableAble}>able{"}"}</span>
+        </h1>
         <section>
           <figure>
             <img src="/assets/img/simcase_color_big.png" alt="Simcase logo" />
@@ -49,15 +56,21 @@ function About() {
             </p>
             <p>
               <span role="img" aria-label="developer">
-                🦍
-              </span>{" "}
-              Deyvi Conde
-            </p>
-            <p>
-              <span role="img" aria-label="developer">
                 🦝
               </span>{" "}
               Paulo Tijero
+            </p>
+            <p>
+              <span role="img" aria-label="developer">
+                🐺
+              </span>{" "}
+              Carlos Sandoval
+            </p>
+            <p>
+              <span role="img" aria-label="developer">
+                🦍
+              </span>{" "}
+              Deyvi Conde
             </p>
             <p>
               <span role="img" aria-label="developer">
@@ -68,12 +81,6 @@ function About() {
           </section>
         </section>
       </MainContent>
-      <Button styles={button}>
-        <Link to="/game/1">Start Playing</Link>
-      </Button>
-      {/* <Button styles={button}>
-        <Link to="/">Go Home</Link>
-      </Button> */}
     </>
   );
 }

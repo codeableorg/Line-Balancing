@@ -29,7 +29,7 @@ const container = {
 function Welcome() {
   return (
     <>
-      <Navbar showDialogValue={true} modalValue="role" />
+      <Navbar />
       <MainContent styles={container}>
         <img src="/stopwatch.png" alt="Welcome" />
         <p>
