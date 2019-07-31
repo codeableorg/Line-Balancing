@@ -30,7 +30,7 @@ const closeButton = {
   padding: "8px 12px",
   margin: 0,
   borderRadius: "50%",
-  backgroundColor: "#1275FA",
+  backgroundColor: "#8719E0",
   color: "#FFFFFF",
   fontWeight: "bold"
 };
@@ -84,7 +84,17 @@ function Modal(props) {
             </button>
 
             <div css={modalContentStyles}>{componentShowed(staticContent)}</div>
-            {staticContent >= 2 ? (
+            {staticContent === 2 ? (
+              <div css={buttonBarStyles}>
+                <Button
+                  onClick={() => {
+                    onClose();
+                  }}
+                >
+                  Close
+                </Button>
+              </div>
+            ) : staticContent === 3 ? (
               <div css={buttonBarStyles}>
                 <Button
                   onClick={() => {
@@ -98,15 +108,7 @@ function Modal(props) {
               <div css={buttonBarStyles}>
                 <Button
                   onClick={() => {
-                    if (staticContent - 1 <= 0) setStaticContent(3);
-                    else setStaticContent(staticContent - 1);
-                  }}
-                >
-                  &lt; Previous
-                </Button>
-                <Button
-                  onClick={() => {
-                    if (staticContent + 1 >= 4) setStaticContent(1);
+                    if (staticContent + 1 >= 3) setStaticContent(1);
                     else setStaticContent(staticContent + 1);
                   }}
                 >
