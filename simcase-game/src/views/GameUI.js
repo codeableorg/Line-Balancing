@@ -10,7 +10,7 @@ function GameUI({ id }) {
   }
   return (
     <>
-      <Navbar />
+      <Navbar showDialogValue={true} modalValue="role" />
       <ScenarioForm id={+id} />
     </>
   );

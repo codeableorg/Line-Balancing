@@ -2,9 +2,12 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Dialog } from "@reach/dialog";
+
 import Role from "../views/Role";
 import Walkthrough from "../views/Walkthrough";
-import Leaderboard from "../views/Leaderboard";
+import About from "../views/About";
+
+import { Button } from "./ui";
 
 const contentStyle = {
   padding: 10
@@ -27,7 +30,7 @@ const closeButton = {
   padding: "8px 12px",
   margin: 0,
   borderRadius: "50%",
-  backgroundColor: "#1275FA",
+  backgroundColor: "#8719E0",
   color: "#FFFFFF",
   fontWeight: "bold"
 };
@@ -40,30 +43,12 @@ const buttonBarStyles = {
   height: "10vh"
 };
 
-const modalButtonNav = {
-  color: "#FFFFFF",
-  backgroundColor: "#3477F2",
-  padding: "10px 15px",
-  margin: 4,
-  border: "none",
-  borderRadius: 5,
-  fontSize: "1em"
-};
-
 const modalContentStyles = {
   height: "75vh",
   overflow: "auto",
   color: "#4d4d4d",
   margin: 5
 };
-
-function NavigationButton({ children, onClick }) {
-  return (
-    <button onClick={onClick} css={modalButtonNav}>
-      {children}
-    </button>
-  );
-}
 
 function componentShowed(componentId) {
   switch (componentId) {
@@ -73,11 +58,11 @@ function componentShowed(componentId) {
     case 2:
       return <Walkthrough />;
 
-    case 3:
-      return <Leaderboard />;
-
     default:
       return <Role />;
+
+    case 3:
+      return <About />;
   }
 }
 
@@ -99,25 +84,38 @@ function Modal(props) {
             </button>
 
             <div css={modalContentStyles}>{componentShowed(staticContent)}</div>
-
-            <div css={buttonBarStyles}>
-              <NavigationButton
-                onClick={() => {
-                  if (staticContent - 1 <= 0) setStaticContent(3);
-                  else setStaticContent(staticContent - 1);
-                }}
-              >
-                &lt; Previous
-              </NavigationButton>
-              <NavigationButton
-                onClick={() => {
-                  if (staticContent + 1 >= 4) setStaticContent(1);
-                  else setStaticContent(staticContent + 1);
-                }}
-              >
-                Next &gt;
-              </NavigationButton>
-            </div>
+            {staticContent === 2 ? (
+              <div css={buttonBarStyles}>
+                <Button
+                  onClick={() => {
+                    onClose();
+                  }}
+                >
+                  Close
+                </Button>
+              </div>
+            ) : staticContent === 3 ? (
+              <div css={buttonBarStyles}>
+                <Button
+                  onClick={() => {
+                    onClose();
+                  }}
+                >
+                  Close
+                </Button>
+              </div>
+            ) : (
+              <div css={buttonBarStyles}>
+                <Button
+                  onClick={() => {
+                    if (staticContent + 1 >= 3) setStaticContent(1);
+                    else setStaticContent(staticContent + 1);
+                  }}
+                >
+                  Next &gt;
+                </Button>
+              </div>
+            )}
           </main>
         </Dialog>
       </div>
