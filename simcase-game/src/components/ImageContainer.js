@@ -5,8 +5,8 @@ import tasksJson from "../data/tasks.json";
 
 const frame = {
   position: "relative",
-  width: "200px",
-  height: "200px"
+  width: "170px",
+  height: "170px"
 };
 
 const img = {
