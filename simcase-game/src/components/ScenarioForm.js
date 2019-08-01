@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 
 import ImageContainer from "../components/ImageContainer";
 import TaskList from "../components/TaskList";
+import ProgressBar from "../components/ProgressBar";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
 
@@ -32,6 +33,7 @@ function ScenarioForm({ id }) {
   return (
     <>
       <MainContent css={container}>
+        <ProgressBar id={id} />
         <ImageContainer id={id} />
         <TaskList
           id={id}
