@@ -105,6 +105,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       };
     }, {});
 
+  console.log(timesPerStation);
+
   function getScore() {
     const maximum = Math.max(...Object.values(timesPerStation));
     return Math.round((1 / maximum) * secondsPerWeek);

@@ -6,6 +6,7 @@ import ImageContainer from "../components/ImageContainer";
 import TaskList from "../components/TaskList";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
+import TimesPerStation from "./TimesPerStation";
 
 const container = {
   display: "flex",
@@ -32,7 +33,11 @@ function ScenarioForm({ id }) {
   return (
     <>
       <MainContent css={container}>
-        <ImageContainer id={id} />
+        {feedback === true ? (
+          <TimesPerStation id={id} />
+        ) : (
+          <ImageContainer id={id} />
+        )}
         <TaskList
           id={id}
           totalScore={totalScore}

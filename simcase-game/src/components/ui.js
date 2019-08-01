@@ -77,4 +77,44 @@ function Table({ styles, ...props }) {
   );
 }
 
-export { Button, Statement, Table };
+function Progress({ styles = {}, ...props }) {
+  return (
+    <div
+      {...props}
+      css={{
+        width: "100%",
+        margin: "30px auto 0",
+        ...(styles.container || {})
+      }}
+    >
+      <div
+        css={{
+          overflow: "hidden",
+          height: "18px",
+          backgroundColor: "#f7f7f7",
+          backgroundImage: "linear-gradient(top, #f5f5f5, #f9f9f9)",
+          backgroundRepeat: "repeat-x",
+          boxShadow: "inset 0 1px 2px rgba(0, 0, 0, 0.1)",
+          borderRadius: "30px",
+          ...(styles.progress || {})
+        }}
+      >
+        <div
+          css={{
+            width: "0%",
+            height: "18px",
+            backgroundColor: "#bae66b",
+            backgroundImage: "linear-gradient(top, #f5f5f5, #f9f9f9)",
+            backgroundRepeat: "repeat-x",
+            boxShadow: "inset 0 -1px 0 rgba(0, 0, 0, 0.15)",
+            boxSizing: "border-box",
+            transition: "width 0.6s ease",
+            ...(styles.bar || {})
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export { Button, Statement, Table, Progress };
