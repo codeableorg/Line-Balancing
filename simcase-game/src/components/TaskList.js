@@ -70,16 +70,20 @@ function TaskList({ id }) {
     mistakes: 0
   });
 
-  const initialTaskPerStation = tasks.reduce((tasks, [taskId, task]) => {
-    return {
-      ...tasks,
-      [taskId]: task.default_station
-    };
-  }, {});
+  // ____________________
 
-  const [tasksPerStation, setTasksPerStation] = React.useState(
-    initialTaskPerStation
-  );
+  // const initialTaskPerStation = tasks.reduce((tasks, [taskId, task]) => {
+  //   return {
+  //     ...tasks,
+  //     [taskId]: task.default_station
+  //   };
+  // }, {});
+
+  // const [tasksPerStation, setTasksPerStation] = React.useState(
+  //   initialTaskPerStation
+  // );
+
+  //____________________
 
   function resetUserMarked() {
     setUserMarked([]);
@@ -88,7 +92,7 @@ function TaskList({ id }) {
   function addToStation(cant, number) {
     return event => {
       const id = event.target.value;
-      setTasksPerStation(current => ({
+      feedbackContext.setTasksPerStation(current => ({
         ...current,
         [id]: number
       }));
@@ -107,18 +111,18 @@ function TaskList({ id }) {
 
   // ________________________
 
-  const timesPerStation = Object.entries(tasksPerStation)
-    .map(([taskId, stationNumber]) => {
-      return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
-    })
-    .reduce((total, [time, stationNumber]) => {
-      return {
-        ...total,
-        [stationNumber]: total[stationNumber]
-          ? total[stationNumber] + time
-          : time
-      };
-    }, {});
+  // const timesPerStation = Object.entries(tasksPerStation)
+  //   .map(([taskId, stationNumber]) => {
+  //     return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
+  //   })
+  //   .reduce((total, [time, stationNumber]) => {
+  //     return {
+  //       ...total,
+  //       [stationNumber]: total[stationNumber]
+  //         ? total[stationNumber] + time
+  //         : time
+  //     };
+  //   }, {});
 
   // __________________________
 
@@ -128,7 +132,7 @@ function TaskList({ id }) {
   // }
 
   function handleSubmit() {
-    feedbackContext.getScore(timesPerStation);
+    feedbackContext.getScore(feedbackContext.timesPerStation);
     // setTotalScore(getScore());
   }
 

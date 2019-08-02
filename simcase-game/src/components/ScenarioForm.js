@@ -6,7 +6,7 @@ import ImageContainer from "../components/ImageContainer";
 import TaskList from "../components/TaskList";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
-import TimesPerStation from "./TimesPerStation";
+import ScorePerStation from "./ScorePerStation";
 import { FeedbackContext } from "../contexts/DataFeedback";
 
 const container = {
@@ -16,6 +16,7 @@ const container = {
 };
 
 function ScenarioForm({ id }) {
+  console.log(id);
   const [totalScore, setTotalScore] = React.useState(0);
   const addScore = useAddScore();
   const [now, setNow] = React.useState(Date.now());
@@ -36,7 +37,7 @@ function ScenarioForm({ id }) {
     <>
       <MainContent css={container}>
         {feedbackContext.state === true ? (
-          <TimesPerStation id={id} />
+          <ScorePerStation id={id} />
         ) : (
           <ImageContainer id={id} />
         )}

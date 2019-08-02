@@ -3,6 +3,7 @@ import { jsx } from "@emotion/core";
 import React from "react";
 
 import { Progress } from "./ui";
+import { FeedbackContext } from "../contexts/DataFeedback";
 import tasksJson from "../data/tasks.json";
 
 const title = {
@@ -53,7 +54,9 @@ const line = {
   height: "22px"
 };
 
-function TimesPerStation({ id }) {
+function ScorePerStation({ id }) {
+  const feedbackContext = React.useContext(FeedbackContext);
+  console.log(feedbackContext.timesPerStation);
   const secondsPerWeek = 40 * 60 * 60;
   const [progress, setProgress] = React.useState("0%");
 
@@ -84,8 +87,6 @@ function TimesPerStation({ id }) {
     const maxScore = Math.max(...Object.values(timesPerSolution));
     return Math.round((1 / maxScore) * secondsPerWeek);
   }
-
-  console.log(getFullScore());
 
   return (
     <>
@@ -124,6 +125,8 @@ function TimesPerStation({ id }) {
           </div>
         </div>
       </section>
+      <h4>{getFullScore()}</h4>
+      {/* <h4>{feedbackContext.getScore(feedbackContext.timesPerStation[1])}</h4> */}
       <Progress
         styles={{
           container: { width: "60%" },
@@ -140,4 +143,4 @@ function TimesPerStation({ id }) {
   );
 }
 
-export default TimesPerStation;
+export default ScorePerStation;
