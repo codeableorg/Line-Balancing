@@ -3,6 +3,7 @@ import React from "react";
 import { jsx } from "@emotion/core";
 
 import { Button } from "../components/ui";
+import { FeedbackContext } from "../contexts/DataFeedback";
 
 const container = {
   display: "flex",
@@ -36,13 +37,14 @@ const action = {
   width: "100%"
 };
 
-function LastScenario({ closeSubmit, handleFeedback, preFeedback }) {
+function LastScenario({ closeSubmit, preFeedback }) {
+  const feedbackContext = React.useContext(FeedbackContext);
   const mistakesPercentage = Math.round(
     (100 * preFeedback.mistakes) / preFeedback.total
   );
 
   function actionFeedback() {
-    handleFeedback();
+    feedbackContext.handleState();
     closeSubmit();
   }
 

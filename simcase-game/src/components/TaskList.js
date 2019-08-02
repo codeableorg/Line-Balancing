@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
+import { FeedbackContext } from "../contexts/DataFeedback";
 
 const titleTask = {
   display: "flex",
@@ -48,9 +49,14 @@ const groupButtons = {
   justifyContent: "center"
 };
 
-const secondsPerWeek = 40 * 60 * 60;
+// const secondsPerWeek = 40 * 60 * 60;
 
-function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
+function TaskList({ id }) {
+  const [userMarked, setUserMarked] = React.useState([]);
+  const feedbackContext = React.useContext(FeedbackContext);
+  feedbackContext.setId(id);
+  console.log(feedbackContext);
+
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
     return {
@@ -58,19 +64,26 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       [i]: task.solution_station
     };
   }, {});
+
   const [preFeedback, setPreFeedback] = React.useState({
     total: Object.keys(tasksSolution).length,
     mistakes: 0
   });
+
+  const initialTaskPerStation = tasks.reduce((tasks, [taskId, task]) => {
+    return {
+      ...tasks,
+      [taskId]: task.default_station
+    };
+  }, {});
+
   const [tasksPerStation, setTasksPerStation] = React.useState(
-    tasks.reduce((tasks, [taskId, task]) => {
-      return {
-        ...tasks,
-        [taskId]: task.default_station
-      };
-    }, {})
+    initialTaskPerStation
   );
-  const [userMarked, setUserMarked] = React.useState([]);
+
+  function resetUserMarked() {
+    setUserMarked([]);
+  }
 
   function addToStation(cant, number) {
     return event => {
@@ -92,6 +105,8 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
     };
   }
 
+  // ________________________
+
   const timesPerStation = Object.entries(tasksPerStation)
     .map(([taskId, stationNumber]) => {
       return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
@@ -105,15 +120,16 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       };
     }, {});
 
-  console.log(timesPerStation);
+  // __________________________
 
-  function getScore() {
-    const maximum = Math.max(...Object.values(timesPerStation));
-    return Math.round((1 / maximum) * secondsPerWeek);
-  }
+  // function getScore() {
+  //   const maximum = Math.max(...Object.values(timesPerStation));
+  //   return Math.round((1 / maximum) * secondsPerWeek);
+  // }
 
   function handleSubmit() {
-    setTotalScore(getScore());
+    feedbackContext.getScore(timesPerStation);
+    // setTotalScore(getScore());
   }
 
   function handleButton(e) {
@@ -121,7 +137,9 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   }
 
   function mark(pos, task, station) {
-    if (feedback) {
+    if (feedbackContext.state) {
+      // console.log("hola");
+      // console.log(Object.keys(userMarked).length);
       if (
         Object.keys(userMarked).length === 0 &&
         task.solution_station === station
@@ -161,7 +179,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   }
 
   function blockStation(pos, station) {
-    if (feedback) {
+    if (feedbackContext.state) {
       return true;
     } else if (userMarked[pos] > station) {
       return true;
@@ -220,10 +238,9 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       <Submit
         id={+id}
         onSubmit={handleSubmit}
-        feedback={feedback}
-        handleFeedback={handleFeedback}
         calculeFeedback={calculeFeedback}
         preFeedback={preFeedback}
+        resetUserMarked={resetUserMarked}
       />
     </>
   );

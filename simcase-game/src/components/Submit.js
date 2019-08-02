@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 import { createPortal } from "react-dom";
 import { navigate } from "@reach/router";
 
+import { FeedbackContext } from "../contexts/DataFeedback";
 import Confirm from "./Confirm";
 import { Button } from "./ui";
 
@@ -14,13 +15,13 @@ const button = {
 function Submit({
   id,
   onSubmit,
-  handleFeedback,
-  feedback,
   calculeFeedback,
-  preFeedback
+  preFeedback,
+  resetUserMarked
 }) {
   const [confirm, setConfirm] = React.useState(false);
 
+  const feedbackContext = React.useContext(FeedbackContext);
   function openSubmit() {
     calculeFeedback();
     setConfirm(true);
@@ -31,8 +32,9 @@ function Submit({
   }
 
   function actionNextStep() {
-    handleFeedback();
-    feedback && navigate(`/game/${id + 1}`);
+    feedbackContext.handleState();
+    feedbackContext.state && navigate(`/game/${id + 1}`);
+    resetUserMarked();
     setConfirm(false);
     onSubmit();
   }
@@ -40,7 +42,7 @@ function Submit({
   const $portal = document.getElementById("portal");
   return (
     <>
-      {feedback ? (
+      {feedbackContext.state ? (
         <Button onClick={actionNextStep} css={button}>
           NEXT
         </Button>
@@ -57,8 +59,6 @@ function Submit({
             confirm={confirm}
             setConfirm={setConfirm}
             onConfirm={onSubmit}
-            feedback={feedback}
-            handleFeedback={handleFeedback}
             preFeedback={preFeedback}
           />,
           $portal

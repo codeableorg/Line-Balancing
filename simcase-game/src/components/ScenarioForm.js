@@ -7,6 +7,7 @@ import TaskList from "../components/TaskList";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
 import TimesPerStation from "./TimesPerStation";
+import { FeedbackContext } from "../contexts/DataFeedback";
 
 const container = {
   display: "flex",
@@ -18,7 +19,8 @@ function ScenarioForm({ id }) {
   const [totalScore, setTotalScore] = React.useState(0);
   const addScore = useAddScore();
   const [now, setNow] = React.useState(Date.now());
-  const [feedback, setFeedback] = React.useState(false);
+  const feedbackContext = React.useContext(FeedbackContext);
+  // const [feedback, setFeedback] = React.useState(false);
 
   function saveScore(score) {
     setTotalScore(totalScore + score);
@@ -26,14 +28,14 @@ function ScenarioForm({ id }) {
     setNow(Date.now());
   }
 
-  function handleFeedback() {
-    setFeedback(!feedback);
-  }
+  // function handleFeedback() {
+  //   setFeedback(!feedback);
+  // }
 
   return (
     <>
       <MainContent css={container}>
-        {feedback === true ? (
+        {feedbackContext.state === true ? (
           <TimesPerStation id={id} />
         ) : (
           <ImageContainer id={id} />
@@ -43,8 +45,6 @@ function ScenarioForm({ id }) {
           totalScore={totalScore}
           setTotalScore={saveScore}
           key={now}
-          feedback={feedback}
-          handleFeedback={handleFeedback}
         />
       </MainContent>
     </>
