@@ -45,9 +45,8 @@ const currentLine = {
   backgroundColor: "#7A0ECC"
 };
 
-function ProgressBar({ ranking }) {
+function ProgressBar() {
   const dataContext = React.useContext(DataContext);
-  console.log(dataContext);
   return (
     <>
       {dataContext.ranking ? (

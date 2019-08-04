@@ -18,16 +18,11 @@ function ScenarioForm({ id }) {
   const [totalScore, setTotalScore] = React.useState(0);
   const addScore = useAddScore();
   const [now, setNow] = React.useState(Date.now());
-  const [feedback, setFeedback] = React.useState(false);
 
   function saveScore(score) {
     setTotalScore(totalScore + score);
     addScore(totalScore + score);
     setNow(Date.now());
-  }
-
-  function handleFeedback() {
-    setFeedback(!feedback);
   }
 
   return (
@@ -40,8 +35,6 @@ function ScenarioForm({ id }) {
           totalScore={totalScore}
           setTotalScore={saveScore}
           key={now}
-          feedback={feedback}
-          handleFeedback={handleFeedback}
         />
       </MainContent>
     </>

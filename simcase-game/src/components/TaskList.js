@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
+import { FeedbackContext } from "../contexts/feedback";
 
 const titleTask = {
   display: "flex",
@@ -50,7 +51,8 @@ const groupButtons = {
 
 const secondsPerWeek = 40 * 60 * 60;
 
-function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
+function TaskList({ id, setTotalScore, totalScore }) {
+  const feedbackContext = React.useContext(FeedbackContext);
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
     return {
@@ -119,7 +121,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   }
 
   function mark(pos, task, station) {
-    if (feedback) {
+    if (feedbackContext.state) {
       if (
         Object.keys(userMarked).length === 0 &&
         task.solution_station === station
@@ -159,7 +161,7 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
   }
 
   function blockStation(pos, station) {
-    if (feedback) {
+    if (feedbackContext.state) {
       return true;
     } else if (userMarked[pos] > station) {
       return true;
@@ -218,8 +220,6 @@ function TaskList({ id, setTotalScore, totalScore, feedback, handleFeedback }) {
       <Submit
         id={+id}
         onSubmit={handleSubmit}
-        feedback={feedback}
-        handleFeedback={handleFeedback}
         calculeFeedback={calculeFeedback}
         preFeedback={preFeedback}
       />

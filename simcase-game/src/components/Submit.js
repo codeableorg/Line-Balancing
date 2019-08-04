@@ -6,20 +6,15 @@ import { navigate } from "@reach/router";
 
 import Confirm from "./Confirm";
 import { Button } from "./ui";
+import { FeedbackContext } from "../contexts/feedback";
 
 const button = {
   margin: "30px 0"
 };
 
-function Submit({
-  id,
-  onSubmit,
-  handleFeedback,
-  feedback,
-  calculeFeedback,
-  preFeedback
-}) {
+function Submit({ id, onSubmit, calculeFeedback, preFeedback }) {
   const [confirm, setConfirm] = React.useState(false);
+  const feedbackContext = React.useContext(FeedbackContext);
 
   function openSubmit() {
     calculeFeedback();
@@ -31,8 +26,8 @@ function Submit({
   }
 
   function actionNextStep() {
-    handleFeedback();
-    feedback && navigate(`/game/${id + 1}`);
+    feedbackContext.setState(false);
+    feedbackContext.state && navigate(`/game/${id + 1}`);
     setConfirm(false);
     onSubmit();
   }
@@ -40,7 +35,7 @@ function Submit({
   const $portal = document.getElementById("portal");
   return (
     <>
-      {feedback ? (
+      {feedbackContext.state ? (
         <Button onClick={actionNextStep} css={button}>
           NEXT
         </Button>
@@ -57,8 +52,6 @@ function Submit({
             confirm={confirm}
             setConfirm={setConfirm}
             onConfirm={onSubmit}
-            feedback={feedback}
-            handleFeedback={handleFeedback}
             preFeedback={preFeedback}
           />,
           $portal

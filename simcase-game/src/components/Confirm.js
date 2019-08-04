@@ -14,15 +14,7 @@ const dialog = {
 };
 
 function Confirm(props) {
-  const {
-    openSubmit,
-    closeSubmit,
-    confirm,
-    scenario,
-    feedback,
-    handleFeedback,
-    preFeedback
-  } = props;
+  const { openSubmit, closeSubmit, confirm, scenario, preFeedback } = props;
 
   return (
     <>
@@ -30,16 +22,12 @@ function Confirm(props) {
         {scenario === 4 ? (
           <LastScenario
             closeSubmit={closeSubmit}
-            feedback={feedback}
-            handleFeedback={handleFeedback}
             scenario={scenario}
             preFeedback={preFeedback}
           />
         ) : (
           <NextScenario
             closeSubmit={closeSubmit}
-            feedback={feedback}
-            handleFeedback={handleFeedback}
             scenario={scenario}
             preFeedback={preFeedback}
           />
