@@ -7,6 +7,7 @@ import firebase from "firebase";
 import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
+import ProgressBar from "../components/ProgressBar";
 import useTotalScore from "../selector";
 
 const container = {
@@ -264,6 +265,7 @@ function Ranking() {
       <MainContent styles={container}>
         {scoreboard ? (
           <>
+            <ProgressBar ranking={true} />
             <section css={title}>
               <div css={userScore}>
                 <div css={scoreContent}>
