@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { Link } from "@reach/router";
 
 const container = {
   display: "flex",
@@ -47,21 +48,29 @@ function ProgressBar({ id, ranking }) {
     <>
       {ranking ? (
         <div css={container}>
-          <svg>
-            <use xlinkHref="#check" />
-          </svg>
+          <Link to="/game/1">
+            <svg>
+              <use xlinkHref="#check" />
+            </svg>
+          </Link>
           <span css={line} />
-          <svg>
-            <use xlinkHref="#check" />
-          </svg>
+          <Link to="/game/2">
+            <svg>
+              <use xlinkHref="#check" />
+            </svg>
+          </Link>
           <span css={line} />
-          <svg>
-            <use xlinkHref="#check" />
-          </svg>
+          <Link to="/game/3">
+            <svg>
+              <use xlinkHref="#check" />
+            </svg>
+          </Link>
           <span css={line} />
-          <svg>
-            <use xlinkHref="#check" />
-          </svg>
+          <Link to="/game/4">
+            <svg>
+              <use xlinkHref="#check" />
+            </svg>
+          </Link>
         </div>
       ) : (
         <div css={container}>
