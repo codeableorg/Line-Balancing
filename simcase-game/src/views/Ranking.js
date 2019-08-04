@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
 import ProgressBar from "../components/ProgressBar";
+// import Symbols from "./components/Symbols";
 import useTotalScore from "../selector";
 
 const container = {

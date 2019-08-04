@@ -12,6 +12,7 @@ import Walkthrough from "./views/Walkthrough";
 import GameUI from "./views/GameUI";
 import About from "./views/About";
 import Ranking from "./views/Ranking";
+import Symbols from "./components/Symbols";
 
 const global = {
   body: {
@@ -51,6 +52,7 @@ function App() {
 const root = document.getElementById("root");
 render(
   <Provider store={store}>
+    <Symbols />
     <App />
   </Provider>,
   root
