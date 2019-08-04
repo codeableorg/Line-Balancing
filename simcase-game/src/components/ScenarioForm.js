@@ -33,7 +33,7 @@ function ScenarioForm({ id }) {
   return (
     <>
       <MainContent css={container}>
-        <ProgressBar id={id} ranking={false} />
+        <ProgressBar />
         <ImageContainer id={id} />
         <TaskList
           id={id}

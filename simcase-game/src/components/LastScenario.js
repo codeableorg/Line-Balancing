@@ -57,7 +57,7 @@ function LastScenario({ closeSubmit, handleFeedback, preFeedback }) {
           <use xlinkHref="#more-or-less" />
         </svg>
       ) : (
-        <svg>
+        <svg css={{ transform: "rotate(45deg)" }}>
           <use xlinkHref="#bad" />
         </svg>
       )}

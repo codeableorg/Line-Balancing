@@ -266,7 +266,7 @@ function Ranking() {
       <MainContent styles={container}>
         {scoreboard ? (
           <>
-            <ProgressBar ranking={true} />
+            <ProgressBar />
             <section css={title}>
               <div css={userScore}>
                 <div css={scoreContent}>

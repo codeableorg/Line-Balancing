@@ -3,6 +3,8 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
+import { DataContext } from "../contexts/data";
+
 const container = {
   display: "flex",
   justifyContent: "center",
@@ -43,32 +45,34 @@ const currentLine = {
   backgroundColor: "#7A0ECC"
 };
 
-function ProgressBar({ id, ranking }) {
+function ProgressBar({ ranking }) {
+  const dataContext = React.useContext(DataContext);
+  console.log(dataContext);
   return (
     <>
-      {ranking ? (
+      {dataContext.ranking ? (
         <div css={container}>
           <Link to="/game/1">
             <svg>
-              <use xlinkHref="#check" />
+              <use xlinkHref="#good" />
             </svg>
           </Link>
           <span css={line} />
           <Link to="/game/2">
             <svg>
-              <use xlinkHref="#check" />
+              <use xlinkHref="#more-or-less" />
             </svg>
           </Link>
           <span css={line} />
           <Link to="/game/3">
-            <svg>
-              <use xlinkHref="#check" />
+            <svg css={{ transform: "rotate(45deg)" }}>
+              <use xlinkHref="#bad" />
             </svg>
           </Link>
           <span css={line} />
           <Link to="/game/4">
             <svg>
-              <use xlinkHref="#check" />
+              <use xlinkHref="#more-or-less" />
             </svg>
           </Link>
         </div>
@@ -76,32 +80,44 @@ function ProgressBar({ id, ranking }) {
         <div css={container}>
           <span
             css={
-              id > 1 ? { display: "none" } : id === 1 ? currentCircle : circle
+              dataContext.id > 1
+                ? { display: "none" }
+                : dataContext.id === 1
+                ? currentCircle
+                : circle
             }
           />
-          <svg css={id > 1 ? "" : { display: "none" }}>
+          <svg css={dataContext.id > 1 ? "" : { display: "none" }}>
             <use xlinkHref="#check" />
           </svg>
-          <span css={id > 1 ? currentLine : line} />
+          <span css={dataContext.id > 1 ? currentLine : line} />
           <span
             css={
-              id > 2 ? { display: "none" } : id === 2 ? currentCircle : circle
+              dataContext.id > 2
+                ? { display: "none" }
+                : dataContext.id === 2
+                ? currentCircle
+                : circle
             }
           />
-          <svg css={id > 2 ? "" : { display: "none" }}>
+          <svg css={dataContext.id > 2 ? "" : { display: "none" }}>
             <use xlinkHref="#check" />
           </svg>
-          <span css={id > 2 ? currentLine : line} />
+          <span css={dataContext.id > 2 ? currentLine : line} />
           <span
             css={
-              id > 3 ? { display: "none" } : id === 3 ? currentCircle : circle
+              dataContext.id > 3
+                ? { display: "none" }
+                : dataContext.id === 3
+                ? currentCircle
+                : circle
             }
           />
-          <svg css={id > 3 ? "" : { display: "none" }}>
+          <svg css={dataContext.id > 3 ? "" : { display: "none" }}>
             <use xlinkHref="#check" />
           </svg>
-          <span css={id > 3 ? currentLine : line} />
-          <span css={id === 4 ? currentCircle : circle} />
+          <span css={dataContext.id > 3 ? currentLine : line} />
+          <span css={dataContext.id === 4 ? currentCircle : circle} />
         </div>
       )}
     </>
