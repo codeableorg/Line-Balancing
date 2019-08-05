@@ -16,6 +16,7 @@ import Ranking from "./views/Ranking";
 import Symbols from "./components/Symbols";
 import { DataProvider } from "./contexts/data";
 import { FeedbackProvider } from "./contexts/feedback";
+import { MarkedProvider } from "./contexts/marked";
 
 const global = {
   body: {
@@ -56,10 +57,12 @@ const root = document.getElementById("root");
 render(
   <DataProvider>
     <FeedbackProvider>
-      <Provider store={store}>
-        <Symbols />
-        <App />
-      </Provider>
+      <MarkedProvider>
+        <Provider store={store}>
+          <Symbols />
+          <App />
+        </Provider>
+      </MarkedProvider>
     </FeedbackProvider>
   </DataProvider>,
   root

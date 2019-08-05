@@ -5,6 +5,7 @@ import { jsx } from "@emotion/core";
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
 import { FeedbackContext } from "../contexts/feedback";
+import { MarkedContext } from "../contexts/marked";
 
 const titleTask = {
   display: "flex",
@@ -53,6 +54,7 @@ const secondsPerWeek = 40 * 60 * 60;
 
 function TaskList({ id, setTotalScore, totalScore }) {
   const feedbackContext = React.useContext(FeedbackContext);
+  const markedContext = React.useContext(MarkedContext);
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
     return {
@@ -60,10 +62,12 @@ function TaskList({ id, setTotalScore, totalScore }) {
       [i]: task.solution_station
     };
   }, {});
+
   const [preFeedback, setPreFeedback] = React.useState({
     total: Object.keys(tasksSolution).length,
     mistakes: 0
   });
+
   const [tasksPerStation, setTasksPerStation] = React.useState(
     tasks.reduce((tasks, [taskId, task]) => {
       return {
@@ -72,6 +76,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
       };
     }, {})
   );
+
   const [userMarked, setUserMarked] = React.useState([]);
 
   function addToStation(cant, number) {
@@ -81,6 +86,9 @@ function TaskList({ id, setTotalScore, totalScore }) {
         ...current,
         [id]: number
       }));
+      // ------------------
+      markedContext.handleMarked(id, cant, number);
+      // ------------------
       setUserMarked(current => ({
         ...current,
         [id.substr(-1)]: number
@@ -91,6 +99,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
           [i]: number
         }));
       }
+      // ------------------
     };
   }
 
