@@ -1,14 +1,15 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import firebase from "firebase";
 
 import Navbar from "../components/Navbar";
+import ProgressBar from "../components/ProgressBar";
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
-import ProgressBar from "../components/ProgressBar";
-// import Symbols from "./components/Symbols";
+import { DataContext } from "../contexts/data";
+import { FeedbackContext } from "../contexts/feedback";
 import useTotalScore from "../selector";
 
 const container = {
@@ -173,6 +174,8 @@ const row = {
 const rowOdd = { ...row, backgroundColor: "#F0F4F8" };
 
 function Ranking() {
+  const dataContext = React.useContext(DataContext);
+  const feedbackContext = React.useContext(FeedbackContext);
   const [data, setData] = React.useState([]);
   const score = useTotalScore();
   const [user, setUser] = React.useState("");
@@ -260,6 +263,12 @@ function Ranking() {
     setUser(e.target.value);
   }
 
+  function playAgain() {
+    dataContext.setRanking(false);
+    feedbackContext.setState(false);
+    navigate(`/game/1`);
+  }
+
   return (
     <>
       <Navbar />
@@ -292,9 +301,7 @@ function Ranking() {
               </form>
             </div>
             <div css={actions}>
-              <Button>
-                <Link to="/game/1">PLAY AGAIN</Link>
-              </Button>
+              <Button onClick={playAgain}>PLAY AGAIN</Button>
               <Button onClick={redirectScoreboard()}>LEADERBOARD</Button>
             </div>
           </>
@@ -331,12 +338,8 @@ function Ranking() {
                 })}
             </section>
             <section css={actions}>
-              <Button>
-                <Link to="/game/1">PLAY AGAIN</Link>
-              </Button>
-              <Button>
-                <Link to="#">SHARE</Link>
-              </Button>
+              <Button onClick={playAgain}>PLAY AGAIN</Button>
+              <Button>SHARE</Button>
             </section>
           </>
         )}

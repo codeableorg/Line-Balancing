@@ -7,14 +7,16 @@ import { navigate } from "@reach/router";
 import Confirm from "./Confirm";
 import { Button } from "./ui";
 import { FeedbackContext } from "../contexts/feedback";
+import { DataContext } from "../contexts/data";
 
 const button = {
   margin: "30px 0"
 };
 
 function Submit({ id, onSubmit, calculeFeedback, preFeedback }) {
-  const [confirm, setConfirm] = React.useState(false);
   const feedbackContext = React.useContext(FeedbackContext);
+  const dataContext = React.useContext(DataContext);
+  const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
     calculeFeedback();
@@ -27,15 +29,26 @@ function Submit({ id, onSubmit, calculeFeedback, preFeedback }) {
 
   function actionNextStep() {
     feedbackContext.setState(false);
+    if (id === 4) {
+      dataContext.setRanking(true);
+    }
     feedbackContext.state && navigate(`/game/${id + 1}`);
     setConfirm(false);
     onSubmit();
   }
 
+  function moveRanking() {
+    navigate(`/ranking`);
+  }
+
   const $portal = document.getElementById("portal");
   return (
     <>
-      {feedbackContext.state ? (
+      {dataContext.ranking ? (
+        <Button onClick={moveRanking} css={button}>
+          RANKING
+        </Button>
+      ) : feedbackContext.state ? (
         <Button onClick={actionNextStep} css={button}>
           NEXT
         </Button>

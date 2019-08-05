@@ -47,6 +47,7 @@ const currentLine = {
 
 function ProgressBar() {
   const dataContext = React.useContext(DataContext);
+
   return (
     <>
       {dataContext.ranking ? (
