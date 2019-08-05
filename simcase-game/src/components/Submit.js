@@ -6,20 +6,22 @@ import { navigate } from "@reach/router";
 
 import Confirm from "./Confirm";
 import { Button } from "./ui";
-import { FeedbackContext } from "../contexts/feedback";
 import { DataContext } from "../contexts/data";
+import { FeedbackContext } from "../contexts/feedback";
+import { ResultContext } from "../contexts/result";
 
 const button = {
   margin: "30px 0"
 };
 
-function Submit({ id, onSubmit, calculeFeedback, preFeedback }) {
-  const feedbackContext = React.useContext(FeedbackContext);
+function Submit({ id, onSubmit }) {
   const dataContext = React.useContext(DataContext);
+  const feedbackContext = React.useContext(FeedbackContext);
+  const resultContext = React.useContext(ResultContext);
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
-    calculeFeedback();
+    resultContext.handlePreFeedback();
     setConfirm(true);
   }
 
@@ -65,7 +67,6 @@ function Submit({ id, onSubmit, calculeFeedback, preFeedback }) {
             confirm={confirm}
             setConfirm={setConfirm}
             onConfirm={onSubmit}
-            preFeedback={preFeedback}
           />,
           $portal
         )}

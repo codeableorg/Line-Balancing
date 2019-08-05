@@ -15,8 +15,10 @@ import About from "./views/About";
 import Ranking from "./views/Ranking";
 import Symbols from "./components/Symbols";
 import { DataProvider } from "./contexts/data";
+import { TasksProvider } from "./contexts/tasks";
 import { FeedbackProvider } from "./contexts/feedback";
 import { MarkedProvider } from "./contexts/marked";
+import { ResultProvider } from "./contexts/result";
 
 const global = {
   body: {
@@ -56,14 +58,18 @@ function App() {
 const root = document.getElementById("root");
 render(
   <DataProvider>
-    <FeedbackProvider>
-      <MarkedProvider>
-        <Provider store={store}>
-          <Symbols />
-          <App />
-        </Provider>
-      </MarkedProvider>
-    </FeedbackProvider>
+    <TasksProvider>
+      <FeedbackProvider>
+        <MarkedProvider>
+          <ResultProvider>
+            <Provider store={store}>
+              <Symbols />
+              <App />
+            </Provider>
+          </ResultProvider>
+        </MarkedProvider>
+      </FeedbackProvider>
+    </TasksProvider>
   </DataProvider>,
   root
 );

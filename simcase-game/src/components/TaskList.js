@@ -5,6 +5,8 @@ import { jsx } from "@emotion/core";
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
 import { MarkedContext } from "../contexts/marked";
+import { TasksContext } from "../contexts/tasks";
+import { ResultContext } from "../contexts/result";
 
 const titleTask = {
   display: "flex",
@@ -32,17 +34,6 @@ const secondsPerWeek = 40 * 60 * 60;
 function TaskList({ id, setTotalScore, totalScore }) {
   const markedContext = React.useContext(MarkedContext);
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
-  const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
-    return {
-      ...tasks,
-      [i]: task.solution_station
-    };
-  }, {});
-
-  const [preFeedback, setPreFeedback] = React.useState({
-    total: Object.keys(tasksSolution).length,
-    mistakes: 0
-  });
 
   const [tasksPerStation, setTasksPerStation] = React.useState(
     tasks.reduce((tasks, [taskId, task]) => {
@@ -56,6 +47,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
   function addToStation(cant, number) {
     return event => {
       const id = event.target.value;
+      // TasksPerStation da lo mismo que markedContext.user <= este ultimo marca todos
       setTasksPerStation(current => ({
         ...current,
         [id]: number
@@ -64,6 +56,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
     };
   }
 
+  // TODO: Falta contextualizar esto
   const timesPerStation = Object.entries(tasksPerStation)
     .map(([taskId, stationNumber]) => {
       return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
@@ -88,19 +81,6 @@ function TaskList({ id, setTotalScore, totalScore }) {
 
   function handleButton(e) {
     e.preventDefault();
-  }
-
-  function calculeFeedback() {
-    let count = 0;
-    for (let i = 0; i < preFeedback.total; i++) {
-      if (markedContext.user[id][i] !== tasksSolution[i]) {
-        count++;
-      }
-    }
-    setPreFeedback({
-      ...preFeedback,
-      mistakes: count
-    });
   }
 
   return (
@@ -150,12 +130,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
           );
         })}
       </form>
-      <Submit
-        id={+id}
-        onSubmit={handleSubmit}
-        calculeFeedback={calculeFeedback}
-        preFeedback={preFeedback}
-      />
+      <Submit id={+id} onSubmit={handleSubmit} />
     </>
   );
 }

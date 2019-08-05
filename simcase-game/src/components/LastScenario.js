@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 
 import { Button } from "../components/ui";
 import { FeedbackContext } from "../contexts/feedback";
+import { ResultContext } from "../contexts/result";
 
 const container = {
   display: "flex",
@@ -37,10 +38,11 @@ const action = {
   width: "100%"
 };
 
-function LastScenario({ closeSubmit, preFeedback }) {
+function LastScenario({ closeSubmit }) {
   const feedbackContext = React.useContext(FeedbackContext);
+  const resultContext = React.useContext(ResultContext);
   const mistakesPercentage = Math.round(
-    (100 * preFeedback.mistakes) / preFeedback.total
+    (100 * resultContext.preFeedback.mistakes) / resultContext.preFeedback.total
   );
 
   function actionFeedback() {

@@ -15,23 +15,15 @@ const dialog = {
 };
 
 function Confirm(props) {
-  const { openSubmit, closeSubmit, confirm, scenario, preFeedback } = props;
+  const { openSubmit, closeSubmit, confirm, scenario } = props;
 
   return (
     <>
       <Dialog isOpen={confirm} onDismiss={openSubmit} css={dialog}>
         {scenario === 4 ? (
-          <LastScenario
-            closeSubmit={closeSubmit}
-            scenario={scenario}
-            preFeedback={preFeedback}
-          />
+          <LastScenario closeSubmit={closeSubmit} scenario={scenario} />
         ) : (
-          <NextScenario
-            closeSubmit={closeSubmit}
-            scenario={scenario}
-            preFeedback={preFeedback}
-          />
+          <NextScenario closeSubmit={closeSubmit} scenario={scenario} />
         )}
       </Dialog>
     </>
