@@ -5,6 +5,7 @@ import { Link } from "@reach/router";
 
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
+import fire from "../firebase";
 
 const container = {
   display: "flex",

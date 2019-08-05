@@ -10,6 +10,7 @@ import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
 import { DataContext } from "../contexts/data";
 import { FeedbackContext } from "../contexts/feedback";
+import { MarkedContext } from "../contexts/marked";
 import useTotalScore from "../selector";
 
 const container = {
@@ -176,6 +177,7 @@ const rowOdd = { ...row, backgroundColor: "#F0F4F8" };
 function Ranking() {
   const dataContext = React.useContext(DataContext);
   const feedbackContext = React.useContext(FeedbackContext);
+  const markedContext = React.useContext(MarkedContext);
   const [data, setData] = React.useState([]);
   const score = useTotalScore();
   const [user, setUser] = React.useState("");
@@ -266,6 +268,7 @@ function Ranking() {
   function playAgain() {
     dataContext.setRanking(false);
     feedbackContext.setState(false);
+    markedContext.setUser([]);
     navigate(`/game/1`);
   }
 

@@ -4,7 +4,6 @@ import { jsx } from "@emotion/core";
 
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
-import { FeedbackContext } from "../contexts/feedback";
 import { MarkedContext } from "../contexts/marked";
 
 const titleTask = {
@@ -23,28 +22,6 @@ const titleTask = {
   }
 };
 
-const button = {
-  border: "none",
-  width: "96px",
-  height: "36px",
-  margin: "0 10px",
-  borderRadius: "2px",
-  background: "#fff",
-
-  fontWeight: "600",
-  fontSize: "14px",
-  lineHeight: "16px",
-  textAlign: "center",
-  letterSpacing: "0.0357143em",
-  color: "#014D40",
-  transition: "all 0.25s ease-in-out"
-};
-
-const buttonMarked = { ...button, background: "#8d62e1", color: "#fff" };
-const buttonDefault = { ...button, background: "#F0F4F8", color: "#014D40" };
-const buttonRed = { ...button, background: "#EF767A", color: "#fff" };
-const buttonGreen = { ...button, background: "#C6F7E2" };
-
 const groupButtons = {
   display: "flex",
   justifyContent: "center"
@@ -53,7 +30,6 @@ const groupButtons = {
 const secondsPerWeek = 40 * 60 * 60;
 
 function TaskList({ id, setTotalScore, totalScore }) {
-  const feedbackContext = React.useContext(FeedbackContext);
   const markedContext = React.useContext(MarkedContext);
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
   const tasksSolution = tasks.reduce((tasks, [taskId, task], i) => {
@@ -77,8 +53,6 @@ function TaskList({ id, setTotalScore, totalScore }) {
     }, {})
   );
 
-  const [userMarked, setUserMarked] = React.useState([]);
-
   function addToStation(cant, number) {
     return event => {
       const id = event.target.value;
@@ -86,20 +60,7 @@ function TaskList({ id, setTotalScore, totalScore }) {
         ...current,
         [id]: number
       }));
-      // ------------------
       markedContext.handleMarked(id, cant, number);
-      // ------------------
-      setUserMarked(current => ({
-        ...current,
-        [id.substr(-1)]: number
-      }));
-      for (let i = parseInt(id.substr(-1)) + 1; i < cant; i++) {
-        setUserMarked(current => ({
-          ...current,
-          [i]: number
-        }));
-      }
-      // ------------------
     };
   }
 
@@ -129,37 +90,10 @@ function TaskList({ id, setTotalScore, totalScore }) {
     e.preventDefault();
   }
 
-  function mark(pos, task, station) {
-    if (feedbackContext.state) {
-      if (
-        Object.keys(userMarked).length === 0 &&
-        task.solution_station === station
-      ) {
-        return buttonRed;
-      } else {
-        if (task.solution_station === station) {
-          return buttonGreen;
-        } else if (userMarked[pos] === station) {
-          return buttonRed;
-        } else {
-          return button;
-        }
-      }
-    } else {
-      if (userMarked[pos] === station) {
-        return buttonMarked;
-      } else if (task.default_station === station) {
-        return buttonDefault;
-      } else {
-        return button;
-      }
-    }
-  }
-
   function calculeFeedback() {
     let count = 0;
     for (let i = 0; i < preFeedback.total; i++) {
-      if (userMarked[i] !== tasksSolution[i]) {
+      if (markedContext.user[id][i] !== tasksSolution[i]) {
         count++;
       }
     }
@@ -167,16 +101,6 @@ function TaskList({ id, setTotalScore, totalScore }) {
       ...preFeedback,
       mistakes: count
     });
-  }
-
-  function blockStation(pos, station) {
-    if (feedbackContext.state) {
-      return true;
-    } else if (userMarked[pos] > station) {
-      return true;
-    } else if (userMarked[pos] === 1 && station === 3) {
-      return true;
-    }
   }
 
   return (
@@ -195,9 +119,9 @@ function TaskList({ id, setTotalScore, totalScore }) {
                   onClick={addToStation(a.length, 1)}
                   id={`${id}_station_1`}
                   name={`${id}_task_${taskId}`}
-                  css={mark(i, task, 1)}
+                  css={markedContext.handleColor(id, i, task, 1)}
                   value={taskId}
-                  disabled={blockStation(i, 1)}
+                  disabled={markedContext.handleBlock(id, i, 1)}
                 >
                   Station 1
                 </button>
@@ -205,19 +129,19 @@ function TaskList({ id, setTotalScore, totalScore }) {
                   onClick={addToStation(a.length, 2)}
                   id={`${id}_station_2`}
                   name={`${id}_task_${taskId}`}
-                  css={mark(i, task, 2)}
+                  css={markedContext.handleColor(id, i, task, 2)}
                   value={taskId}
-                  disabled={blockStation(i, 2)}
+                  disabled={markedContext.handleBlock(id, i, 2)}
                 >
                   Station 2
                 </button>
                 <button
                   onClick={addToStation(a.length, 3)}
-                  css={mark(i, task, 3)}
+                  css={markedContext.handleColor(id, i, task, 3)}
                   name={`${id}_task_${taskId}`}
                   id={`${id}_station_3`}
                   value={taskId}
-                  disabled={blockStation(i, 3)}
+                  disabled={markedContext.handleBlock(id, i, 3)}
                 >
                   Station 3
                 </button>
