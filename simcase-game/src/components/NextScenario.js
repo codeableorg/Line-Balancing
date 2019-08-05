@@ -11,7 +11,6 @@ const container = {
   alignItems: "center",
   justifyContent: "space-evenly",
   height: "100%",
-  marginTop: "20px",
   svg: {
     width: "90px",
     height: "90px"

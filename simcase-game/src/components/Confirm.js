@@ -8,6 +8,7 @@ import LastScenario from "./LastScenario";
 
 const dialog = {
   margin: "auto",
+  marginTop: "20px",
   width: "90vw",
   height: "95vh",
   padding: "0"
