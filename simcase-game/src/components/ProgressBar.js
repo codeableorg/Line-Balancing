@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
 import { DataContext } from "../contexts/data";
+import { ResultContext } from "../contexts/result";
 
 const container = {
   display: "flex",
@@ -39,6 +40,11 @@ const line = {
   backgroundColor: "#D9E2EC"
 };
 
+const noneLine = {
+  ...line,
+  display: "none"
+};
+
 const currentLine = {
   ...line,
   border: "1px solid #7A0ECC",
@@ -47,34 +53,34 @@ const currentLine = {
 
 function ProgressBar() {
   const dataContext = React.useContext(DataContext);
+  const resultContext = React.useContext(ResultContext);
 
   return (
     <>
       {dataContext.ranking ? (
         <div css={container}>
-          <Link to="/game/1">
-            <svg>
-              <use xlinkHref="#good" />
-            </svg>
-          </Link>
-          <span css={line} />
-          <Link to="/game/2">
-            <svg>
-              <use xlinkHref="#more-or-less" />
-            </svg>
-          </Link>
-          <span css={line} />
-          <Link to="/game/3">
-            <svg css={{ transform: "rotate(45deg)" }}>
-              <use xlinkHref="#bad" />
-            </svg>
-          </Link>
-          <span css={line} />
-          <Link to="/game/4">
-            <svg>
-              <use xlinkHref="#more-or-less" />
-            </svg>
-          </Link>
+          {Object.values(resultContext.mistakes).map((e, i) => {
+            return (
+              <>
+                <Link to={`/game/${i + 1}`}>
+                  {e === 0 ? (
+                    <svg>
+                      <use xlinkHref="#good" />
+                    </svg>
+                  ) : e <= 30 ? (
+                    <svg>
+                      <use xlinkHref="#more-or-less" />
+                    </svg>
+                  ) : (
+                    <svg css={{ transform: "rotate(45deg)" }}>
+                      <use xlinkHref="#bad" />
+                    </svg>
+                  )}
+                </Link>
+                <span css={i === 3 ? noneLine : line} />
+              </>
+            );
+          })}
         </div>
       ) : (
         <div css={container}>

@@ -45,6 +45,7 @@ function NextScenario({ closeSubmit }) {
   );
   function actionFeedback() {
     feedbackContext.setState(true);
+    resultContext.handleMistakes(mistakesPercentage);
     closeSubmit();
   }
 

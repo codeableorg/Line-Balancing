@@ -11,6 +11,7 @@ function ResultProvider(props) {
   const tasksContext = React.useContext(TasksContext);
   const markedContext = React.useContext(MarkedContext);
   const [preFeedback, setPreFeedback] = React.useState({});
+  const [mistakes, setMistakes] = React.useState({});
 
   React.useEffect(() => {
     if (tasksContext.solution !== undefined) {
@@ -20,6 +21,15 @@ function ResultProvider(props) {
       });
     }
   }, [tasksContext.solution]);
+
+  function handleMistakes(value) {
+    if (dataContext.id !== null) {
+      setMistakes({
+        ...mistakes,
+        [dataContext.id]: value
+      });
+    }
+  }
 
   function handlePreFeedback() {
     if (dataContext.id !== null) {
@@ -40,7 +50,9 @@ function ResultProvider(props) {
 
   const value = {
     preFeedback: preFeedback,
-    handlePreFeedback: handlePreFeedback
+    mistakes: mistakes,
+    handlePreFeedback: handlePreFeedback,
+    handleMistakes: handleMistakes
   };
 
   return <ResultContext.Provider value={value} {...props} />;
