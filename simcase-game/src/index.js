@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import React from "react";
+import "@reach/dialog/styles.css";
 import { render } from "react-dom";
 import { Global, jsx } from "@emotion/core";
 import { Router } from "@reach/router";
@@ -12,6 +13,12 @@ import Walkthrough from "./views/Walkthrough";
 import GameUI from "./views/GameUI";
 import About from "./views/About";
 import Ranking from "./views/Ranking";
+import Symbols from "./components/Symbols";
+import { DataProvider } from "./contexts/data";
+import { TasksProvider } from "./contexts/tasks";
+import { FeedbackProvider } from "./contexts/feedback";
+import { MarkedProvider } from "./contexts/marked";
+import { ResultProvider } from "./contexts/result";
 
 const global = {
   body: {
@@ -50,8 +57,19 @@ function App() {
 
 const root = document.getElementById("root");
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <DataProvider>
+    <TasksProvider>
+      <FeedbackProvider>
+        <MarkedProvider>
+          <ResultProvider>
+            <Provider store={store}>
+              <Symbols />
+              <App />
+            </Provider>
+          </ResultProvider>
+        </MarkedProvider>
+      </FeedbackProvider>
+    </TasksProvider>
+  </DataProvider>,
   root
 );

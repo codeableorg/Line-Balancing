@@ -9,30 +9,12 @@ import About from "../views/About";
 
 import { Button } from "./ui";
 
-const contentStyle = {
-  padding: 10
-};
-
-const resetDialogStyle = {
+const dialog = {
+  margin: "auto",
+  marginTop: "20px",
   width: "90vw",
-  height: "90vh",
-  padding: 0,
-  margin: "3vh auto",
-  backgroundColor: "rgb(255,255,255)",
-  borderRadius: 10
-};
-
-const closeButton = {
-  position: "absolute",
-  top: 5,
-  right: 10,
-  border: "none",
-  padding: "8px 12px",
-  margin: 0,
-  borderRadius: "50%",
-  backgroundColor: "#8719E0",
-  color: "#FFFFFF",
-  fontWeight: "bold"
+  height: "95vh",
+  padding: "0"
 };
 
 const buttonBarStyles = {
@@ -43,26 +25,24 @@ const buttonBarStyles = {
   height: "10vh"
 };
 
-const modalContentStyles = {
-  height: "75vh",
-  overflow: "auto",
-  color: "#4d4d4d",
-  margin: 5
+const container = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  height: "100%"
 };
 
 function componentShowed(componentId) {
   switch (componentId) {
     case 1:
       return <Role />;
-
     case 2:
       return <Walkthrough />;
-
-    default:
-      return <Role />;
-
     case 3:
       return <About />;
+    default:
+      return <Role />;
   }
 }
 
@@ -73,17 +53,9 @@ function Modal(props) {
   return (
     <div>
       <div>
-        <Dialog
-          isOpen={openComponent}
-          onDismiss={openComponent}
-          css={resetDialogStyle}
-        >
-          <main css={contentStyle}>
-            <button onClick={onClose} css={closeButton}>
-              X
-            </button>
-
-            <div css={modalContentStyles}>{componentShowed(staticContent)}</div>
+        <Dialog isOpen={openComponent} onDismiss={openComponent} css={dialog}>
+          <main>
+            <div css={container}>{componentShowed(staticContent)}</div>
             {staticContent === 2 ? (
               <div css={buttonBarStyles}>
                 <Button
@@ -91,7 +63,7 @@ function Modal(props) {
                     onClose();
                   }}
                 >
-                  Close
+                  CLOSE
                 </Button>
               </div>
             ) : staticContent === 3 ? (
@@ -101,7 +73,7 @@ function Modal(props) {
                     onClose();
                   }}
                 >
-                  Close
+                  CLOSE
                 </Button>
               </div>
             ) : (
@@ -112,7 +84,7 @@ function Modal(props) {
                     else setStaticContent(staticContent + 1);
                   }}
                 >
-                  Next &gt;
+                  NEXT
                 </Button>
               </div>
             )}

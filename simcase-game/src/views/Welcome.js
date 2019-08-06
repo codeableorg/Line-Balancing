@@ -3,7 +3,6 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
-import Navbar from "../components/Navbar";
 import { Button } from "../components/ui";
 import { MainContent } from "../components/helpers";
 import fire from "../firebase";
@@ -29,7 +28,6 @@ const container = {
 function Welcome() {
   return (
     <>
-      <Navbar />
       <MainContent styles={container}>
         <img src="/stopwatch.png" alt="Welcome" />
         <p>

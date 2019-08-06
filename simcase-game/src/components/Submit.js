@@ -6,23 +6,22 @@ import { navigate } from "@reach/router";
 
 import Confirm from "./Confirm";
 import { Button } from "./ui";
+import { DataContext } from "../contexts/data";
+import { FeedbackContext } from "../contexts/feedback";
+import { ResultContext } from "../contexts/result";
 
 const button = {
   margin: "30px 0"
 };
 
-function Submit({
-  id,
-  onSubmit,
-  handleFeedback,
-  feedback,
-  calculeFeedback,
-  preFeedback
-}) {
+function Submit({ id, onSubmit }) {
+  const dataContext = React.useContext(DataContext);
+  const feedbackContext = React.useContext(FeedbackContext);
+  const resultContext = React.useContext(ResultContext);
   const [confirm, setConfirm] = React.useState(false);
 
   function openSubmit() {
-    calculeFeedback();
+    resultContext.handlePreFeedback();
     setConfirm(true);
   }
 
@@ -31,16 +30,27 @@ function Submit({
   }
 
   function actionNextStep() {
-    handleFeedback();
-    feedback && navigate(`/game/${id + 1}`);
+    feedbackContext.setState(false);
+    if (id === 4) {
+      dataContext.setRanking(true);
+    }
+    feedbackContext.state && navigate(`/game/${id + 1}`);
     setConfirm(false);
     onSubmit();
+  }
+
+  function moveRanking() {
+    navigate(`/ranking`);
   }
 
   const $portal = document.getElementById("portal");
   return (
     <>
-      {feedback ? (
+      {dataContext.ranking ? (
+        <Button onClick={moveRanking} css={button}>
+          RANKING
+        </Button>
+      ) : feedbackContext.state ? (
         <Button onClick={actionNextStep} css={button}>
           NEXT
         </Button>
@@ -57,9 +67,6 @@ function Submit({
             confirm={confirm}
             setConfirm={setConfirm}
             onConfirm={onSubmit}
-            feedback={feedback}
-            handleFeedback={handleFeedback}
-            preFeedback={preFeedback}
           />,
           $portal
         )}
