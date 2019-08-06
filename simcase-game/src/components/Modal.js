@@ -63,7 +63,7 @@ function Modal(props) {
                     onClose();
                   }}
                 >
-                  Close
+                  CLOSE
                 </Button>
               </div>
             ) : staticContent === 3 ? (
@@ -73,7 +73,7 @@ function Modal(props) {
                     onClose();
                   }}
                 >
-                  Close
+                  CLOSE
                 </Button>
               </div>
             ) : (
