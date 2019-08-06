@@ -57,7 +57,9 @@ function MarkedProvider(props) {
       if (Object.keys(user).length === 0 && task.solution_station === station) {
         return buttonRed;
       } else {
-        if (task.solution_station === station) {
+        if (Object.keys(user).length === 0) {
+          return button;
+        } else if (task.solution_station === station) {
           return buttonGreen;
         } else if (user[game][pos] === station) {
           return buttonRed;

@@ -32,7 +32,7 @@ function ResultProvider(props) {
   }
 
   function handlePreFeedback() {
-    if (dataContext.id !== null) {
+    if (dataContext.id !== null && markedContext.user.length !== 0) {
       let count = 0;
       for (let i = 0; i < preFeedback.total; i++) {
         if (
@@ -44,6 +44,11 @@ function ResultProvider(props) {
       setPreFeedback({
         ...preFeedback,
         mistakes: count
+      });
+    } else if (dataContext.id !== null) {
+      setPreFeedback({
+        ...preFeedback,
+        mistakes: 100
       });
     }
   }
