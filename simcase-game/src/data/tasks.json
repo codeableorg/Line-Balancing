@@ -60,7 +60,7 @@
       },
       "image": {
         "name": "image 1",
-        "src": "/assets/img/line-cook.png"
+        "src": "/assets/img/mex.png"
       }
     },
     "2": {
@@ -111,7 +111,7 @@
       },
       "image": {
         "name": "image 2",
-        "src": "https://i.ytimg.com/vi/vBqrK9tyvzU/maxresdefault.jpg"
+        "src": "/assets/img/burger.jpg"
       }
     },
     "1": {
@@ -156,7 +156,7 @@
       },
       "image": {
         "name": "image 3",
-        "src": "https://i2-prod.mylondon.news/incoming/article6379955.ece/ALTERNATES/s1227b/Jimmys-World-Grill.jpg"
+        "src": "/assets/img/cafe.jpg"
       }
     },
     "4": {
@@ -219,7 +219,7 @@
       },
       "image": {
         "name": "image 4",
-        "src": "http://i0.kym-cdn.com/photos/images/original/001/047/862/3f3.jpg"
+        "src": "/assets/img/med_grill.jpg"
       }
     }
   }

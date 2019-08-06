@@ -54,17 +54,45 @@ function LastScenario({ closeSubmit }) {
   return (
     <div css={container}>
       {mistakesPercentage === 0 ? (
-        <svg>
-          <use xlinkHref="#good" />
-        </svg>
+        <>
+          <svg>
+            <use xlinkHref="#good" />
+          </svg>
+          <div css={info}>
+            <p>You don't have any mistake</p>
+            <p>
+              Nice work! Your line looks well balanced which means your
+              throughput will be high.
+            </p>
+          </div>
+        </>
       ) : mistakesPercentage <= 30 ? (
-        <svg>
-          <use xlinkHref="#more-or-less" />
-        </svg>
+        <>
+          <svg>
+            <use xlinkHref="#more-or-less" />
+          </svg>
+          <div css={info}>
+            <p>You have less than 30% of mistakes</p>
+            <p>
+              You're on the right path. Revisit your line to see how it can be
+              better balanced so you can get more customer through the mealtime
+              rush.
+            </p>
+          </div>
+        </>
       ) : (
-        <svg css={{ transform: "rotate(45deg)" }}>
-          <use xlinkHref="#bad" />
-        </svg>
+        <>
+          <svg css={{ transform: "rotate(45deg)" }}>
+            <use xlinkHref="#bad" />
+          </svg>
+          <div css={info}>
+            <p>You missed more than 30% of mistakes</p>
+            <p>
+              You missed the mark. Think about each station's idle time and
+              share the love!
+            </p>
+          </div>
+        </>
       )}
       <div css={info}>
         <p>TITLE MESSAGE</p>

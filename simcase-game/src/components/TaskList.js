@@ -5,8 +5,6 @@ import { jsx } from "@emotion/core";
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
 import { MarkedContext } from "../contexts/marked";
-import { TasksContext } from "../contexts/tasks";
-import { ResultContext } from "../contexts/result";
 
 const titleTask = {
   display: "flex",
