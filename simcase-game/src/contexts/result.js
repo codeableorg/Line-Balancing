@@ -1,5 +1,6 @@
 import React from "react";
 
+import tasksJson from "../data/tasks.json";
 import { DataContext } from "./data";
 import { TasksContext } from "./tasks";
 import { MarkedContext } from "./marked";
@@ -12,6 +13,7 @@ function ResultProvider(props) {
   const markedContext = React.useContext(MarkedContext);
   const [preFeedback, setPreFeedback] = React.useState({});
   const [mistakes, setMistakes] = React.useState({});
+  const [time, setTime] = React.useState({});
 
   React.useEffect(() => {
     if (tasksContext.solution !== undefined) {
@@ -32,32 +34,85 @@ function ResultProvider(props) {
   }
 
   function handlePreFeedback() {
-    if (dataContext.id !== null && markedContext.user.length !== 0) {
-      let count = 0;
-      for (let i = 0; i < preFeedback.total; i++) {
-        if (
-          markedContext.user[dataContext.id][i] !== tasksContext.solution[i]
-        ) {
-          count++;
+    if (dataContext.id !== null) {
+      if (markedContext.user[dataContext.id]) {
+        let count = 0;
+        console.log(dataContext.id);
+        for (let i = 0; i < preFeedback.total; i++) {
+          if (
+            markedContext.user[dataContext.id][i] !== tasksContext.solution[i]
+          ) {
+            count++;
+          }
         }
+        setPreFeedback({
+          ...preFeedback,
+          mistakes: count
+        });
+      } else {
+        setPreFeedback({
+          ...preFeedback,
+          mistakes: 100
+        });
       }
-      setPreFeedback({
-        ...preFeedback,
-        mistakes: count
-      });
-    } else if (dataContext.id !== null) {
-      setPreFeedback({
-        ...preFeedback,
-        mistakes: 100
-      });
     }
   }
+
+  function handleTime() {
+    if (dataContext.id !== null) {
+      const tasks = Object.entries(tasksJson.scenarios[dataContext.id].tasks);
+      if (markedContext.user[dataContext.id]) {
+        const result = Object.values(markedContext.user[dataContext.id])
+          .map((e, i) => {
+            return [e, tasks[i][1].time];
+          })
+          .reduce((total, [station, time]) => {
+            return {
+              ...total,
+              [station]: total[station] ? total[station] + time : time
+            };
+          }, {});
+        setTime({
+          ...time,
+          [dataContext.id]: result
+        });
+      } else {
+        setTime({
+          ...time,
+          [dataContext.id]: {
+            1: 0,
+            2: 0,
+            3: 0
+          }
+        });
+      }
+    }
+  }
+
+  // function handleMaxTime() {
+  //   if (dataContext.id !== null) {
+  //     if (markedContext.user.length !== 0) {
+
+  //     } else {
+  //       setTime({
+  //         ...time,
+  //         [dataContext.id]: 0
+  //       });
+  //     }
+  //     setTime({
+  //       ...time,
+  //       total: Object.values(time).reduce((a, e) => a + e, 0)
+  //     });
+  //   }
+  // }
 
   const value = {
     preFeedback: preFeedback,
     mistakes: mistakes,
+    time: time,
     handlePreFeedback: handlePreFeedback,
-    handleMistakes: handleMistakes
+    handleMistakes: handleMistakes,
+    handleTime: handleTime
   };
 
   return <ResultContext.Provider value={value} {...props} />;

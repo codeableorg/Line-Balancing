@@ -22,6 +22,7 @@ function Submit({ id, onSubmit }) {
 
   function openSubmit() {
     resultContext.handlePreFeedback();
+    resultContext.handleTime();
     setConfirm(true);
   }
 
