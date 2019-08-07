@@ -5,6 +5,7 @@ import { jsx } from "@emotion/core";
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
 import { MarkedContext } from "../contexts/marked";
+import { ResultContext } from "../contexts/result";
 
 const titleTask = {
   display: "flex",
@@ -27,54 +28,20 @@ const groupButtons = {
   justifyContent: "center"
 };
 
-const secondsPerWeek = 40 * 60 * 60;
-
 function TaskList({ id, setTotalScore, totalScore }) {
   const markedContext = React.useContext(MarkedContext);
+  const resultContext = React.useContext(ResultContext);
   const tasks = Object.entries(tasksJson.scenarios[id].tasks);
-
-  const [tasksPerStation, setTasksPerStation] = React.useState(
-    tasks.reduce((tasks, [taskId, task]) => {
-      return {
-        ...tasks,
-        [taskId]: task.default_station
-      };
-    }, {})
-  );
 
   function addToStation(cant, number) {
     return event => {
       const id = event.target.value;
-      // TasksPerStation da lo mismo que markedContext.user <= este ultimo marca todos
-      setTasksPerStation(current => ({
-        ...current,
-        [id]: number
-      }));
       markedContext.handleMarked(id, cant, number);
     };
   }
 
-  // TODO: Falta contextualizar esto
-  const timesPerStation = Object.entries(tasksPerStation)
-    .map(([taskId, stationNumber]) => {
-      return [tasksJson.scenarios[id].tasks[taskId].time, stationNumber];
-    })
-    .reduce((total, [time, stationNumber]) => {
-      return {
-        ...total,
-        [stationNumber]: total[stationNumber]
-          ? total[stationNumber] + time
-          : time
-      };
-    }, {});
-
-  function getScore() {
-    const maximum = Math.max(...Object.values(timesPerStation));
-    return Math.round((1 / maximum) * secondsPerWeek);
-  }
-
   function handleSubmit() {
-    setTotalScore(getScore());
+    setTotalScore(resultContext.score[id]);
   }
 
   function handleButton(e) {

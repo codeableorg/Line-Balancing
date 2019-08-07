@@ -54,10 +54,10 @@ function MarkedProvider(props) {
 
   function handleColor(game, pos, task, station) {
     if (feedbackContext.state) {
-      if (Object.keys(user).length === 0 && task.solution_station === station) {
+      if (user[game] === undefined && task.solution_station === station) {
         return buttonRed;
       } else {
-        if (Object.keys(user).length === 0) {
+        if (user[game] === undefined) {
           return button;
         } else if (task.solution_station === station) {
           return buttonGreen;
@@ -68,7 +68,7 @@ function MarkedProvider(props) {
         }
       }
     } else {
-      if (user[game] !== undefined) {
+      if (user[game]) {
         if (user[game][pos] === station) {
           return buttonMarked;
         } else if (task.default_station === station) {

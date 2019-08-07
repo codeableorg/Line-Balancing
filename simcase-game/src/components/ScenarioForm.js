@@ -3,8 +3,10 @@ import React from "react";
 import { jsx } from "@emotion/core";
 
 import ImageContainer from "../components/ImageContainer";
+import Score from "./Score";
 import TaskList from "../components/TaskList";
 import ProgressBar from "../components/ProgressBar";
+import { FeedbackContext } from "../contexts/feedback";
 import { MainContent } from "../components/helpers";
 import { useAddScore } from "../action-hook";
 
@@ -15,8 +17,9 @@ const container = {
 };
 
 function ScenarioForm({ id }) {
-  const [totalScore, setTotalScore] = React.useState(0);
   const addScore = useAddScore();
+  const feedbackContext = React.useContext(FeedbackContext);
+  const [totalScore, setTotalScore] = React.useState(0);
   const [now, setNow] = React.useState(Date.now());
 
   function saveScore(score) {
@@ -29,7 +32,7 @@ function ScenarioForm({ id }) {
     <>
       <MainContent css={container}>
         <ProgressBar />
-        <ImageContainer id={id} />
+        {feedbackContext.state ? <Score id={id} /> : <ImageContainer id={id} />}
         <TaskList
           id={id}
           totalScore={totalScore}
