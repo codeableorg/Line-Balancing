@@ -14,6 +14,7 @@ function ResultProvider(props) {
   const [preFeedback, setPreFeedback] = React.useState({});
   const [mistakes, setMistakes] = React.useState({});
   const [time, setTime] = React.useState({});
+  const [successTime, setSuccessTime] = React.useState({});
   const [score, setScore] = React.useState({});
 
   React.useEffect(() => {
@@ -55,6 +56,26 @@ function ResultProvider(props) {
           mistakes: 100
         });
       }
+    }
+  }
+
+  function handleSuccessTime() {
+    if (dataContext.id !== null) {
+      const tasks = Object.entries(tasksJson.scenarios[dataContext.id].tasks);
+      const result = tasks
+        .map(e => {
+          return [e[1].solution_station, e[1].time];
+        })
+        .reduce((total, [station, time]) => {
+          return {
+            ...total,
+            [station]: total[station] ? total[station] + time : time
+          };
+        }, 0);
+      setSuccessTime({
+        ...successTime,
+        [dataContext.id]: result
+      });
     }
   }
 
@@ -104,9 +125,11 @@ function ResultProvider(props) {
     mistakes: mistakes,
     time: time,
     score: score,
+    successTime: successTime,
     handlePreFeedback: handlePreFeedback,
     handleMistakes: handleMistakes,
-    handleTime: handleTime
+    handleTime: handleTime,
+    handleSuccessTime: handleSuccessTime
   };
 
   return <ResultContext.Provider value={value} {...props} />;
