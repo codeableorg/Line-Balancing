@@ -14,6 +14,7 @@ function ResultProvider(props) {
   const [preFeedback, setPreFeedback] = React.useState({});
   const [mistakes, setMistakes] = React.useState({});
   const [time, setTime] = React.useState({});
+  const [score, setScore] = React.useState({});
 
   React.useEffect(() => {
     if (tasksContext.solution !== undefined) {
@@ -72,9 +73,14 @@ function ResultProvider(props) {
               [station]: total[station] ? total[station] + time : time
             };
           }, {});
+        const maxResult = Math.max(...Object.values(result));
         setTime({
           ...time,
           [dataContext.id]: result
+        });
+        setScore({
+          ...score,
+          [dataContext.id]: maxResult
         });
       } else {
         setTime({
@@ -84,6 +90,10 @@ function ResultProvider(props) {
             2: 0,
             3: 0
           }
+        });
+        setScore({
+          ...score,
+          [dataContext.id]: 0
         });
       }
     }
@@ -110,6 +120,7 @@ function ResultProvider(props) {
     preFeedback: preFeedback,
     mistakes: mistakes,
     time: time,
+    score: score,
     handlePreFeedback: handlePreFeedback,
     handleMistakes: handleMistakes,
     handleTime: handleTime
