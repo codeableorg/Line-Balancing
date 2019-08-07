@@ -5,7 +5,6 @@ import { jsx } from "@emotion/core";
 import tasksJson from "../data/tasks.json";
 import Submit from "../components/Submit";
 import { MarkedContext } from "../contexts/marked";
-import { TasksContext } from "../contexts/tasks";
 import { ResultContext } from "../contexts/result";
 
 const titleTask = {
@@ -29,8 +28,6 @@ const groupButtons = {
   justifyContent: "center"
 };
 
-const secondsPerWeek = 40 * 60 * 60;
-
 function TaskList({ id, setTotalScore, totalScore }) {
   const markedContext = React.useContext(MarkedContext);
   const resultContext = React.useContext(ResultContext);
@@ -43,13 +40,8 @@ function TaskList({ id, setTotalScore, totalScore }) {
     };
   }
 
-  function getScore() {
-    const maximum = Math.max(...Object.values(resultContext.time[id]));
-    return Math.round((1 / maximum) * secondsPerWeek);
-  }
-
   function handleSubmit() {
-    setTotalScore(getScore());
+    setTotalScore(resultContext.score[id]);
   }
 
   function handleButton(e) {

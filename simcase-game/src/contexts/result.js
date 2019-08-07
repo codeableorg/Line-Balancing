@@ -38,7 +38,6 @@ function ResultProvider(props) {
     if (dataContext.id !== null) {
       if (markedContext.user[dataContext.id]) {
         let count = 0;
-        console.log(dataContext.id);
         for (let i = 0; i < preFeedback.total; i++) {
           if (
             markedContext.user[dataContext.id][i] !== tasksContext.solution[i]
@@ -80,7 +79,7 @@ function ResultProvider(props) {
         });
         setScore({
           ...score,
-          [dataContext.id]: maxResult
+          [dataContext.id]: Math.round((1 / maxResult) * 144000)
         });
       } else {
         setTime({
@@ -93,28 +92,12 @@ function ResultProvider(props) {
         });
         setScore({
           ...score,
-          [dataContext.id]: 0
+          [dataContext.id]: 0,
+          total: score.total + 0
         });
       }
     }
   }
-
-  // function handleMaxTime() {
-  //   if (dataContext.id !== null) {
-  //     if (markedContext.user.length !== 0) {
-
-  //     } else {
-  //       setTime({
-  //         ...time,
-  //         [dataContext.id]: 0
-  //       });
-  //     }
-  //     setTime({
-  //       ...time,
-  //       total: Object.values(time).reduce((a, e) => a + e, 0)
-  //     });
-  //   }
-  // }
 
   const value = {
     preFeedback: preFeedback,
