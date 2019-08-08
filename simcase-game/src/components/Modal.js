@@ -10,10 +10,9 @@ import About from "../views/About";
 import { Button } from "./ui";
 
 const dialog = {
-  margin: "auto",
-  marginTop: "20px",
-  width: "90vw",
-  height: "95vh",
+  margin: "1em",
+  width: "90%",
+  height: "95%",
   padding: "0"
 };
 

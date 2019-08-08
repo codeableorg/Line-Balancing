@@ -22,6 +22,13 @@ const container = {
   }
 };
 
+const section = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  alignItems: "center"
+};
+
 const logo = {
   fontSize: "3.2em",
   boxSizing: "content-box",
@@ -34,53 +41,30 @@ const logoCodeableAble = {
   textAlign: "center"
 };
 
+const titleRole = {
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  color: "#44056E",
+  backgroundColor: "#DAC4FF"
+};
+
 function About() {
   return (
     <>
-      <MainContent styles={container}>
-        <h2>Developed by:</h2>
-        <h1 css={logo}>
-          {"{"}code<span css={logoCodeableAble}>able{"}"}</span>
-        </h1>
-        <section>
-          <figure>
-            <img src="/assets/img/simcase_color_big.png" alt="Simcase logo" />
-          </figure>
-          <p css={{ textAlign: "center" }}>Developers in charge</p>
-          <section>
-            <p>
-              <span role="img" aria-label="developer">
-                🐼
-              </span>{" "}
-              Cesar Cachay
-            </p>
-            <p>
-              <span role="img" aria-label="developer">
-                🦝
-              </span>{" "}
-              Paulo Tijero
-            </p>
-            <p>
-              <span role="img" aria-label="developer">
-                🐺
-              </span>{" "}
-              Carlos Sandoval
-            </p>
-            <p>
-              <span role="img" aria-label="developer">
-                🦍
-              </span>{" "}
-              Deyvi Conde
-            </p>
-            <p>
-              <span role="img" aria-label="developer">
-                👽
-              </span>{" "}
-              Carlos Ayala
-            </p>
-          </section>
-        </section>
-      </MainContent>
+      <div css={titleRole}>
+        <h2>INFO</h2>
+      </div>
+      <section css={section}>
+        <img
+          css={{ width: "300px" }}
+          src="/assets/img/simcase_color_big.png"
+          alt="Simcase logo"
+        />
+        <p css={{ textAlign: "center" }}>
+          {"<>"} with 🖤 by <a href="https://codeable.pe/">Codeable</a> Students
+        </p>
+      </section>
     </>
   );
 }
