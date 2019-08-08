@@ -1,12 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 
-const img = {
-  display: "block",
-  width: "300px",
-  margin: "0 auto"
-};
-
 const info = {
   textAlign: "center",
   color: "#747474",
@@ -15,7 +9,8 @@ const info = {
     width: "232px",
     "&:first-of-type": {
       fontWeight: "bold",
-      fontSize: "24px"
+      fontSize: "24px",
+      color: "#44056E"
     }
   }
 };
@@ -25,13 +20,14 @@ const container = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-evenly",
-  height: "100%"
+  width: "100%"
 };
 
 const titleRole = {
-  width: "337.5px",
   display: "flex",
   justifyContent: "center",
+  width: "100%",
+  color: "#44056E",
   backgroundColor: "#DAC4FF"
 };
 
@@ -39,7 +35,7 @@ function Role() {
   return (
     <main css={container}>
       <div css={titleRole}>
-        <h2 css={{ color: "#44056E" }}>ROLE</h2>
+        <h2>ROLE</h2>
       </div>
       <div css={info}>
         <p>This is have 4 different scenarios</p>
