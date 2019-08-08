@@ -29,7 +29,7 @@ function Welcome() {
   return (
     <>
       <MainContent styles={container}>
-        <img src="/stopwatch.png" alt="Welcome" />
+        <img src="/line-balancing-game.png" alt="Welcome" />
         <p>
           Balance production to increase production. Use the radio buttons to
           shift tasks between adjacent workers. Good Luck!
